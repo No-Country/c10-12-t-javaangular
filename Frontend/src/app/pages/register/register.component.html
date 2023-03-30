@@ -1,56 +1,40 @@
-<section>
-    <div class="flex min-h-[100%] ">
-        <div class="cabecera  w-[538px] py-6 bg-white flex flex-col items-center justify-center">
+<div class="flex h-screen bg-hostel">
+  <div class="cabecera w-[538px] bg-white flex flex-col items-center justify-center rounded-r-2xl rounded-tb-2xl">
+    <div class="pb-[50px] pl-20">
+      <div class="w-2/3 mb-10" >
+          <h1 class="text-[#4046C8] text-[2.2rem]">
+              Estás a punto de comenzar tu aventura
+          </h1>
+      </div>
 
-            <div class="pl-[50px]">
-
-                <div class="w-2/3 mb-10  ">
-                    <h1 class="text-[#4046C8] text-[2.2rem]">
-                        Estás a punto de comenzar tu aventura
-                    </h1>
-                </div>
-
-                <div class="w-full mb-2 text-gray-500">
-                    <p><fa-icon [icon]="faHome" class=" px-2"></fa-icon>Encuentra alojamientos</p>
-                    <p><fa-icon [icon]="faLaptop" class="px-2"></fa-icon>Postula a ofertas laborales</p>
-                    <p><fa-icon class="px-2" [icon]="faHeart"></fa-icon>Conecta con otros emigrantes</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col items-start justify-start gap-2 py-2 w-[400px]">
-
-                <input type="text" name="username" class=" w-full h-[56px]   rounded-[4px]"
-                    placeholder="Nombre y Apellido*">
-                    <input type="email" name="email" class=" w-full h-[56px]   rounded-[4px]"
-                    placeholder="correo electronico*">
-                <input type="password" name="password" class="w-full h-[56px] rounded-[4px]" placeholder="password*">
-                
-              
-            </div>
-
-            <p class="p-5">
-                <input type="checkbox" class="default:ring-2"/> Leí y acepto los <a class="underline underline-offset-1">Términos y Condiciones.</a>  
-            </p>
-
-            <div class="flex flex-col items-center justify-center">
-                <p class="py-6 w-[400px]">
-                    <button class=" bg-yellow-400 w-full h-[56px] rounded-[12px]">Crear una cuenta</button>
-                </p>
-
-                
-                <p>
-                    ¿Ya tienes cuenta? <a class="text-blue-800 underline underline-offset-1" routerLink="/login">Iniciar Sesion</a>
-                </p>
-            </div>
-        </div>
-
-
-
-        <div class="flex-1 overflow-y-hidden bg-slate-400">
-            <picture>
-                <!-- <img src="../assets/img/noimage.jpg" alt=""> -->
-            </picture>
-        </div>
-        
+      <div class="w-full mb-2 text-gray-500">
+          <p><fa-icon [icon]="faHome" class=" px-2"></fa-icon>Encuentra alojamientos</p>
+          <p><fa-icon [icon]="faLaptop" class="px-2"></fa-icon>Postula a ofertas laborales</p>
+          <p><fa-icon class="px-2" [icon]="faHeart"></fa-icon>Conecta con otros emigrantes</p>
+      </div>
     </div>
-</section>
+
+    <div class="flex flex-col items-start justify-start gap-5 w-96 text-[#858585]">
+
+      <input type="text" name="name" class=" w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4"
+      placeholder="nombre y apellido">
+      <input type="email" name="email" class=" w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4"
+          placeholder="correo electronico">
+      <input type="password" name="password" class="w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4" placeholder="password">
+    </div>
+
+      <div class="flex flex-col items-center justify-center gap-3 text-white">
+          <p class="text-black pt-7 pl-2  w-96">
+            <input type="checkbox">
+            Leí y acepto los <a href="/">Términos y Condiciones</a>
+          </p>
+          <p class="py-6 w-96">
+              <button class=" bg-[#f18f01] w-full h-[56px] rounded-lg text-xl">Crear cuenta</button>
+          </p>
+          <p class="text-black">
+              ¿Ya tienes cuenta? <a class="text-blue-800 underline underline-offset-1" routerLink="/register">Iniciar sesión</a>
+          </p>
+      </div>
+
+  </div>
+</div>
