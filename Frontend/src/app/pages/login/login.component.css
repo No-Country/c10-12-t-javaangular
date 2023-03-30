@@ -1,0 +1,5 @@
+.bg-hostel {
+  background-image: url('./../../../assets/img/hostel.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
