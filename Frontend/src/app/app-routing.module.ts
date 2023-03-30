@@ -7,7 +7,8 @@ import { RegisterComponent } from './pages/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    component: LandingComponent
+    component: LandingComponent,
+    pathMatch: 'full'
   },
   {
     path: 'login',
