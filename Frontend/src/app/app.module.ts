@@ -10,6 +10,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BannerComponent } from './components/banner/banner.component';
+import { ServicesComponent } from './components/services/services.component';
+import { CardComponent } from './components/card/card.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormComponent,
     LoginComponent,
     RegisterComponent,
-    LandingComponent
+    LandingComponent,
+    BannerComponent,
+    ServicesComponent,
+    CardComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
