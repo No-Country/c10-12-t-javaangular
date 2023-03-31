@@ -1,15 +1,58 @@
-<div class="container grid grid-cols-2 px-5 py-5 mx-auto bg-white lg:grid-cols-3">
+<!-- <div class="container grid grid-cols-2 px-5 py-5 mx-auto bg-white lg:grid-cols-3">
   <div class="order-1 w-full title-logo">
-    <h1 class="text-4xl font-bold text-azul">Nómadas</h1>
+    <h1 class="text-4xl font-bold text-secondary">Nómadas</h1>
   </div>
   <div class="flex flex-wrap justify-between order-last w-full col-span-2 text-xl font-medium lg:col-span-1 lg:order-2">
     <a href="" class="my-auto">Migración</a>
-    <a href="" class="my-auto">Servicios</a>
-    <a href="" class="my-auto">Salud</a>
+    <a href="" class="my-auto">Guias</a>
+    <a href="" class="my-auto">Alojamiento</a>
     <a href="" class="my-auto">Trabajo</a>
+    <a href="" class="my-auto">Comunidad</a>
   </div>
   <div class="flex justify-end order-3 w-full space-x-6">
     <div class="bg-gray-300 rounded-full aspect-square"></div>
-    <button class="text-xl font-semibold text-white rounded-full bg-azul px-14" routerLink="/login">Iniciar</button>
+    <button class="text-xl font-semibold text-white rounded-full bg-primary px-14" routerLink="/login">Iniciar</button>
   </div>
-</div>
+</div> -->
+
+<!-- flowbite -->
+
+<nav>
+  <div class="container flex flex-wrap items-center justify-start p-5 mx-auto lg:justify-between">
+    <button data-collapse-toggle="navbar-default" type="button"
+      class="inline-flex items-center mr-3 text-sm text-gray-500 rounded-lg lg:hidden focus:outline-none"
+      aria-controls="navbar-default" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <a href="/" class="flex items-center">
+      <span class="self-center text-4xl font-bold text-secondary whitespace-nowrap">Nómadas</span>
+    </a>
+    <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
+      <ul class="flex flex-col mt-4 text-xl font-medium rounded-lg lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0">
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 rounded lg:p-0" aria-current="page">Migración</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 rounded lg:p-0" aria-current="page">Guias</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 rounded lg:p-0" aria-current="page">Alojamiento</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 rounded lg:p-0" aria-current="page">Trabajo</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 rounded lg:p-0" aria-current="page">Comunidad</a>
+        </li>
+      </ul>
+      <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full lg:hidden bg-primary">Iniciar</button>
+    </div>
+    <button class="hidden px-12 py-2 text-xl font-semibold text-white rounded-full lg:block bg-primary">Iniciar</button>
+  </div>
+</nav>
