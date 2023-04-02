@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { SwiperModule } from 'swiper/angular';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -14,6 +16,8 @@ import { BannerComponent } from './components/banner/banner.component';
 import { ServicesComponent } from './components/services/services.component';
 import { CardComponent } from './components/card/card.component';
 import { AboutComponent } from './components/about/about.component';
+import { SlidesComponent } from './components/slides/slides.component';
+
 
 @NgModule({
   declarations: [
@@ -27,12 +31,14 @@ import { AboutComponent } from './components/about/about.component';
     BannerComponent,
     ServicesComponent,
     CardComponent,
-    AboutComponent
+    AboutComponent,
+    SlidesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

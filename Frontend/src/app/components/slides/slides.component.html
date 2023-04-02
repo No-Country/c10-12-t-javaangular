@@ -1,0 +1,45 @@
+<div class="py-8">
+  <p class="text-center text-4xl text-[#0B3C6A] font-bold pb-4">Conoce los próximos eventos de la comunidad</p>
+  <p class="text-center text-2xl">Eventos destacados</p>
+
+  <div class="pt-20 flex flex-wrap justify-center">
+
+    <swiper
+    [config]="config"
+    [loop]="true"
+    class="h-64 flex flex-wrap w-[800px] sm:hidden"
+    >
+
+    <ng-template swiperSlide *ngFor="let data of sliderContent">
+      <div class="w-[194px]">
+        <img class="rounded-2xl min-w-full" [src]="data.img" alt="">
+        <button class="min-w-full bg-[#0B3C6A] text-white rounded-2xl -mt-2 h-10">{{ data.date }}</button>
+        <p class="min-w-full text-center p-4 text-black font-semibold">{{ data.title }}</p>
+      </div>
+    </ng-template>
+
+  </swiper>
+
+  <swiper
+  [config]="config3"
+  [loop]="true"
+  class="h-64 flex flex-wrap gap-x-96 w-[800px] max-sm:hidden"
+  >
+
+  <ng-template swiperSlide *ngFor="let data of sliderContent">
+    <div class="w-[194px]" >
+      <img class="rounded-2xl min-w-full" [src]="data.img" alt="">
+      <button class="min-w-full bg-[#0B3C6A] text-white rounded-2xl -mt-2 h-10">{{ data.date }}</button>
+      <p class="min-w-full text-center p-4 text-black font-semibold">{{ data.title }}</p>
+    </div>
+  </ng-template>
+
+</swiper>
+
+
+</div>
+
+<div class="p-10 flex flex-wrap justify-center">
+  <button class="px-6 py-2 w-96 text-xl text-white rounded-full bg-primary font-primary">Unite a la Comunidad</button>
+</div>
+
