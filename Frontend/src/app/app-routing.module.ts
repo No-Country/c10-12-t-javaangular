@@ -7,8 +7,12 @@ import { RegisterComponent } from './pages/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    component: LandingComponent,
+    redirectTo: 'landing',
     pathMatch: 'full'
+  },
+  {
+    path: 'landing',
+    component: LandingComponent
   },
   {
     path: 'login',
@@ -17,6 +21,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'landing',
+    pathMatch: 'full'
   }
 ];
 

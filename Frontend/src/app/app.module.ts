@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SwiperModule } from 'swiper/angular';
 
@@ -38,7 +39,8 @@ import { SlidesComponent } from './components/slides/slides.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    SwiperModule
+    SwiperModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
