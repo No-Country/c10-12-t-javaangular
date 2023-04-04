@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import { faHome, faLaptop,faHeart  } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +14,11 @@ export class LoginComponent {
 
   form = this.formBuilder.nonNullable.group({
     email: ['', [Validators.email, Validators.required]],
-    password: ['', [ Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
+
+  registro: [] = [];
+
   faPen = faPen;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
@@ -36,20 +39,26 @@ export class LoginComponent {
         this.form.controls.email.setValue(email);
       }
     })
+    this.local();
+    this.login();
   }
-
   login() {
-
     if (this.form.valid) {
-
       const { email, password } = this.form.getRawValue();
-      if (email === 'diego@mail.com' && password === '123456') {
-        this.router.navigate(['/landing'])
-        console.log(email)
-      }
-    } else {
-      this.form.markAllAsTouched();
+      this.registro.forEach(element => {
+         if (email === element['email'] && password === element['password']) {
+          this.router.navigate(['/landing'])
+        }
+        else {
+          this.form.markAllAsTouched();
+        } 
+      });
     }
   }
-
+  local() {
+    const registroLocal = localStorage.getItem('registro');
+    if (registroLocal) {
+      this.registro = JSON.parse(registroLocal);
+    }
+  }
 }
