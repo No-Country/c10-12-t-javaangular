@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 import { faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -15,8 +16,8 @@ import { faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 export class RegisterComponent {
 
   form = this.formBuilder.group({
-    email: ['', [Validators.email, Validators.required]],
     nombre_apellido: ['', Validators.required],
+    email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
@@ -26,14 +27,38 @@ export class RegisterComponent {
 
   registro: any[] = [];
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private auth: AuthService
+    ) {}
+  // onSubmit() {
+  //   const newRegistro = this.form.value;
+  //   this.registro.push(newRegistro);
+  //   localStorage.setItem('registro', JSON.stringify(this.registro));
+  //   this.router.navigate(['/landing']);
+  // }
 
-  }
-  onSubmit() {
-    const newRegistro = this.form.value;
-    this.registro.push(newRegistro);
-    localStorage.setItem('registro', JSON.stringify(this.registro));
-    this.router.navigate(['/landing']);
+  email: string = '';
+  password: string = '';
+
+  register() {
+    if (this.form.valid) {
+      const { email, password }:any = this.form.getRawValue();
+      // this.email = JSON.stringify(email);
+      // this.password = JSON.stringify(password);
+      // console.log(email, password);
+      // this.auth.register(this.email, this.password)
+      this.auth.register(email, password)
+      .then(() => {
+        this.router.navigate(['/landing'])
+      })
+      .catch(error => {
+        console.error(error)
+      })
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 
 }

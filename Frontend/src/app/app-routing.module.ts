@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+
 import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -9,11 +13,11 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'landing',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'landing',
-    component: LandingComponent
+    component: LandingComponent,
   },
   {
     path: 'login',
@@ -25,7 +29,9 @@ const routes: Routes = [
   },
   {
     path: 'alojamiento',
-    component: HostingComponent
+    component: HostingComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe : redirectUnauthorizedToLogin }
   },
   {
     path: '**',

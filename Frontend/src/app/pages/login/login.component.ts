@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faEye, faEyeSlash, faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 
-import { faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -31,34 +31,50 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private auth: AuthService
   ) {
-    this.route.queryParamMap.subscribe(params => {
-      const email = params.get('email');
-      if (email) {
-        this.form.controls.email.setValue(email);
-      }
-    })
-    this.local();
-    this.login();
+    // this.route.queryParamMap.subscribe(params => {
+    //   const email = params.get('email');
+    //   if (email) {
+    //     this.form.controls.email.setValue(email);
+    //   }
+    // })
+    // this.local();
+    // this.login();
   }
+  // login() {
+  //   if (this.form.valid) {
+  //     const { email, password } = this.form.getRawValue();
+  //     this.registro.forEach(element => {
+  //        if (email === element['email'] && password === element['password']) {
+  //         this.router.navigate(['/landing'])
+  //       }
+  //       else {
+  //         this.form.markAllAsTouched();
+  //       }
+  //     });
+  //   }
+  // }
+  // local() {
+  //   const registroLocal = localStorage.getItem('registro');
+  //   if (registroLocal) {
+  //     this.registro = JSON.parse(registroLocal);
+  //   }
+  // }
+
   login() {
     if (this.form.valid) {
       const { email, password } = this.form.getRawValue();
-      this.registro.forEach(element => {
-         if (email === element['email'] && password === element['password']) {
-          this.router.navigate(['/landing'])
-        }
-        else {
-          this.form.markAllAsTouched();
-        } 
+      this.auth.login(email, password)
+      .then(() => {
+        this.router.navigate(['/landing']);
+      })
+      .catch(error => {
+        console.error(error);
       });
-    }
-  }
-  local() {
-    const registroLocal = localStorage.getItem('registro');
-    if (registroLocal) {
-      this.registro = JSON.parse(registroLocal);
+    } else {
+      this.form.markAllAsTouched();
     }
   }
 }

@@ -51,8 +51,16 @@
           <a href="#" class="block py-2 pl-3 pr-4 rounded lg:p-0" aria-current="page">Comunidad</a>
         </li>
       </ul>
-      <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full lg:hidden bg-primary font-primary" routerLink="/login">Iniciar</button>
     </div>
-    <button class="hidden px-12 py-2 text-xl font-semibold text-white rounded-full lg:block bg-primary font-primary" routerLink="/login">Iniciar</button>
+    <ng-container *ngIf="user$ | async as user; else notUser">
+      <span class=" text-black p-2 text-xl">Hola!<fa-icon class="px-3" [icon]="faUser"></fa-icon>{{ user.email }}</span>
+      <button class="hidden px-12 py-2 text-xl font-semibold text-white rounded-full lg:block bg-primary font-primary" (click)="logout()">Salir</button>
+      <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full lg:hidden bg-primary font-primary" (click)="logout()">Salir</button>
+    </ng-container>
+
+    <ng-template #notUser>
+      <button class="hidden px-12 py-2 text-xl font-semibold text-white rounded-full lg:block bg-primary font-primary" routerLink="/login">Iniciar</button>
+      <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full lg:hidden bg-primary font-primary" routerLink="/login">Iniciar</button>
+    </ng-template>
   </div>
 </nav>
