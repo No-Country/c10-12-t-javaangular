@@ -3,9 +3,6 @@ import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 
-interface Registro {
-  nombre: string;
-}
 
 @Component({
   selector: 'app-register',
