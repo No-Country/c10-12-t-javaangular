@@ -1,0 +1,32 @@
+<div>
+  <!-- header -->
+  <div class="bg-secondary">
+    <div class="container px-5 py-10 mx-auto">
+      <p class="flex items-center text-4xl font-bold text-white font-primary"><fa-icon [icon]="faHouse" class="px-2 mr-2 text-3xl"></fa-icon>Alojamiento</p>
+    </div>
+  </div>
+  <!-- navbar -->
+  <div class="text-sm font-medium text-center border-b-2 border-gray-200 sm:rounded-b-full">
+    <div class="container px-5 mx-auto">
+      <ul class="flex flex-wrap -mb-px text-xl font-medium text-dark">
+        <li class="mr-2">
+          <p [ngClass]="{'border-primary border-b-4': hotels}" class="inline-block p-4 pb-3 font-medium cursor-pointer select-none" (click)="setHotelsVisibility()"><fa-icon [icon]="faHotel" class="px-2 mr-2"></fa-icon>Hoteles</p>
+        </li>
+        <li class="mr-2">
+          <p [ngClass]="{'border-primary border-b-4': couchsurfing}" class="inline-block p-4 pb-3 font-medium cursor-pointer select-none" (click)="setCouchsurfingVisibility()"><fa-icon [icon]="faBed" class="px-2 mr-2"></fa-icon>Couchsurfing</p>
+        </li>
+        <li class="mr-2">
+          <p [ngClass]="{'border-primary border-b-4': rental}" class="inline-block p-4 pb-3 font-medium cursor-pointer select-none" (click)="setRentalVisibility()"><fa-icon [icon]="faKey" class="px-2 mr-2"></fa-icon>Alquiler</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- hoteles -->
+  <app-hotels *ngIf="hotels"></app-hotels>
+  <!-- couchsurfing -->
+  <app-couchsurfing *ngIf="couchsurfing"></app-couchsurfing>
+  <!-- alquiler -->
+  <div *ngIf="rental">
+    <p>alquiler</p>
+  </div>
+</div>
