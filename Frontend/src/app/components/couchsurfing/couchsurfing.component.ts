@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CouchsurfingComponent implements OnInit {
 
+  items: number = 6;
+
   ngOnInit(): void {
   }
   
