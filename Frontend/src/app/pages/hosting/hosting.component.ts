@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faHouse, faHotel, faBed, faKey } from '@fortawesome/free-solid-svg-icons';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hosting',
@@ -8,35 +8,11 @@ import { faHouse, faHotel, faBed, faKey } from '@fortawesome/free-solid-svg-icon
 })
 export class HostingComponent implements OnInit {
 
-  hotels: boolean = false;
-  couchsurfing: boolean = true;
-  rental: boolean = false;
-
   faHouse = faHouse;
-  faHotel = faHotel;
-  faBed = faBed;
-  faKey = faKey;
+  items: number = 6;
 
   ngOnInit(): void {
 
-  }
-
-  setHotelsVisibility() {
-    this.hotels = true;
-    this.couchsurfing = false;
-    this.rental = false;
-  }
-
-  setCouchsurfingVisibility() {
-    this.couchsurfing = true;
-    this.hotels = false;
-    this.rental = false;
-  }
-
-  setRentalVisibility() {
-    this.rental = true;
-    this.hotels = false;
-    this.couchsurfing = false;
   }
 
 }
