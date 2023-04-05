@@ -7,7 +7,6 @@ import com.nomades.nomadesapi.security.model.User;
 import com.nomades.nomadesapi.security.payload.LoginRequest;
 import com.nomades.nomadesapi.security.payload.MessageResponse;
 import com.nomades.nomadesapi.security.payload.SignupRequest;
-import com.nomades.nomadesapi.security.payload.UserInfoResponse;
 import com.nomades.nomadesapi.security.repository.RoleRepository;
 import com.nomades.nomadesapi.security.repository.UserRepository;
 import com.nomades.nomadesapi.security.service.UserDetailsImpl;
@@ -27,7 +26,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -51,7 +49,11 @@ public class AuthController {
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                .authenticate(new UsernamePasswordAuthenticationToken(
+                        userRepository
+                                .findByEmail(loginRequest.getEmail())
+                                .get().getUsername(),
+                        loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -60,14 +62,9 @@ public class AuthController {
         ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
 
         List<String> roles = userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+                .map(GrantedAuthority::getAuthority).toList();
 
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                .body(new UserInfoResponse(userDetails.getId(),
-                        userDetails.getUsername(),
-                        userDetails.getEmail(),
-                        roles));
+        return ResponseEntity.ok().body(jwtUtils.generateTokenFromUsername(userDetails.getUsername()));
     }
 
     @PostMapping("/signup")
