@@ -21,6 +21,8 @@ import { SlidesComponent } from './components/slides/slides.component';
 import { HostingComponent } from './pages/hosting/hosting.component';
 import { CouchsurfingComponent } from './components/couchsurfing/couchsurfing.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
+import { CouchsurfingAdComponent } from './components/couchsurfing-ad/couchsurfing-ad.component';
+import { CouchsurfingCardComponent } from './components/couchsurfing-card/couchsurfing-card.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { HotelsComponent } from './components/hotels/hotels.component';
     SlidesComponent,
     HostingComponent,
     CouchsurfingComponent,
-    HotelsComponent
+    HotelsComponent,
+    CouchsurfingAdComponent,
+    CouchsurfingCardComponent
   ],
   imports: [
     BrowserModule,
