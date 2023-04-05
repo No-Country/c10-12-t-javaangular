@@ -4,14 +4,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-
-
 
 export class RegisterComponent {
 
@@ -32,23 +29,10 @@ export class RegisterComponent {
     private router: Router,
     private auth: AuthService
     ) {}
-  // onSubmit() {
-  //   const newRegistro = this.form.value;
-  //   this.registro.push(newRegistro);
-  //   localStorage.setItem('registro', JSON.stringify(this.registro));
-  //   this.router.navigate(['/landing']);
-  // }
-
-  email: string = '';
-  password: string = '';
 
   register() {
     if (this.form.valid) {
       const { email, password }:any = this.form.getRawValue();
-      // this.email = JSON.stringify(email);
-      // this.password = JSON.stringify(password);
-      // console.log(email, password);
-      // this.auth.register(this.email, this.password)
       this.auth.register(email, password)
       .then(() => {
         this.router.navigate(['/landing'])
