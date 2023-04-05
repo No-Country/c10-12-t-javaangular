@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardModule } from '@angular/fire/auth-guard';
 
 import { SwiperModule } from 'swiper/angular';
 
@@ -23,6 +24,11 @@ import { CouchsurfingComponent } from './components/couchsurfing/couchsurfing.co
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { CouchsurfingAdComponent } from './components/couchsurfing-ad/couchsurfing-ad.component';
 import { CouchsurfingCardComponent } from './components/couchsurfing-card/couchsurfing-card.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -50,7 +56,12 @@ import { CouchsurfingCardComponent } from './components/couchsurfing-card/couchs
     AppRoutingModule,
     FontAwesomeModule,
     SwiperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    AuthGuardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

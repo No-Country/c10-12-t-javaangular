@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "nomadasnocountry": {
+      "hosting": {
+        "Frontend": [
+          "nomadasnocountry"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "nomadasnocountry"
+  }
+}
