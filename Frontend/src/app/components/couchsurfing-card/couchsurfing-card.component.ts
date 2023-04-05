@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +7,8 @@ import {faLocationDot } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./couchsurfing-card.component.css']
 })
 export class CouchsurfingCardComponent {
+
+  @Input() hosting!: any;
 
   faLocationDot = faLocationDot;
 

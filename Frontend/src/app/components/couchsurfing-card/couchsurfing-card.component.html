@@ -1,14 +1,14 @@
 <div class="flex flex-col overflow-hidden border border-gray-300 border-solid rounded-xl">
   <div class="w-full p-5 border-b border-gray-300 border-solid">
-    <p class="text-2xl font-bold">Nombre de alojamiento</p>
-    <p class="text-lg font-normal"><fa-icon [icon]="faLocationDot" class="mr-2"></fa-icon>ubicacion</p>
+    <p class="text-2xl font-bold">{{hosting.title}}</p>
+    <p class="text-lg font-normal"><fa-icon [icon]="faLocationDot" class="mr-2"></fa-icon>{{hosting.location}}</p>
   </div>
   <div class="flex flex-col sm:flex-row">
     <div class="w-full bg-gray-300 sm:w-1/3 aspect-video">
       <img class="object-cover w-full h-full" src="../../../assets/img/hostel.jpg" alt="">
     </div>
     <div class="flex flex-col items-start gap-5 p-5 sm:w-2/3">
-      <p class="">Breve descripción del alojamiento lkasd ljas jlajd la sdla djal dlaj dkja sl ajd lajd kl al jasld jald jla jd aldj ald kajsld ajsdlas ka dla dj ald jalsd jaljsd la sd.</p>
+      <p class="text-xl font-normal">{{hosting.description}}</p>
     </div>
   </div>
   <div class="flex justify-end w-full p-5 bg-secondary">
