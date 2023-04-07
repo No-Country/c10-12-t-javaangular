@@ -60,7 +60,8 @@
 
         <div class="flex flex-col items-center justify-center gap-3 text-white">
             <p class="py-6  w-96">
-                <button type="submit" class=" bg-[#59d3c6] w-full h-[56px] rounded-lg text-xl">Iniciar Session</button>
+                <button type="submit" class=" bg-[#59d3c6] w-full h-[56px] rounded-lg text-xl" [disabled]="form.invalid"
+                [ngClass]="form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'">Iniciar Session</button>
             </p>
             <p class="text-black">
                 ¿Aún no tienes cuenta? <a class="text-blue-800 underline underline-offset-1" routerLink="/register">Registrate</a>
