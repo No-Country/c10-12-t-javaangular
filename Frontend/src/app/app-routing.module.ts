@@ -8,6 +8,9 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HostingComponent } from './pages/hosting/hosting.component';
+import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
+import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequents-questions.component';
+import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 
 const routes: Routes = [
   {
@@ -32,6 +35,18 @@ const routes: Routes = [
     component: HostingComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe : redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'terms',
+    component: TermsConditionComponent
+  },
+  {
+    path: 'frequents',
+    component: FrequentsQuestionsComponent
+  },
+  {
+    path: 'data-protection',
+    component: DataProtectionComponent
   },
   {
     path: '**',

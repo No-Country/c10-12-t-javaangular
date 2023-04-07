@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardModule } from '@angular/fire/auth-guard';
 
 import { SwiperModule } from 'swiper/angular';
+import { DialogModule } from '@angular/cdk/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +31,10 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
+import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequents-questions.component';
+import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -49,7 +55,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     CouchsurfingComponent,
     HotelsComponent,
     CouchsurfingAdComponent,
-    CouchsurfingCardComponent
+    CouchsurfingCardComponent,
+    TermsConditionComponent,
+    FrequentsQuestionsComponent,
+    DataProtectionComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +70,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    AuthGuardModule
+    AuthGuardModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

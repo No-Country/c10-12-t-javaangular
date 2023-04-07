@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {Dialog, DialogRef} from '@angular/cdk/dialog';
+import { Router } from '@angular/router';
+
+import { TermsConditionComponent } from '../../pages/terms-condition/terms-condition.component';
 
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,5 +14,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 export class FooterComponent {
 
   faHeart = faHeart;
+
+  constructor() {}
 
 }
