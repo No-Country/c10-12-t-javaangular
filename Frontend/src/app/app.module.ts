@@ -22,7 +22,6 @@ import { CardComponent } from './components/card/card.component';
 import { AboutComponent } from './components/about/about.component';
 import { SlidesComponent } from './components/slides/slides.component';
 import { HostingComponent } from './pages/hosting/hosting.component';
-import { CouchsurfingComponent } from './components/couchsurfing/couchsurfing.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { CouchsurfingAdComponent } from './components/couchsurfing-ad/couchsurfing-ad.component';
 import { CouchsurfingCardComponent } from './components/couchsurfing-card/couchsurfing-card.component';
@@ -35,6 +34,7 @@ import { TermsConditionComponent } from './pages/terms-condition/terms-condition
 import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequents-questions.component';
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -52,13 +52,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AboutComponent,
     SlidesComponent,
     HostingComponent,
-    CouchsurfingComponent,
     HotelsComponent,
     CouchsurfingAdComponent,
     CouchsurfingCardComponent,
     TermsConditionComponent,
     FrequentsQuestionsComponent,
-    DataProtectionComponent
+    DataProtectionComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

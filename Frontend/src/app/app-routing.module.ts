@@ -11,6 +11,7 @@ import { HostingComponent } from './pages/hosting/hosting.component';
 import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
 import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequents-questions.component';
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,11 @@ const routes: Routes = [
   },
   {
     path: 'data-protection',
-    component: DataProtectionComponent
+    component: DataProtectionComponent,
+  },
+  {
+    path:'profile',
+    component: ProfileComponent
   },
   {
     path: '**',
