@@ -34,7 +34,7 @@
       </ul>
     </div>
     <ng-container *ngIf="user$ | async as user; else notUser">
-      <span class=" text-black p-2 text-xl">Hola!<fa-icon class="px-3" [icon]="faUser"></fa-icon>{{ user.email }}</span>
+      <span class=" text-black p-2 text-xl cursor-pointer" routerLink="/profile">Hola!<fa-icon class="px-3" [icon]="faUser"></fa-icon>{{ user.email }}</span>
       <button class="hidden px-12 py-2 text-xl font-semibold text-white rounded-full lg:block bg-primary font-primary" (click)="logout()">Salir</button>
       <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full lg:hidden bg-primary font-primary" (click)="logout()">Salir</button>
     </ng-container>
