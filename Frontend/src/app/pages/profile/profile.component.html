@@ -9,15 +9,16 @@
                 <fa-icon [icon]="faFlech" class="pr-2">
                 </fa-icon>
             </button>
-
         </div>
-        <div class="container grid sm:grid-cols-3 mx-auto px-5">
+        <div class="container grid sm:grid-cols-3 mx-auto px-5  sm:static relatives">
 
-            <div class="sm:flex px-5 flex-col hidden" [class.hidden]="hidde">
-               
-                <div class="flex flex-col mt-[-50px] gap-4" >
-                    <picture class="">
-                        <img src="../../../assets/img/hostel.jpg" alt="" class="w-[10rem] h-[10rem] rounded-[50%]">
+            <div class="sm:flex  flex-col hidden sm:static absolute z-10 bg-white min-h-full" [class.hidden]="hidde">
+
+                <div class="flex flex-col mt-[-50px] gap-4">
+                  
+                    <picture class="flex mx-14 sm:mx-0">
+                        <img src="../../../assets/img/hostel.jpg" alt=""
+                            class="sm:w-[10rem] sm:h-[10rem]  w-[5rem] h-[5rem] rounded-[50%] ">
                     </picture>
 
                     <h1 class="text-3xl text-secondary font-primary font-bold">Martina Blanco</h1>
@@ -47,9 +48,10 @@
                 </div>
 
             </div>
-            <!-- informacion perfil -->
 
-            <div class="flex flex-wrap col-span-2 gap-6 py-5 ">
+
+            <div
+                class="flex flex-wrap col-span-2 gap-3 py-5 sm:flex justify-center sm:h-auto overflow-y-auto max-h-screen">
                 <app-card></app-card>
                 <app-card></app-card>
                 <app-card></app-card>
@@ -62,6 +64,13 @@
 
     </div>
 </div>
+
+
+
+
+
+
+
 
 
 
