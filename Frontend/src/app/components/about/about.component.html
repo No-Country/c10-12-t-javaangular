@@ -1,7 +1,6 @@
 <div class="bg-secondary">
   <div class="container grid grid-cols-1 px-5 py-24 mx-auto gap-9 lg:grid-cols-2">
-    <div class="order-1 m-auto">
-      <img class="" src="" alt="">
+    <div class="hidden overflow-hidden lg:flex bg-img rounded-3xl">
     </div>
     <div class="flex flex-col order-2 gap-12">
       <div class="flex flex-col gap-5 text-center xl:w-4/5 sm:text-left">
@@ -12,22 +11,28 @@
         </p>
       </div>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-        <div class="flex flex-col gap-4 p-4 bg-gray-300 rounded-2xl">
-          <div class="w-12 bg-gray-400 rounded-full aspect-square"></div>
+        <div class="flex flex-col gap-4 p-4 bg-white rounded-2xl">
+          <div class="flex items-center justify-center w-12 p-0 m-0 text-xl text-white rounded-full bg-accent aspect-square">
+            <fa-icon [icon]="faSquareCheck"></fa-icon>
+          </div>
           <div>
             <p class="font-semibold">Información verídica</p>
             <p class="text-sm">Trámites, hospitales, emergencias, derechos, entre otros.</p>
           </div>
         </div>
-        <div class="flex flex-col gap-4 p-4 bg-gray-300 rounded-2xl">
-          <div class="w-12 bg-gray-400 rounded-full aspect-square"></div>
+        <div class="flex flex-col gap-4 p-4 bg-white rounded-2xl">
+          <div class="flex items-center justify-center w-12 p-0 m-0 text-xl text-white rounded-full bg-accent aspect-square">
+            <fa-icon [icon]="faHouseChimney"></fa-icon>
+          </div>
           <div>
             <p class="font-semibold">Alojamiento</p>
             <p class="text-sm">Encontrar hostels o hogares dónde vivir o quedarse.</p>
           </div>
         </div>
-        <div class="flex flex-col gap-4 p-4 bg-gray-300 rounded-2xl">
-          <div class="w-12 bg-gray-400 rounded-full aspect-square"></div>
+        <div class="flex flex-col gap-4 p-4 bg-white rounded-2xl">
+          <div class="flex items-center justify-center w-12 p-0 m-0 text-xl text-white rounded-full bg-accent aspect-square">
+            <fa-icon [icon]="faHandHoldingHeart"></fa-icon>
+          </div>
           <div>
             <p class="font-semibold">Acompañamiento</p>
             <p class="text-sm">Hacerles sentir que no están solos en su nuevo país.</p>
