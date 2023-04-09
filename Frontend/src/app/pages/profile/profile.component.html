@@ -1,7 +1,7 @@
 <div class="min-h-screen">
     <div class="w-full gap-5">
 
-        <div class="w-full text-center  bg-secondary h-20 py-9">
+        <div class="flex justify-center items-center w-full text-center  bg-secondary h-20 py-9">
             <h1 class="text-4xl text-white"> Tus ofertas </h1>
         </div>
         <div class="flex sm:hidden lg:hidden text-3xl">
@@ -14,20 +14,24 @@
         <div class="container grid sm:grid-cols-3 mx-auto px-5">
 
             <div class="sm:flex px-5 flex-col hidden" [class.hidden]="hidde">
-               
+
                 <div class="flex flex-col mt-[-50px] gap-4" >
-                    <picture class="">
-                        <img src="../../../assets/img/hostel.jpg" alt="" class="w-[10rem] h-[10rem] rounded-[50%]">
+                    <picture>
+                      <div class="bg-face w-[10rem] h-[10rem] rounded-[50%] grid justify-end">
+                        <button class="w-[2.8rem] h-[2.8rem] text-4xl text-white bg-accent rounded-[50%] flex justify-center items-center border-[0.37rem] border-white self-end pb-1" (click)="updateProfilePhoto()">+</button>
+                      </div>
                     </picture>
 
-                    <h1 class="text-3xl text-secondary font-primary font-bold">Martina Blanco</h1>
+                    <ng-container *ngIf="user$ | async as user">
+                      <span class="text-2xl text-secondary font-primary font-bold" routerLink="/profile">{{ user.email }}</span>
+                    </ng-container>
+
                     <h3 class="text-2xl text-secondary font-primary font-bold">Argentina</h3>
                     <ul class="list-disc ml-6 text-xl">
                         <li>Ingeniera</li>
                         <li>Vivo con Manchis</li>
                         <li>Noos encanta ser</li>
                         <li>te hospedamos sin costo </li>
-
                     </ul>
                     <h1 class="text-secondary text-2xl font-primary font-bold">Contacto</h1>
                     <ul class=" text-xl">
@@ -44,7 +48,15 @@
                             </fa-icon> <a href=""> Link a Intagram</a></li>
 
                     </ul>
-                </div>
+                    <ng-container *ngIf="user$ | async as user">
+                      <div class="flex gap-6">
+                        <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full bg-primary font-primary w-full" (click)="logout()">Salir</button>
+                        <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full bg-accent font-primary w-full" mat-button (click)="deleteAccount()">Eliminar</button>
+                      </div>
+                      <div>
+                      </div>
+                    </ng-container>
+                  </div>
 
             </div>
             <!-- informacion perfil -->
@@ -62,46 +74,3 @@
 
     </div>
 </div>
-
-
-
-
-
-
-
-<!-- <div class="picture-profile container w-full grid grid-cols-2 gap-7 px-5 mx-auto mt-[-50px]">
-    <div class="container flex flex-col">
-
-        <picture>
-
-            <img src="../../../assets/img/hostel.jpg" alt="" class="w-[9rem] h-[9rem] rounded-[50%]">
-        </picture>
-
-
-        <div class="info flex flex-col gap-3">
-            <h1 class="text-3xl text-secondary">Martina Blanco</h1>
-            <h3 class="text-2xl text-secondary">Argentina</h3>
-            <ul>
-                <li class="flex flex-col gap-3">
-                    <p>Ingeniera</p>
-                    <p>Vivo con Manchis</p>
-                    <p> Noos encanta ser </p>
-                    <p>te hospedamos sin costo </p>
-                </li>
-            </ul>
-            <h1 class="text-secondary text-2xl">Contacto</h1>
-            <ul>
-                <li class="flex flex-col gap-2">
-                    <p class=""><fa-icon [icon]="faLocation" class=" px-2"></fa-icon>Buenos aires</p>
-                    <p> <fa-icon [icon]="faPhone" class=" px-2"></fa-icon> 34334234</p>
-                    <p> <fa-icon [icon]="faHashtag" class=" px-2"></fa-icon> <a href=""> Link a Intagram</a></p>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="flex justify-center items-center">
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-    </div>
-</div> -->
