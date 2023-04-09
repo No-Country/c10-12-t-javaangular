@@ -35,6 +35,7 @@ import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequen
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ComunidadComponent } from './pages/comunidad/comunidad.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     TermsConditionComponent,
     FrequentsQuestionsComponent,
     DataProtectionComponent,
-    ProfileComponent
+    ProfileComponent,
+    ComunidadComponent
   ],
   imports: [
     BrowserModule,
