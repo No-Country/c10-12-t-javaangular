@@ -9,9 +9,10 @@
                 <fa-icon [icon]="faFlech" class="pr-2">
                 </fa-icon>
             </button>
-
         </div>
-        <div class="container grid sm:grid-cols-3 mx-auto px-5">
+        <div class="container grid sm:grid-cols-3 mx-auto px-5  sm:static relatives">
+
+            <div class="sm:flex  flex-col hidden sm:static absolute z-10 bg-white min-h-full" [class.hidden]="hidde">
 
             <div class="sm:flex px-5 flex-col hidden" [class.hidden]="hidde">
 
@@ -59,9 +60,12 @@
                   </div>
 
             </div>
-            <!-- informacion perfil -->
 
-            <div class="flex flex-wrap col-span-2 gap-6 py-5 ">
+
+            <div
+                class="flex flex-wrap col-span-2 gap-3 py-5 sm:flex justify-center sm:h-auto overflow-y-auto max-h-screen">
+                <app-card></app-card>
+                <app-card></app-card>
                 <app-card></app-card>
                 <app-card></app-card>
                 <app-card></app-card>

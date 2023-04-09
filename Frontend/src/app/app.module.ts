@@ -35,7 +35,11 @@ import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequen
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './pages/profile/profile.component';
+<<<<<<< HEAD
 import { DeleteAccountDialogComponent } from './components/delete-account-dialog/delete-account-dialog.component';
+=======
+import { ComunidadComponent } from './pages/comunidad/comunidad.component';
+>>>>>>> main
 
 
 @NgModule({
@@ -60,7 +64,11 @@ import { DeleteAccountDialogComponent } from './components/delete-account-dialog
     FrequentsQuestionsComponent,
     DataProtectionComponent,
     ProfileComponent,
+<<<<<<< HEAD
     DeleteAccountDialogComponent
+=======
+    ComunidadComponent
+>>>>>>> main
   ],
   imports: [
     BrowserModule,

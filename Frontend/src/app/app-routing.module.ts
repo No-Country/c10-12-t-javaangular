@@ -12,6 +12,7 @@ import { TermsConditionComponent } from './pages/terms-condition/terms-condition
 import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequents-questions.component';
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ComunidadComponent } from './pages/comunidad/comunidad.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
     component: HostingComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe : redirectUnauthorizedToLogin }
+  },
+  {
+    path:'comunidad',
+    component:ComunidadComponent
   },
   {
     path: 'terms',
