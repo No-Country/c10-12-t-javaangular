@@ -41,7 +41,7 @@
           <ng-container *ngIf="user$ | async as user">
             <div class="flex flex-col gap-6">
               <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full bg-primary font-primary w-full" (click)="logout()">Salir</button>
-              <button class="px-12 py-2 mt-4 text-xl font-semibold text-white rounded-full bg-accent font-primary w-full" mat-button (click)="deleteAccount()">Eliminar</button>
+              <button class="px-12 py-2 mt-4 text-xl font-semibold text-accent rounded-full border-2 border-accent hover:text-white hover:bg-accent font-primary w-full" mat-button (click)="deleteAccount()">Eliminar</button>
             </div>
             <div>
             </div>
