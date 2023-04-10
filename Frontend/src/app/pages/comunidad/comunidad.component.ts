@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faHouse,faCalendarDays,faComments } from '@fortawesome/free-solid-svg-icons';
+import { faHouse,faCalendarDays,faComments,faHeart,faMessage } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,4 +12,6 @@ export class ComunidadComponent {
   faHouse=faHouse;
   faCalendari=faCalendarDays;
   faComent=faComments;
+  faHeart=faHeart;
+  faMessage=faMessage;
 }
