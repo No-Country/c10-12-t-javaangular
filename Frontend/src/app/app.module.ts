@@ -38,6 +38,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { DeleteAccountDialogComponent } from './components/delete-account-dialog/delete-account-dialog.component';
 import { ComunidadComponent } from './pages/comunidad/comunidad.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
+import { OfferComponent } from './components/offer/offer.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { JobsComponent } from './pages/jobs/jobs.component';
     ProfileComponent,
     DeleteAccountDialogComponent,
     ComunidadComponent,
-    JobsComponent
+    JobsComponent,
+    OfferComponent
   ],
   imports: [
     BrowserModule,

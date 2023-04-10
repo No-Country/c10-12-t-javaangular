@@ -42,7 +42,7 @@ const routes: Routes = [
   {
     path: 'jobs',
     component: JobsComponent,
-    canActivate: [AuthGuard],
+
   },
   {
     path:'comunidad',
