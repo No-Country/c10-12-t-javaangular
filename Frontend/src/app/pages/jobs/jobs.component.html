@@ -1,9 +1,46 @@
 <div class="container min-h-screen px-5 mx-auto">
+  
   <div class="flex p-6 bg-jobs h-[292px]">
     <h2 class="self-end text-6xl font-bold text-white font-primary">Trabajos</h2>
   </div>
-  <div>
-    <button></button>
-    <button></button>
+
+  <div class="flex flex-col gap-6">
+    <div class="flex justify-start text-xl font-medium text-dark">
+      <button type="" class="px-8 py-4 border-b-4 border-transparent hover:border-primary">
+        <fa-icon [icon]="faBriefcase"></fa-icon>
+        Ofertas
+      </button>
+    
+      <button class="px-8 py-4 border-b-4 border-transparent hover:border-primary">
+        <fa-icon [icon]="faGlobe"></fa-icon>
+        Portales
+      </button>
+    </div>
+    
+    <div class="flex justify-between">
+      <div class="flex gap-5">
+        <!-- <button class="px-5 py-1 border border-gray-300 rounded-xl">mas recientes</button> -->
+        <!-- <button class="px-5 py-1 border border-gray-300 rounded-xl">todas</button> -->
+        
+        <select class="pl-4 border border-gray-300 rounded-lg focus:ring-none" name="filter" id="filter">
+          <option value="">Mas recientes</option>
+          <option value="">Mas antiguas</option>
+        </select>
+        <select class="pl-4 border border-gray-300 rounded-lg focus:ring-none" name="filter" id="filter">
+          <option value="">Todas</option>
+          <option value="">Aplicadas</option>
+          <option value="">Creadas</option>
+        </select>
+      </div>
+      <button class="px-6 py-2 text-sm font-medium text-white rounded-full bg-primary" >
+        <fa-icon class="pr-2" [icon]="faPlus"></fa-icon>
+        Crear oferta
+      </button>
+    </div>
   </div>
+
+  <div class="flex flex-col gap-6 py-6">
+    <app-job-card *ngFor="let item of array" [offer]="item"></app-job-card>
+  </div>
+
 </div>
