@@ -13,6 +13,7 @@ import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequen
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ComunidadComponent } from './pages/comunidad/comunidad.component';
+import { JobsComponent } from './pages/jobs/jobs.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
     component: HostingComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe : redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'jobs',
+    component: JobsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'comunidad',

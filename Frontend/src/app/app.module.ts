@@ -37,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DeleteAccountDialogComponent } from './components/delete-account-dialog/delete-account-dialog.component';
 import { ComunidadComponent } from './pages/comunidad/comunidad.component';
+import { JobsComponent } from './pages/jobs/jobs.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { ComunidadComponent } from './pages/comunidad/comunidad.component';
     DataProtectionComponent,
     ProfileComponent,
     DeleteAccountDialogComponent,
-    ComunidadComponent
+    ComunidadComponent,
+    JobsComponent
   ],
   imports: [
     BrowserModule,
