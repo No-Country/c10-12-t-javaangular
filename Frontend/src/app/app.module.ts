@@ -39,6 +39,7 @@ import { DeleteAccountDialogComponent } from './components/delete-account-dialog
 import { ComunidadComponent } from './pages/comunidad/comunidad.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { JobCardComponent } from './components/job-card/job-card.component';
+import { OfferComponent } from './components/offer/offer.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { JobCardComponent } from './components/job-card/job-card.component';
     DeleteAccountDialogComponent,
     ComunidadComponent,
     JobsComponent,
-    JobCardComponent
+    JobCardComponent,
+    OfferComponent
   ],
   imports: [
     BrowserModule,
