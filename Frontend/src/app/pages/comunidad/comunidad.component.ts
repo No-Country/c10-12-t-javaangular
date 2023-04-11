@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { faHouse,faCalendarDays,faComments,faHeart,faMessage } from '@fortawesome/free-solid-svg-icons';
-import {RouterLinkActive} from '@angular/router';
+
 
 
 @Component({
@@ -10,8 +10,8 @@ import {RouterLinkActive} from '@angular/router';
 })
 export class ComunidadComponent {
 
-  isForo:boolean=true;
-  isEvents:boolean=false;
+  isForo:boolean=false;
+  isEvents:boolean=true;
 
   faHouse=faHouse;
   faCalendari=faCalendarDays;
