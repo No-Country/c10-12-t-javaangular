@@ -1,20 +1,22 @@
-<div class="flex justify-between">
-  <div class="flex gap-5">
-    <select class="pl-4 border border-gray-300 rounded-lg focus:ring-none" name="filter" id="filter">
-      <option value="">Mas recientes</option>
-      <option value="">Mas antiguas</option>
-    </select>
-    <select class="pl-4 border border-gray-300 rounded-lg focus:ring-none" name="filter" id="filter">
-      <option value="">Todas</option>
-      <option value="">Aplicadas</option>
-      <option value="">Creadas</option>
-    </select>
+<div class="flex flex-col gap-6">
+  <div class="flex justify-between">
+    <div class="flex gap-5">
+      <select class="pl-4 border border-gray-300 rounded-lg focus:ring-none" name="filter" id="filter">
+        <option value="">Mas recientes</option>
+        <option value="">Mas antiguas</option>
+      </select>
+      <select class="pl-4 border border-gray-300 rounded-lg focus:ring-none" name="filter" id="filter">
+        <option value="">Todas</option>
+        <option value="">Aplicadas</option>
+        <option value="">Creadas</option>
+      </select>
+    </div>
+    <button mat-button class="px-6 py-2 text-sm font-medium text-white rounded-full bg-primary" (click)="openDialog()">
+      <fa-icon class="pr-2" [icon]="faPlus"></fa-icon>
+      Crear oferta
+    </button>
   </div>
-  <button mat-button class="px-6 py-2 text-sm font-medium text-white rounded-full bg-primary" (click)="openDialog()">
-    <fa-icon class="pr-2" [icon]="faPlus"></fa-icon>
-    Crear oferta
-  </button>
-</div>
-<div class="flex flex-col gap-6 py-6">
-  <app-job-card *ngFor="let item of offers" [offer]="item"></app-job-card>
+  <div class="flex flex-col gap-6">
+    <app-job-card *ngFor="let item of offers" [offer]="item"></app-job-card>
+  </div>
 </div>
