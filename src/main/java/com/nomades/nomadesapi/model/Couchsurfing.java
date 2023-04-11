@@ -28,5 +28,4 @@ public class Couchsurfing {
     private String imageUrl;
 
     private boolean deleted = Boolean.FALSE;
-
 }
