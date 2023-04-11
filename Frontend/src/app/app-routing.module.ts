@@ -14,6 +14,8 @@ import { DataProtectionComponent } from './pages/data-protection/data-protection
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ComunidadComponent } from './pages/comunidad/comunidad.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
+import { JobOffersComponent } from './components/job-offers/job-offers.component';
+import { JobPortalsComponent } from './components/job-portals/job-portals.component';
 
 const routes: Routes = [
   {
@@ -42,7 +44,16 @@ const routes: Routes = [
   {
     path: 'jobs',
     component: JobsComponent,
-
+    children: [
+      {
+        path: 'ofertas',
+        component: JobOffersComponent
+      },
+      {
+        path: 'portales',
+        component: JobPortalsComponent
+      }
+    ]
   },
   {
     path:'comunidad',
