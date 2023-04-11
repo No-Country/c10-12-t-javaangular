@@ -1,14 +1,104 @@
-<div class="flex flex-col h-screen bg-hostel">
-  <div class="h-full w-[538px] bg-white flex flex-col items-center pt-20">
-    <div class="pb-[50px] pl-20">
-      <div class="w-2/3 mb-10">
+<div class="flex flex-col min-h-screen bg-register">
+  <div class="flex flex-col justify-center p-5 bg-white grow w-96">
+    <div class="pb-[50px] w-full">
+      <div class="mb-10">
         <h1 class="text-[#4046C8] text-[2.2rem]">
           Estás a punto de comenzar tu aventura
         </h1>
       </div>
 
       <div class="w-full mb-2 text-gray-500">
-        <p><fa-icon [icon]="faHome" class=" px-2"></fa-icon>Encuentra alojamientos</p>
+        <p><fa-icon [icon]="faHome" class="px-2 "></fa-icon>Encuentra alojamientos</p>
+        <p><fa-icon [icon]="faLaptop" class="px-2"></fa-icon>Postula a ofertas laborales</p>
+        <p><fa-icon class="px-2" [icon]="faHeart"></fa-icon>Conecta con otros emigrantes</p>
+      </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="register()" class="space-y-4">
+
+      <div class="flex flex-col items-start justify-start gap-5 text-[#858585]">
+
+
+        <input type="text" name="name" formControlName="nombre_apellido"
+          class="w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4 border-none hover:bg-[#dcdcdc]"
+          placeholder="nombre y apellido" >
+          <div *ngIf="form.controls.nombre_apellido.touched && form.controls.password.invalid">
+            <p
+              *ngIf="form.controls.nombre_apellido.hasError('required')"
+              class="mt-1 ml-1 text-xs font-medium text-red-500"
+            >
+              Este campo es obligatorio
+            </p>
+          </div>
+        <input type="email" name="email" formControlName="email"
+          class=" w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4 border-none hover:bg-[#dcdcdc]"
+          placeholder="correo electronico">
+        <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
+          <p
+            *ngIf="form.controls.email.hasError('required')"
+            class="mt-1 ml-1 text-xs font-medium text-red-500"
+          >
+            Este campo es obligatorio
+          </p>
+          <p
+            *ngIf="form.controls.email.hasError('email')"
+            class="mt-1 ml-1 text-xs font-medium text-red-500"
+          >
+            Este campo debe contener un email
+          </p>
+        </div>
+        <input type="password" name="password" formControlName="password"
+          class="w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4 border-none hover:bg-[#dcdcdc]" placeholder="password">
+        <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
+          <p
+            *ngIf="form.controls.password.hasError('required')"
+            class="mt-1 ml-1 text-xs font-medium text-red-500"
+          >
+            Este campo es obligatorio
+          </p>
+          <p
+            *ngIf="form.controls.password.hasError('minlength')"
+            class="mt-1 ml-1 text-xs font-medium text-red-500"
+          >
+            Este campo debe contener al menos 6 caracteres
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center justify-center gap-3 text-white">
+        <p class="w-full pl-2 text-black pt-7">
+          <input type="checkbox" formControlName="agree">
+          Leí y acepto los <span class="font-bold cursor-pointer" data-modal-target="defaultModal" data-modal-toggle="defaultModal">Términos y Condiciones</span>
+        </p>
+        <p class="w-full py-6">
+          <button type="submit" class="bg-[#59d3c6] w-full h-[56px] rounded-lg text-xl" [disabled]="form.invalid"
+          [ngClass]="form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'"
+          >Crear cuenta</button>
+        </p>
+        <p class="text-black">
+          ¿Ya tienes cuenta? <a class="text-blue-800 underline underline-offset-1" routerLink="/login">Iniciar
+            sesión</a>
+        </p>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+
+<!-- <div class="flex flex-col min-h-screen bg-register">
+  <div class="flex flex-col items-center h-full p-5 bg-white">
+    <div class="pb-[50px] w-96">
+      <div class="mb-10">
+        <h1 class="text-[#4046C8] text-[2.2rem]">
+          Estás a punto de comenzar tu aventura
+        </h1>
+      </div>
+
+      <div class="w-full mb-2 text-gray-500">
+        <p><fa-icon [icon]="faHome" class="px-2 "></fa-icon>Encuentra alojamientos</p>
         <p><fa-icon [icon]="faLaptop" class="px-2"></fa-icon>Postula a ofertas laborales</p>
         <p><fa-icon class="px-2" [icon]="faHeart"></fa-icon>Conecta con otros emigrantes</p>
       </div>
@@ -24,7 +114,7 @@
           <div *ngIf="form.controls.nombre_apellido.touched && form.controls.password.invalid">
             <p
               *ngIf="form.controls.nombre_apellido.hasError('required')"
-              class="font-medium text-red-500 text-xs mt-1 ml-1"
+              class="mt-1 ml-1 text-xs font-medium text-red-500"
             >
               Este campo es obligatorio
             </p>
@@ -35,13 +125,13 @@
         <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
           <p
             *ngIf="form.controls.email.hasError('required')"
-            class="font-medium text-red-500 text-xs mt-1 ml-1"
+            class="mt-1 ml-1 text-xs font-medium text-red-500"
           >
             Este campo es obligatorio
           </p>
           <p
             *ngIf="form.controls.email.hasError('email')"
-            class="font-medium text-red-500 text-xs mt-1 ml-1"
+            class="mt-1 ml-1 text-xs font-medium text-red-500"
           >
             Este campo debe contener un email
           </p>
@@ -51,13 +141,13 @@
         <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
           <p
             *ngIf="form.controls.password.hasError('required')"
-            class="font-medium text-red-500 text-xs mt-1 ml-1"
+            class="mt-1 ml-1 text-xs font-medium text-red-500"
           >
             Este campo es obligatorio
           </p>
           <p
             *ngIf="form.controls.password.hasError('minlength')"
-            class="font-medium text-red-500 text-xs mt-1 ml-1"
+            class="mt-1 ml-1 text-xs font-medium text-red-500"
           >
             Este campo debe contener al menos 6 caracteres
           </p>
@@ -65,7 +155,7 @@
       </div>
 
       <div class="flex flex-col items-center justify-center gap-3 text-white">
-        <p class="text-black pt-7 pl-2  w-96">
+        <p class="pl-2 text-black pt-7 w-96">
           <input type="checkbox">
           Leí y acepto los <span class="font-bold cursor-pointer" data-modal-target="defaultModal" data-modal-toggle="defaultModal">Términos y Condiciones</span>
         </p>
@@ -83,7 +173,7 @@
     </form>
 
   </div>
-</div>
+</div> -->
 
 
 

@@ -16,6 +16,7 @@ export class RegisterComponent {
     nombre_apellido: ['', Validators.required],
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]],
+    agree: [false, [Validators.required]],
   });
 
   faHome = faHome;

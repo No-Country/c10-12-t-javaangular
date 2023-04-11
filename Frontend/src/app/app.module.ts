@@ -39,6 +39,11 @@ import { DeleteAccountDialogComponent } from './components/delete-account-dialog
 import { ComunidadComponent } from './pages/comunidad/comunidad.component';
 import { EventsComponent } from './components/events/events.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { JobsComponent } from './pages/jobs/jobs.component';
+import { JobCardComponent } from './components/job-card/job-card.component';
+import { OfferComponent } from './components/offer/offer.component';
+import { JobOffersComponent } from './components/job-offers/job-offers.component';
+import { JobPortalsComponent } from './components/job-portals/job-portals.component';
 
 
 @NgModule({
@@ -66,7 +71,12 @@ import { ForumComponent } from './components/forum/forum.component';
     DeleteAccountDialogComponent,
     ComunidadComponent,
     EventsComponent,
-    ForumComponent
+    ForumComponent,
+    JobsComponent,
+    JobCardComponent,
+    OfferComponent,
+    JobOffersComponent,
+    JobPortalsComponent,
   ],
   imports: [
     BrowserModule,

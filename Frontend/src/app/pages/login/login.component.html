@@ -1,72 +1,58 @@
-<div class="flex flex-col h-screen bg-hostel">
-  <div class="h-full w-[538px] bg-white flex flex-col items-center pt-20">
-    <div class="pb-[50px] pl-20">
-      <div class="w-2/3 mb-10" >
-        <h1 class="text-[#4046C8] text-[2.2rem]">
-          Nos alegra verte de nuevo
-        </h1>
+<div class="flex min-h-screen">
+  <div class="flex items-center p-5 bg-white grow">
+    <div class="flex flex-col">
+      <div class="pb-[50px] ">
+        <div class="w-2/3 mb-10">
+          <h1 class="text-[#4046C8] text-[2.2rem]">
+            Nos alegra verte de nuevo
+          </h1>
+        </div>
+      
+        <div class="w-full mb-2 text-gray-500">
+          <p><fa-icon [icon]="faHome" class="px-2 "></fa-icon>Encuentra alojamientos</p>
+          <p><fa-icon [icon]="faLaptop" class="px-2"></fa-icon>Postula a ofertas laborales</p>
+          <p><fa-icon class="px-2" [icon]="faHeart"></fa-icon>Conecta con otros emigrantes</p>
+        </div>
       </div>
-
-      <div class="w-full mb-2 text-gray-500">
-        <p><fa-icon [icon]="faHome" class=" px-2"></fa-icon>Encuentra alojamientos</p>
-        <p><fa-icon [icon]="faLaptop" class="px-2"></fa-icon>Postula a ofertas laborales</p>
-        <p><fa-icon class="px-2" [icon]="faHeart"></fa-icon>Conecta con otros emigrantes</p>
-      </div>
-    </div>
-
-    <form [formGroup]="form" novalidate  (ngSubmit)="login()">
-      <div class="flex flex-col items-start justify-start gap-5 w-96 text-[#858585]">
-
-        <input
-          formControlName="email"
-          type="email"
-          class=" w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4 border-none hover:bg-[#dcdcdc]"
-          placeholder="correo electronico">
+      
+      <form [formGroup]="form" novalidate (ngSubmit)="login()">
+        <div class="flex flex-col items-start justify-start gap-5 w-96 text-[#858585]">
+      
+          <input formControlName="email" type="email"
+            class=" w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4 border-none hover:bg-[#dcdcdc]"
+            placeholder="correo electronico">
           <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
-            <p
-              *ngIf="form.controls.email.hasError('required')"
-              class="font-medium text-red-500 text-xs mt-1 ml-1"
-            >
+            <p *ngIf="form.controls.email.hasError('required')" class="mt-1 ml-1 text-xs font-medium text-red-500">
               Este campo es obligatorio
             </p>
-            <p
-              *ngIf="form.controls.email.hasError('email')"
-              class="font-medium text-red-500 text-xs mt-1 ml-1"
-            >
+            <p *ngIf="form.controls.email.hasError('email')" class="mt-1 ml-1 text-xs font-medium text-red-500">
               Este campo debe contener un email
             </p>
           </div>
-        <input
-        formControlName="password"
-        type="password"
-        name="password"
-        class="w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4 border-none hover:bg-[#dcdcdc]"
-        placeholder="password">
-      </div>
-      <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
-        <p
-          *ngIf="form.controls.password.hasError('required')"
-          class="font-medium text-red-500 text-xs mt-1 ml-1"
-        >
-          Este campo es obligatorio
-        </p>
-        <p
-          *ngIf="form.controls.password.hasError('minlength')"
-          class="font-medium text-red-500 text-xs mt-1 ml-1"
-        >
-          Este campo debe contener al menos 6 caracteres
-        </p>
-      </div>
-
-        <div class="flex flex-col items-center justify-center gap-3 text-white">
-            <p class="py-6  w-96">
-                <button type="submit" class=" bg-[#59d3c6] w-full h-[56px] rounded-lg text-xl" [disabled]="form.invalid"
-                [ngClass]="form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'">Iniciar Session</button>
-            </p>
-            <p class="text-black">
-                ¿Aún no tienes cuenta? <a class="text-blue-800 underline underline-offset-1" routerLink="/register">Registrate</a>
-            </p>
+          <input formControlName="password" type="password" name="password"
+            class="w-full h-[56px] bg-[#f2f2f2] rounded-lg pl-4 border-none hover:bg-[#dcdcdc]" placeholder="password">
         </div>
-    </form>
+        <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
+          <p *ngIf="form.controls.password.hasError('required')" class="mt-1 ml-1 text-xs font-medium text-red-500">
+            Este campo es obligatorio
+          </p>
+          <p *ngIf="form.controls.password.hasError('minlength')" class="mt-1 ml-1 text-xs font-medium text-red-500">
+            Este campo debe contener al menos 6 caracteres
+          </p>
+        </div>
+      
+        <div class="flex flex-col items-center justify-center gap-3 text-white">
+          <p class="py-6 w-96">
+            <button type="submit" class=" bg-[#59d3c6] w-full h-[56px] rounded-lg text-xl" [disabled]="form.invalid"
+              [ngClass]="form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'">Iniciar Session</button>
+          </p>
+          <p class="text-black">
+            ¿Aún no tienes cuenta? <a class="text-blue-800 underline underline-offset-1" routerLink="/register">Registrate</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="w-full bg-login">
   </div>
 </div>

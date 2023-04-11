@@ -1,0 +1,27 @@
+<form [formGroup]="newOffer" (ngSubmit)="createOffer()">
+  <h2 mat-dialog-title>Crear Oferta</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="flex flex-col gap-2">
+      <input type="text" placeholder="Cargo" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="cargo">
+      <input type="text" placeholder="Ubicación" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="ubicacion">
+      <input type="text" placeholder="$ Sueldo mensual" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="sueldo">
+      <input type="text" placeholder="Descripción" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="descripcion">
+      <input type="text" placeholder="Teléfono" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="telefono">
+      <input type="text" placeholder="Logo (opcional)" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="logo">
+    </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <div  class="flex gap-2 pr-4">
+        <button mat-button mat-dialog-close class="text-secondary border border-transparent hover:border hover:border-secondary px-4 py-2 rounded-full">Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="bg-primary border border-transparent text-white px-4 py-2 rounded-full hover:bg-[#7cdcd4]" type="submit">Crear</button>
+      </div>
+    </mat-dialog-actions>
+</form>
+
+<div *ngFor="let offer of offers">
+  <div class="bg-primary">
+    <h1>{{ offer.cargo }}</h1>
+    <span>{{ offer.ubicacion }}</span><span>{{ offer.sueldo | currency }}</span>
+    <p>{{ offer.descripcion }}</p>
+  </div>
+</div>

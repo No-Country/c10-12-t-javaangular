@@ -16,7 +16,7 @@
   /* outline: 1px solid red; */
 }
 
-html,body,app-login,app-register,app-landing {
+html,body,app-login,app-register,app-landing, app-jobs {
   height: 100%;
 }
 
