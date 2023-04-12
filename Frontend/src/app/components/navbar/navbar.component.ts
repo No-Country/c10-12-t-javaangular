@@ -26,7 +26,13 @@ export class NavbarComponent {
   async logout() {
     await this.auth.logout();
     this.router.navigate(['/login']);
-    location.reload();
+    // location.reload();
+  }
+
+  isOptionsMenuOpen = false;
+
+  toggleOptionsMenu(): void {
+    this.isOptionsMenuOpen = !this.isOptionsMenuOpen;
   }
 
 }

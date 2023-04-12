@@ -18,6 +18,7 @@ import { JobOffersComponent } from './components/job-offers/job-offers.component
 import { JobPortalsComponent } from './components/job-portals/job-portals.component';
 import { EventsComponent } from './components/events/events.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { InfoComponent } from './pages/info/info.component';
 
 const routes: Routes = [
   {
@@ -82,22 +83,33 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'terms',
-    component: TermsConditionComponent
-  },
-  {
-    path: 'frequents',
-    component: FrequentsQuestionsComponent
-  },
-  {
-    path: 'data-protection',
-    component: DataProtectionComponent,
-  },
-  {
     path:'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe : redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'info',
+    component: InfoComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'terms',
+        pathMatch: 'full'
+      },
+      {
+        path: 'terms',
+        component: TermsConditionComponent
+      },
+      {
+        path: 'frequents',
+        component: FrequentsQuestionsComponent
+      },
+      {
+        path: 'data-protection',
+        component: DataProtectionComponent,
+      },
+    ]
   },
   {
     path: '**',

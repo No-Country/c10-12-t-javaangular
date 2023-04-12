@@ -1,0 +1,24 @@
+<div class="flex flex-col justify-center font-bold text-4xl bg-secondary h-[128px]">
+  <h1 class="container px-5 mx-auto text-white">{{title}}</h1>
+</div>
+
+<div class="border-b border-gray-300 rounded-br-[40px] rounded-bl-[40px]">
+  <div class="container flex flex-col gap-6 px-5 mx-auto">
+    <div class="flex justify-start gap-5 text-xl font-medium text-gray-700">
+      <a routerLink="terms" routerLinkActive="active"
+        class="px-8 py-4 border-b-4 border-transparent hover:border-primary">
+        <fa-icon class="mr-3" [icon]="faFile"></fa-icon>
+        Términos y condiciones
+      </a>
+      <a routerLink="frequents" routerLinkActive="active"
+        class="px-8 py-4 border-b-4 border-transparent hover:border-primary">
+        <fa-icon class="mr-3" [icon]="faFileShield"></fa-icon>
+        Protección de datos
+      </a>
+      <a routerLink="data-protection" routerLinkActive="active" class="px-8 py-4 border-b-4 border-transparent hover:border-primary">
+        <fa-icon class="mr-3" [icon]="faShield"></fa-icon>
+        Política de cookies
+      </a>
+    </div>
+  </div>
+</div>
