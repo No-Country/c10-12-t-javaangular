@@ -1,4 +1,3 @@
 .active {
-  border: palevioletred;
-  background-color: palevioletred;
+  border-bottom: 4px solid #59D3C6;
 }

@@ -16,6 +16,8 @@ import { ComunidadComponent } from './pages/comunidad/comunidad.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { JobOffersComponent } from './components/job-offers/job-offers.component';
 import { JobPortalsComponent } from './components/job-portals/job-portals.component';
+import { EventsComponent } from './components/events/events.component';
+import { ForumComponent } from './components/forum/forum.component';
 
 const routes: Routes = [
   {
@@ -46,6 +48,11 @@ const routes: Routes = [
     component: JobsComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'ofertas',
+        pathMatch: 'full'
+      },
+      {
         path: 'ofertas',
         component: JobOffersComponent
       },
@@ -57,7 +64,22 @@ const routes: Routes = [
   },
   {
     path:'comunidad',
-    component:ComunidadComponent
+    component:ComunidadComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'eventos',
+        pathMatch: 'full'
+      },
+      {
+        path: 'eventos',
+        component: EventsComponent
+      },
+      {
+        path: 'foros',
+        component: ForumComponent
+      }
+    ]
   },
   {
     path: 'terms',
