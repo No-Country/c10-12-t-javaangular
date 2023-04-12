@@ -4,3 +4,7 @@
   background-size: cover;
   background-position: center;
 }
+
+.active {
+  border-bottom: 4px solid #59D3C6;
+}

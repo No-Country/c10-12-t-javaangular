@@ -3,15 +3,16 @@
     <h2 class="self-end text-6xl font-bold text-white font-primary">Trabajos</h2>
   </div>
   <div class="flex flex-col gap-6">
-    <div class="flex justify-start gap-5 text-xl font-medium text-dark pb-4">
-      <a routerLink="ofertas" routerLinkActive="border-primary" [ngClass]="isOffers? 'border-primary' : 'border-transparent'" class="px-8 py-4 border-b-4 hover:border-primary" (click)="showOffers()">
+    <div class="flex justify-start gap-5 pb-4 text-xl font-medium text-dark">
+      <a routerLink="ofertas" routerLinkActive="active" class="px-8 py-4 border-b-4 border-transparent hover:border-primary">
         <fa-icon [icon]="faBriefcase"></fa-icon>
         Ofertas
       </a>
-      <a routerLink="portales" routerLinkActive="active" [ngClass]="isPortals? 'border-primary' : 'border-transparent'" class="px-8 py-4 border-b-4 hover:border-primary" (click)="showPortals()">
+      <a routerLink="portales" routerLinkActive="active" class="px-8 py-4 border-b-4 border-transparent hover:border-primary">
         <fa-icon [icon]="faGlobe"></fa-icon>
         Portales
       </a>
     </div>
   </div>
   <router-outlet></router-outlet>
+</div>

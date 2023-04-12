@@ -11,19 +11,4 @@ export class JobsComponent {
   faBriefcase = faBriefcase;
   faGlobe = faGlobe;
 
-  isOffers: boolean = false;
-  isPortals: boolean = true;
-
-  constructor() {}
-
-  showOffers() {
-    this.isOffers = true;
-    this.isPortals = false;
-  }
-  
-  showPortals() {
-    this.isPortals = true;
-    this.isOffers = false;
-  }
-
 }

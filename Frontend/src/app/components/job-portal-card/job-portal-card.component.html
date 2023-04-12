@@ -2,13 +2,12 @@
   <div></div>
   <div class="flex flex-col gap-5 p-4">
     <div class="flex flex-col gap-2">
-      <p class="text-3xl font-normal">Computrabajo</p>
-      <p class="text-[#4A4458]">Computrabajo es la web de empleo líder en Latinoamérica. Encuentra miles de empleos adecuados a tu perfil. Sube tu currículum gratis y sé visible para miles de empresas.</p>
+      <p class="text-3xl font-normal">{{inputPortal.name}}</p>
+      <p class="text-[#4A4458]">{{inputPortal.description}}</p>
     </div>
-    <a href="#">
+    <a href="{{inputPortal.url}}" target="_blank">
       Visitar
       <fa-icon class="text-sm" [icon]="faArrowRight"></fa-icon>
     </a>
   </div>
 </div>
-{{ inputPortal.name }}
