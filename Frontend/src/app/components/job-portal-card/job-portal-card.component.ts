@@ -8,7 +8,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class JobPortalCardComponent {
 
-  @Input() portal!: any;
+  @Input() inputPortal!: any;
   faArrowRight = faArrowRight;
 
 }
