@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-account-dialog',
   templateUrl: './delete-account-dialog.component.html',
-  styleUrls: ['./delete-account-dialog.component.css']
+  styleUrls: ['./delete-account-dialog.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DeleteAccountDialogComponent {
 
