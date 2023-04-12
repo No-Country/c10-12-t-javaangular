@@ -46,6 +46,7 @@ import { JobOffersComponent } from './components/job-offers/job-offers.component
 import { JobPortalsComponent } from './components/job-portals/job-portals.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { JobPortalCardComponent } from './components/job-portal-card/job-portal-card.component';
+import { ForumCardComponent } from './components/forum-card/forum-card.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { JobPortalCardComponent } from './components/job-portal-card/job-portal-
     JobPortalsComponent,
     EventCardComponent,
     JobPortalCardComponent,
+    ForumCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-event-card',
@@ -6,5 +6,9 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./event-card.component.css']
 })
 export class EventCardComponent {
+  
+  @Input() Events:any;
+
+
 faLocation=faLocationDot;
 }
