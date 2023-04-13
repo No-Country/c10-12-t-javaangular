@@ -8,13 +8,12 @@
         <input type="number" placeholder="$ Sueldo mensual" value="Sueldo mensual" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="sueldo">
         <input type="text" placeholder="Descripción" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="descripcion">
         <input type="number" placeholder="Teléfono" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="telefono">
-        <input type="file" placeholder="Logo (opcional)" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="logo">
       </div>
       </mat-dialog-content>
       <mat-dialog-actions align="end">
         <div  class="flex gap-2">
           <button mat-button mat-dialog-close class="px-4 py-2 border border-transparent rounded-full text-secondary hover:border hover:border-secondary">Cancel</button>
-          <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="bg-primary border border-transparent text-white px-4 py-2 rounded-full hover:bg-[#7cdcd4]" type="submit">Crear</button>
+          <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="bg-primary border border-transparent text-white px-4 py-2 rounded-full hover:bg-[#7cdcd4]" type="submit" [disabled]="!newOffer.valid">Crear</button>
         </div>
       </mat-dialog-actions>
   </form>
