@@ -19,6 +19,7 @@ import { JobPortalsComponent } from './components/job-portals/job-portals.compon
 import { EventsComponent } from './components/events/events.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { InfoComponent } from './pages/info/info.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -110,6 +111,10 @@ const routes: Routes = [
         component: DataProtectionComponent,
       },
     ]
+  },
+  {
+    path: 'acerca-de-nosotros',
+    component: AboutUsComponent
   },
   {
     path: '**',
