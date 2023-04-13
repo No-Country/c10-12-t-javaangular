@@ -8,14 +8,14 @@
 
     <div class="flex flex-col gap-5 sm:w-2/3">
       <div class="flex flex-col gap-1">
-        <p class="text-xl sm:text-3xl">{{offer.title}}</p>
-        <p class="text-sm font-medium text-gray-700">Publicada el: {{offer.date}}</p>
+        <p class="text-xl sm:text-3xl">{{offer.cargo}}</p>
+        <p class="text-sm font-medium text-gray-700">Publicada el: {{offer.fecha | date}}</p>
       </div>
       <div class="flex gap-5">
-        <p class="font-medium"><fa-icon [icon]="faLocationDot" class="mr-2 text-xl"></fa-icon>{{offer.location}}</p>
-        <p class="font-medium">{{offer.salary | currency}}</p>
+        <p class="font-medium"><fa-icon [icon]="faLocationDot" class="mr-2 text-xl"></fa-icon>{{offer.ubicacion}}</p>
+        <p class="font-medium">{{offer.sueldo | currency}}</p>
       </div>
-      <p class="text-gray-700">{{offer.description}}</p>
+      <p class="text-gray-700">{{offer.descripcion}}</p>
     </div>
 
   </div>
