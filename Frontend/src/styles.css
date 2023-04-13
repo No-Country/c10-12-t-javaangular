@@ -24,6 +24,10 @@ html,body,app-login,app-register,app-landing, app-jobs {
   font-family: 'Be Vietnam Pro', sans-serif;
 }
 
+*:focus {
+  outline: none;
+}
+
 .font-secondary {
   font-family: 'Inter', sans-serif;
 }

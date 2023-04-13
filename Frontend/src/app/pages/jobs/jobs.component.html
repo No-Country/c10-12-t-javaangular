@@ -1,18 +1,24 @@
-<div class="container min-h-screen px-5 pb-6 mx-auto">
-  <div class="flex p-4 sm:p-6 bg-jobs h-36 sm:h-[292px]">
-    <h2 class="self-end text-3xl font-medium text-white sm:font-bold sm:text-6xl font-primary">Trabajos</h2>
+<div class="flex p-4 sm:p-6 bg-jobs h-36 sm:h-[292px]">
+  <div class="container flex items-end px-5 mx-auto">
+    <h2 class="text-3xl font-medium text-white sm:font-bold sm:text-6xl font-primary">Trabajos</h2>
   </div>
-  <div class="flex flex-col gap-6">
-    <div class="flex mb-4 font-medium sm:gap-5 sm:justify-start text-dark">
-      <a routerLink="ofertas" routerLinkActive="active" class="w-full p-2 text-center border-b-4 border-transparent sm:px-8 sm:py-4 sm:w-auto hover:border-primary">
+</div>
+<div class="border-b border-gray-300 rounded-full">
+  <div class="container px-5 mx-auto">
+    <div class="flex font-medium sm:gap-5 sm:justify-start text-dark">
+      <a routerLink="ofertas" routerLinkActive="active"
+        class="w-full p-2 text-center border-b-4 border-transparent sm:px-8 sm:py-4 sm:w-auto hover:border-primary">
         <fa-icon [icon]="faBriefcase"></fa-icon>
         Ofertas
       </a>
-      <a routerLink="portales" routerLinkActive="active" class="w-full p-2 text-center border-b-4 border-transparent sm:px-8 sm:py-4 sm:w-auto hover:border-primary">
+      <a routerLink="portales" routerLinkActive="active"
+        class="w-full p-2 text-center border-b-4 border-transparent sm:px-8 sm:py-4 sm:w-auto hover:border-primary">
         <fa-icon [icon]="faGlobe"></fa-icon>
         Portales
       </a>
     </div>
   </div>
-  <router-outlet></router-outlet>
+</div>
+<div class="container min-h-screen px-5 pb-6 mx-auto mt-6">
+  <router-outlet></router-outlet>  
 </div>
