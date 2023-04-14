@@ -42,8 +42,8 @@ const routes: Routes = [
   {
     path: 'alojamiento',
     component: HostingComponent,
-    canActivate: [AuthGuard],
-    data: { authGuardPipe : redirectUnauthorizedToLogin }
+    // canActivate: [AuthGuard],
+    // data: { authGuardPipe : redirectUnauthorizedToLogin }
   },
   {
     path: 'jobs',
@@ -86,8 +86,8 @@ const routes: Routes = [
   {
     path:'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard],
-    data: { authGuardPipe : redirectUnauthorizedToLogin }
+    // canActivate: [AuthGuard],
+    // data: { authGuardPipe : redirectUnauthorizedToLogin }
   },
   {
     path: 'info',
