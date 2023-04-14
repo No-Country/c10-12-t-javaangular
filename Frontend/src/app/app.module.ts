@@ -52,6 +52,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AboutBannerComponent } from './pages/about-us/components/about-banner/about-banner.component';
 import { EditJobOfferComponent } from './components/edit-job-offer/edit-job-offer.component';
 import { AboutInfoComponent } from './pages/about-us/components/about-info/about-info.component';
+import { MembersComponent } from './pages/about-us/components/members/members.component';
+import { MembersCardComponent } from './pages/about-us/components/members-card/members-card.component';
 
 
 @NgModule({
@@ -93,6 +95,8 @@ import { AboutInfoComponent } from './pages/about-us/components/about-info/about
     AboutBannerComponent,
     EditJobOfferComponent,
     AboutInfoComponent,
+    MembersComponent,
+    MembersCardComponent,
   ],
   imports: [
     BrowserModule,
