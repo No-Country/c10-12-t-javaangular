@@ -50,6 +50,7 @@ import { InfoComponent } from './pages/info/info.component';
 import { NavInfoComponent } from './components/nav-info/nav-info.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AboutBannerComponent } from './pages/about-us/components/about-banner/about-banner.component';
+import { EditJobOfferComponent } from './components/edit-job-offer/edit-job-offer.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { AboutBannerComponent } from './pages/about-us/components/about-banner/a
     NavInfoComponent,
     AboutUsComponent,
     AboutBannerComponent,
+    EditJobOfferComponent,
   ],
   imports: [
     BrowserModule,

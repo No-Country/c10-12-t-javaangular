@@ -12,32 +12,32 @@ import { JobsService } from 'src/app/services/jobs.service';
 })
 export class JobOffersComponent implements OnInit {
 
-  // offers = [
-  //   {
-  //     'title': 'Asistente',
-  //     'date': '02/05/2023',
-  //     'location': 'Buenos Aires',
-  //     'salary': '300',
-  //     'description': 'As a UX Designer, you will: Work with stakeholders to set priorities and find elegant design solutions that meet user and business goals within technical constraints.',
-  //   },
-  //   {
-  //     'title': 'Asistente',
-  //     'date': '02/05/2023',
-  //     'location': 'Buenos Aires',
-  //     'salary': '300',
-  //     'description': 'As a UX Designer, you will: Work with stakeholders to set priorities and find elegant design solutions that meet user and business goals within technical constraints.',
-  //   },
-  //   {
-  //     'title': 'Asistente',
-  //     'date': '02/05/2023',
-  //     'location': 'Buenos Aires',
-  //     'salary': '300',
-  //     'description': 'As a UX Designer, you will: Work with stakeholders to set priorities and find elegant design solutions that meet user and business goals within technical constraints.',
-  //   },
-  // ]
+  offers = [
+    {
+      'cargo': 'Asistente',
+      'fecha': '02/05/2023',
+      'ubicacion': 'Buenos Aires',
+      'sueldo': '300',
+      'descripcion': 'As a UX Designer, you will: Work with stakeholders to set priorities and find elegant design solutions that meet user and business goals within technical constraints.',
+    },
+    {
+      'title': 'Asistente',
+      'date': '02/05/2023',
+      'location': 'Buenos Aires',
+      'salary': '300',
+      'description': 'As a UX Designer, you will: Work with stakeholders to set priorities and find elegant design solutions that meet user and business goals within technical constraints.',
+    },
+    {
+      'title': 'Asistente',
+      'date': '02/05/2023',
+      'location': 'Buenos Aires',
+      'salary': '300',
+      'description': 'As a UX Designer, you will: Work with stakeholders to set priorities and find elegant design solutions that meet user and business goals within technical constraints.',
+    },
+  ]
 
   faPlus = faPlus;
-  offers: any[] = [];
+  // offers: any[] = [];
   offers$: Observable<any[]> = this.jobsService.offers$;
 
   constructor(public dialog: MatDialog, private jobsService: JobsService) { }
