@@ -25,9 +25,9 @@ export class EditJobOfferComponent {
       {
         cargo: ['', Validators.required],
         ubicacion: ['', Validators.required],
-        sueldo: [0, Validators.required],
+        sueldo: ['', Validators.required],
         descripcion: ['', Validators.required],
-        telefono: [0, Validators.required],
+        telefono: ['', Validators.required],
         fecha: [new Date()]
       }
     )
