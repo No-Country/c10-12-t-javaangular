@@ -19,11 +19,11 @@ export class JobCardComponent {
     'img': '../../../assets/img/face-profile.png'
   }
 
-  isUserOffer: boolean = false;
+  isUserOffer: boolean = true;
   editDeleteControls: boolean = false;
 
   constructor(public dialog: MatDialog, private jobsService: JobsService) {
-    
+
   }
 
   editDeleteToggle() {
@@ -41,5 +41,5 @@ export class JobCardComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
-  
+
 }
