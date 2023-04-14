@@ -42,12 +42,24 @@ export class JobOffersComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private jobsService: JobsService) { }
 
+  mostrarAntiguedad = false;
+  mostrarAplicadas = false;
+
+  toggleAntiguedad() {
+    this.mostrarAntiguedad = !this.mostrarAntiguedad;
+    this.mostrarAplicadas = false;
+  }
+  togglePortales() {
+    this.mostrarAplicadas = !this.mostrarAplicadas;
+    this.mostrarAntiguedad = false;
+  }
+
   ngOnInit(): void {
     this.jobsService.getAllOffers();
     this.offers$ = this.jobsService.offers$;
   }
 
-  filtrarRecientes() {    
+  filtrarRecientes() {
     this.offers$.subscribe(
       data => {
         const datosFiltrados = data.sort((a, b) => b.fecha.getTime() - a.fecha.getTime());

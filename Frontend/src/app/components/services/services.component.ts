@@ -7,4 +7,22 @@ import { Component } from '@angular/core';
 })
 export class ServicesComponent {
 
+  services = [
+    {
+      'titulo': 'Sitios de empleos',
+      'url': '/jobs',
+      'img': '../../../assets/img/empleos.png'
+    },
+    {
+      'titulo': 'Couchsurfing',
+      'url': '/alojamiento',
+      'img': '../../../assets/img/couchsurfing.png'
+    },
+    {
+      'titulo': 'Comunidad',
+      'url': '/comunidad',
+      'img': '../../../assets/img/comunidad.png'
+    }
+  ]
+
 }

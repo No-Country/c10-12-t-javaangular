@@ -1,13 +1,8 @@
-<div class="container px-5 py-10 mx-auto">
+<div class="container px-5 py-3 mx-auto md:py-10">
   <div class="flex justify-center">
-    <h2 class="text-4xl font-bold text-secondary">Servicios Populares</h2>
+    <h2 class="text-xl font-bold text-center md:text-4xl text-secondary">Servicios Populares</h2>
   </div>
-  <div class="grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 gap-9">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+  <div class="grid grid-cols-2 gap-5 mt-3 md:mt-10 sm:grid-cols-2 lg:grid-cols-3 md:gap-9">
+    <app-card *ngFor="let item of services" [item]="item"></app-card>
   </div>
 </div>

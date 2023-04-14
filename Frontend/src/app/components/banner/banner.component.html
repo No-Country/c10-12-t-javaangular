@@ -1,17 +1,17 @@
-<div class="flex w-full py-10">
-  <div class="container grid grid-cols-1 gap-5 px-5 mx-auto space-y-10 lg:grid-cols-2 lg:flex-row sm:space-y-0">
-    <div class="flex flex-col items-start justify-center w-full lg:py-14">
-      <h1 class="w-full text-6xl font-semibold font-primary xl:w-11/12">Haz de Argentina tu nuevo hogar</h1>
-      <p class="text-xl font-semibold mt-11 xl:w-4/5">No te sientas solo en tu nueva aventura.</p>
-      <p class="mt-2 text-xl font-normal xl:w-4/5">Te ofrecemos toda la ayuda y el apoyo que necesitas para establecerte en Argentina con éxito.</p>
+<div class="flex w-full py-4 md:py-10">
+  <div class="container grid grid-cols-3 gap-3 px-5 mx-auto md:gap-5 lg:grid-cols-2 lg:flex-row sm:space-y-0">
+    <div class="flex flex-col items-start justify-center w-full col-span-2 lg:col-span-1 lg:py-14">
+      <h1 class="w-full text-2xl font-semibold md:text-6xl sm:text-4xl font-primary xl:w-11/12">Haz de Argentina tu nuevo hogar</h1>
+      <p class="mt-2 text-sm font-semibold sm:text-base md:text-xl md:mt-11 sm:mt-5 xl:w-4/5">No te sientas solo en tu nueva aventura.</p>
+      <p class="hidden mt-2 text-xs font-normal md:text-xl sm:block xl:w-4/5">Te ofrecemos toda la ayuda y el apoyo que necesitas para establecerte en Argentina con éxito.</p>
       <ng-container *ngIf="user$ | async as user; else notUser">
       </ng-container>
       <ng-template #notUser>
-        <button class="px-10 py-2 text-2xl font-semibold text-white rounded-full bg-accent mt-11 font-primary"
+        <button class="px-10 py-2 mt-3 text-sm font-semibold text-white rounded-full md:text-2xl bg-accent md:mt-11 font-primary"
           routerLink="/register">¡Comenzá hoy!</button>
       </ng-template>      
     </div>
-    <div class="hidden overflow-hidden lg:flex bg-img rounded-3xl">
+    <div class="col-span-1 overflow-hidden bg-img rounded-3xl">
     </div>
   </div>
 </div>
