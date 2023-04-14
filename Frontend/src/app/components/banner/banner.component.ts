@@ -9,9 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class BannerComponent {
 
-  user$ = this.auth.authState$.pipe(
-    filter(state => state ? true : false)
-  );
+  // user$ = this.auth.authState$.pipe(
+  //   filter(state => state ? true : false)
+  // );
 
   constructor(
     private auth: AuthService,

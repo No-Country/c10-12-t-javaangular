@@ -4,12 +4,12 @@
       <h1 class="w-full text-2xl font-semibold md:text-6xl sm:text-4xl font-primary xl:w-11/12">Haz de Argentina tu nuevo hogar</h1>
       <p class="mt-2 text-sm font-semibold sm:text-base md:text-xl md:mt-11 sm:mt-5 xl:w-4/5">No te sientas solo en tu nueva aventura.</p>
       <p class="hidden mt-2 text-xs font-normal md:text-xl sm:block xl:w-4/5">Te ofrecemos toda la ayuda y el apoyo que necesitas para establecerte en Argentina con éxito.</p>
-      <ng-container *ngIf="user$ | async as user; else notUser">
-      </ng-container>
+      <!-- <ng-container *ngIf="user$ | async as user; else notUser">
+      </ng-container> -->
       <ng-template #notUser>
         <button class="px-10 py-2 mt-3 text-sm font-semibold text-white rounded-full md:text-2xl bg-accent md:mt-11 font-primary"
           routerLink="/register">¡Comenzá hoy!</button>
-      </ng-template>      
+      </ng-template>
     </div>
     <div class="col-span-1 overflow-hidden bg-img rounded-3xl">
     </div>

@@ -34,13 +34,16 @@ export class RegisterComponent {
   register() {
     if (this.form.valid) {
       const { email, password }:any = this.form.getRawValue();
-      this.auth.register(email, password)
-      .then(() => {
-        this.router.navigate(['/landing'])
-      })
-      .catch(error => {
-        console.error(error)
-      })
+      // this.auth.register(email, password)
+      // .then(() => {
+      //   this.router.navigate(['/landing'])
+      // })
+      // .catch(error => {
+      //   console.error(error)
+      // })
+
+    this.auth.signUp({email, password})
+
     } else {
       this.form.markAllAsTouched();
     }
