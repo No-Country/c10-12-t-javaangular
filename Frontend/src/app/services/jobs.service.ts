@@ -32,4 +32,8 @@ export class JobsService {
     this.offers$ = of(this.offers);
   }
 
+  editOffer(editedOffer: any) {
+
+  }
+
 }

@@ -1,13 +1,11 @@
 .bg-img {
   background-image: url('../../../../../assets/img/about-us-banner.png');
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  /* background-size: cover; */
+  /* background-position: center; */
 }
 
 #web {
-  top: 50%;
-  left: 3%;
   animation: anim;
   animation-duration: 1s;
   animation-delay: 0s;
@@ -16,8 +14,6 @@
 }
 
 #db {
-  top: 20%;
-  right: 20%;
   animation: anim;
   animation-duration: 1s;
   animation-delay: 1s;
@@ -26,8 +22,6 @@
 }
 
 #diseño {
-  bottom: 15%;
-  right: 20%;
   animation: anim;
   animation-duration: 1s;
   animation-delay: 2s;
