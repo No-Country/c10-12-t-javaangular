@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardModule } from '@angular/fire/auth-guard';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SwiperModule } from 'swiper/angular';
 import { DialogModule } from '@angular/cdk/dialog';
@@ -103,7 +104,8 @@ import { AboutBannerComponent } from './pages/about-us/components/about-banner/a
     AuthGuardModule,
     DialogModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

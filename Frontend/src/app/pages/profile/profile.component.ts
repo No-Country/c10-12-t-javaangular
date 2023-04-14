@@ -7,6 +7,7 @@ import { DeleteAccountDialogComponent } from 'src/app/components/delete-account-
 
 import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -31,9 +32,28 @@ export class ProfileComponent {
 
   faUser = faUser;
 
-  user$ = this.auth.authState$.pipe(
-    filter(state => state ? true : false)
-  );
+  // user$ = this.auth.authState$.pipe(
+  //   filter(state => state ? true : false)
+  // );
+
+  // user: User | null = null;
+  // user$: Observable<{ user: User | null }>;
+
+  // ngOnInit(): void {
+  //   this.auth.user$.subscribe(user => {
+  //     this.user = user.user;
+  //   });
+  //   //
+  //   this.auth.user$.subscribe((userData) => {
+  //     this.user = userData.user;
+  //     console.log('ngOnInit de navbar',userData)
+  //   });
+  //   this.auth.userSubject.subscribe(user => {
+  //     this.user = user;
+  //     console.log('desde navbar component', this.user)
+  //   });
+  //   console.log('navbar res', this.user)
+  // }
 
   constructor(
     private auth: AuthService,
@@ -41,11 +61,11 @@ export class ProfileComponent {
     public dialog: MatDialog
   ) {}
 
-  async logout() {
-    await this.auth.logout();
-    this.router.navigate(['/login']);
-    location.reload();
-  }
+  // async logout() {
+  //   await this.auth.logout();
+  //   this.router.navigate(['/login']);
+  //   location.reload();
+  // }
 
   deleteAccount() {
     console.log('Acá se elimina tu cuenta');
