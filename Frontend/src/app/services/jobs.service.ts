@@ -88,6 +88,33 @@ export class JobsService {
     
   }
 
+  updateJob(id:number){
+    const url = `${this.supabaseClient}/rest/v1/trabajo`;
+    /* const token = this.tokenService.getToken(); */
+    if(this.auth.datosUsuarios()){
+      var Id_user=this.auth.idUsuarios();
+        var token= this.auth.access_token();
+    }
+  
+    console.log(token)
+    if (token) {
+      /* this.token = JSON.parse(token) */
+      console.log('hay token', token)
+    }
+    const headers = new HttpHeaders({
+      apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo',
+      Authorization: `Bearer ${token}`,
+      // 'Content-Type': 'application/json'
+    });
+    const options = { headers: headers };
+    /*s */
+    
+
+    return  this.http.put('https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo',id,options).subscribe(res=>{console.log('respuesta',res)});
+    
+    
+  }
+
   deleteJob(): Observable<any[]> {
     const url = `${this.supabaseClient}/rest/v1/trabajo`;
     /* const token = this.tokenService.getToken(); */
@@ -107,32 +134,5 @@ export class JobsService {
   }
 
 
-/* crea (){
-  const token= this.auth.access_token();
-  const headers = new HttpHeaders({
-    apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo',
-    Authorization: `Bearer ${token}`,
-    // 'Content-Type': 'application/json'
-  });
-  const options = { headers: headers };
-  const data = { 
-    "name": "as",
-  "status": false,
-  "cargo": "asd",
-  "ubicacion": "asd",
-  "sueldo": 12313,
-  "descripcion": "asdsa",
-  "telefono": 4444};
-const endpoint = 'https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo';
-  this.http.post(endpoint, data,options)
-  .subscribe(
-    response => {
-      console.log('Response:', response);
-    },
-    error => {
-      console.log('Error:', error);
-    }
-  );
-  
-}  */
+
 }
