@@ -28,7 +28,8 @@ export class OfferComponent implements OnInit {
         sueldo: ['', Validators.required],
         descripcion: ['', Validators.required],
         telefono: ['', Validators.required],
-        fecha: [new Date()]
+        status: ['', Validators.required],
+        name: ['', Validators.required],
       }
     )
     console.log('newOffer', this.newOffer.value)
@@ -37,9 +38,10 @@ export class OfferComponent implements OnInit {
 
 
   createOffer() {
-    if (this.newOffer.valid) {
-      this.jobsService.createOffer(this.newOffer.getRawValue());
-    }
+   
+      console.log(this.newOffer.value)
+      this.jobsService.createJob(this.newOffer.value);
+    
   }
 
 }
