@@ -11,6 +11,7 @@ export class EditJobOfferComponent {
 
   @Input() offers:any; 
   editedOffer: FormGroup = new FormGroup({});
+  id: number | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -20,7 +21,7 @@ export class EditJobOfferComponent {
   }
 
   ngOnInit() {
-    const idd=this.jobsService.editOfferId;
+    this.id = this.jobsService.editOfferId;
     this.editedOffer = this.fb.group(
       {
         cargo: ['', Validators.required],
@@ -30,14 +31,15 @@ export class EditJobOfferComponent {
         telefono: ['', Validators.required],
         status: ['', Validators.required],
         name: ['', Validators.required],
-        // user_id: [id_user, Validators.required],
       }
     )
-    this.byId(idd);
+    this.byId(this.id);
   }
 
   editOffer() {
-    this.jobsService.updateJob(this.editedOffer.getRawValue()).subscribe();
+    if (this.id) {
+      this.jobsService.updateJob(this.editedOffer.getRawValue(), this.id).subscribe();
+    }
   } 
 
   byId(id:any){
@@ -46,7 +48,6 @@ export class EditJobOfferComponent {
     this.jobsService.findByIdJob(id).subscribe({
       next: (data: any) => {
         n = data[0];
-        console.log('asdasda', n);
         this.editedOffer.patchValue({
           cargo: n.cargo,
           ubicacion: n.ubicacion,

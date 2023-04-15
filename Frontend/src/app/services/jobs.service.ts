@@ -89,7 +89,7 @@ export class JobsService {
 
   }
 
-  updateJob(jobOffer: any){
+  updateJob(jobOffer: any, id: number){
     const url = `${this.supabaseClient}/rest/v1/trabajo`;
     if(this.auth.datosUsuarios()){
       var token= this.auth.access_token();
@@ -99,8 +99,8 @@ export class JobsService {
       Authorization: `Bearer ${token}`,
     });
     const options = { headers: headers };
-    console.log(jobOffer.id)
-    return this.http.patch(`https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo?id=eq.${jobOffer.id}`, jobOffer, options);    
+    console.log('que onda', jobOffer.id)
+    return this.http.patch(`https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo?id=eq.${id}`, jobOffer, options);    
   }
 
   // deleteJob(): Observable<any[]> {
