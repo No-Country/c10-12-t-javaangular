@@ -10,6 +10,7 @@ export class TokenService {
 
   saveToken(token: string) {
     setCookie('sb-xbslofkvpgejobohqcqp-auth-token', token, { expires: 365, path: '/' });
+    console.log('desde setCookie',token)
   }
 
   getToken() {

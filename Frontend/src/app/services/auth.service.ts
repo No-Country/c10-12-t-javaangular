@@ -96,7 +96,7 @@ export class AuthService {
   user$ = this.userSource.asObservable();
 
   public setUser(user: any): void {
-    const session = JSON.parse(localStorage.getItem(USER_STORAGE_KEY) || '{}');
+    const session = JSON.parse(localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token') || '{}');
     this.userSubject.next(user);
     if (session?.session) {
       console.log(session.session.access_token);
