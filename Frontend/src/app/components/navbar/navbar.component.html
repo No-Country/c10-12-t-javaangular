@@ -33,7 +33,6 @@
         </li>
       </ul>
     </div>
-    <button (click)="logout()">Salir</button>
     <ng-container *ngIf="user; else notUser">
       <div *ngIf="user" class="relative">
         <button type="button" id="options-menu-button" (click)="toggleOptionsMenu()"
