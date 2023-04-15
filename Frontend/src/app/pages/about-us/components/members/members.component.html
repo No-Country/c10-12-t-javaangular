@@ -1,11 +1,39 @@
-<div class="container px-5 py-4 mx-auto">
+<div class="container px-5 py-4 mx-auto lg:py-11 sm:py-6">
 
-  <div class="flex flex-col text-center text-secondary">
-    <p class="text-xl font-bold font-primary">¿Quienes somos?</p>
-    <p class="font-semibold text-[10px]">Somos un equipo creativo y entusiasta que ama los desafíos.</p>
+  <div class="flex flex-col text-center text-secondary lg:gap-5">
+    <p class="text-xl font-bold sm:text-2xl md:text-4xl font-primary">¿Quienes somos?</p>
+    <p class="text-xs font-semibold sm:text-xl md:text-2xl lg:text-3xl">Somos un equipo creativo y entusiasta que ama los
+      desafíos.</p>
   </div>
 
-  <div>
+  <div class="flex flex-col gap-5 py-5 lg:py-8 lg:gap-16 sm:gap-8 sm:py-6">
+
+    <!-- pm tl -->
+    <div class="flex flex-row justify-center gap-3 md:gap-7">
+      <app-members-card *ngFor="let item of pmtl" [member]="item"></app-members-card>
+    </div>    
+    
+    <!-- frontend -->
+    <div>
+      <div class="flex justify-center">
+        <p class="w-9/12 p-2 text-xl font-bold text-center border-t-2 lg:py-8 md:text-3xl sm:py-6 border-gring-gray-300 text-secondary font-primary">
+          Equipo Frontend</p>
+      </div>
+      <div class="flex flex-row justify-center gap-3 md:gap-7">
+        <app-members-card *ngFor="let item of frontend" [member]="item"></app-members-card>
+      </div>
+    </div>
+
+    <!-- design -->
+    <div>
+      <div class="flex justify-center">
+        <p class="w-9/12 p-2 text-xl font-bold text-center border-t-2 lg:py-8 md:text-3xl sm:py-6 border-gring-gray-300 text-secondary font-primary">
+          Equipo UX/UI</p>
+      </div>
+      <div class="flex flex-row justify-center gap-3 md:gap-7">
+        <app-members-card *ngFor="let item of design" [member]="item"></app-members-card>
+      </div>
+    </div>
     
   </div>
 
