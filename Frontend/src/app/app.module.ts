@@ -57,6 +57,7 @@ import { EditJobOfferComponent } from './components/edit-job-offer/edit-job-offe
 import { AboutInfoComponent } from './pages/about-us/components/about-info/about-info.component';
 import { MembersComponent } from './pages/about-us/components/members/members.component';
 import { MembersCardComponent } from './pages/about-us/components/members-card/members-card.component';
+import { NoCountryComponent } from './pages/about-us/components/no-country/no-country.component';
 
 
 @NgModule({
@@ -102,6 +103,7 @@ import { MembersCardComponent } from './pages/about-us/components/members-card/m
     AboutInfoComponent,
     MembersComponent,
     MembersCardComponent,
+    NoCountryComponent,
   ],
   imports: [
     BrowserModule,
