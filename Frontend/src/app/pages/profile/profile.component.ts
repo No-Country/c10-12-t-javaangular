@@ -16,7 +16,7 @@ import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/f
 export class ProfileComponent {
 
   hidde = true;
-
+  dateUser="";
   faFlech = faEye;
   faLocation = faLocationDot;
   faPhone = faPhone;
@@ -25,6 +25,8 @@ export class ProfileComponent {
   mostrar() {
     this.hidde = !this.hidde;
   }
+
+
 
   updateProfilePhoto() {
     console.log('Acá iría la nueva foto');
@@ -59,13 +61,23 @@ export class ProfileComponent {
     private auth: AuthService,
     private router: Router,
     public dialog: MatDialog
-  ) {}
+  ) {
+    this.nombreUsuario();
+    this.dateUser=this.auth.datosUsuarios();
+    console.log(this.auth.datosUsuarios())
+  }
 
   // async logout() {
   //   await this.auth.logout();
   //   this.router.navigate(['/login']);
   //   location.reload();
   // }
+
+  nombreUsuario(){
+    if(this.auth.access_token()){
+      console.log("holasusana")
+    }
+  }
 
   deleteAccount() {
     console.log('Acá se elimina tu cuenta');

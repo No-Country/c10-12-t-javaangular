@@ -27,6 +27,7 @@ export class NavbarComponent {
     private router: Router
   ) {
     this.user$ = this.auth.user$;
+    console.log(this.auth.access_token);
   }
 
   ngOnInit(): void {

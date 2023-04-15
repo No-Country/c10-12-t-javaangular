@@ -1,14 +1,14 @@
 <div class="flex bg-primary rounded-3xl  border-[#F8F8F8]">
     <div class="flex flex-col justify-between p-10 pr-5 text-3xl font-medium text-white fechas ">
-        <h2> 9 sept 2023 </h2>
-        <h3>17:00hs</h3>
+        <h2> {{Events.fecha}} </h2>
+        <h3>{{Events.hora}}</h3>
     </div>
     <div class="titulo flex flex-col gap-5 grow bg-[#F8F8F8] p-5 rounded-3xl  text-black">
         <div class="flex flex-col">
-            <h1 class="text-2xl font-medium ">Gran encuentro</h1>
-            <p class="text-sm font-normal"><fa-icon [icon]="faLocation"></fa-icon> Jardín botánico</p>
+            <h1 class="text-2xl font-medium ">{{Events.descripcion}}</h1>
+            <p class="text-sm font-normal p-1 flex gap-1"><fa-icon [icon]="faLocation"></fa-icon>{{Events.lugar}}</p>
         </div>
-        <p class="text-base font-medium">4 personas confirmaron</p>
+        <p class="text-base font-medium">{{Events.confirmacion}}</p>
         <div class="flex items-center justify-between">
             <button class="px-4 py-2 text-white rounded-full bg-accent">¡Quiero ir!</button>
             <img src="../../../assets/img/face-profile.png" alt="" class=" aspect-square h-[3rem]">

@@ -47,8 +47,10 @@ import { JobOffersComponent } from './components/job-offers/job-offers.component
 import { JobPortalsComponent } from './components/job-portals/job-portals.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { JobPortalCardComponent } from './components/job-portal-card/job-portal-card.component';
+import { ForumCardComponent } from './components/forum-card/forum-card.component';
 import { InfoComponent } from './pages/info/info.component';
 import { NavInfoComponent } from './components/nav-info/nav-info.component';
+import { CreateEventComponent } from './components/create-event/create-event.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AboutBannerComponent } from './pages/about-us/components/about-banner/about-banner.component';
 import { EditJobOfferComponent } from './components/edit-job-offer/edit-job-offer.component';
@@ -88,8 +90,10 @@ import { AboutInfoComponent } from './pages/about-us/components/about-info/about
     JobPortalsComponent,
     EventCardComponent,
     JobPortalCardComponent,
+    ForumCardComponent,
     InfoComponent,
     NavInfoComponent,
+    CreateEventComponent,
     AboutUsComponent,
     AboutBannerComponent,
     EditJobOfferComponent,

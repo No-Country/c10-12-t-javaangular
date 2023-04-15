@@ -4,6 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { OfferComponent } from '../offer/offer.component';
 import { Observable, of } from 'rxjs';
 import { JobsService } from 'src/app/services/jobs.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-job-offers',
@@ -37,10 +38,15 @@ export class JobOffersComponent implements OnInit {
   ]
 
   faPlus = faPlus;
-  // offers: any[] = [];
+/*   offers: any[] = []; */
+  trabajos:any []=[];
   offers$: Observable<any[]> = this.jobsService.offers$;
 
-  constructor(public dialog: MatDialog, private jobsService: JobsService) { }
+  constructor(public dialog: MatDialog, private jobsService: JobsService,private apiSer:ApiService) { 
+
+    this.apiSer.getAllJobs().subscribe(res=>{this.trabajos=res});
+
+  }
 
   mostrarAntiguedad = false;
   mostrarAplicadas = false;
