@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
 
@@ -9,18 +9,18 @@ import { JobsService } from 'src/app/services/jobs.service';
 })
 export class EditJobOfferComponent {
 
-  editedOffer: FormGroup = new FormGroup({
-
-  });
+  @Input() offers:any; 
+  editedOffer: FormGroup = new FormGroup({});
 
   constructor(
     private fb: FormBuilder,
     private jobsService: JobsService
   ) {
-
+   
   }
 
   ngOnInit() {
+    const idd=this.jobsService.editOfferId;
     this.editedOffer = this.fb.group(
       {
         cargo: ['', Validators.required],
@@ -28,18 +28,37 @@ export class EditJobOfferComponent {
         sueldo: ['', Validators.required],
         descripcion: ['', Validators.required],
         telefono: ['', Validators.required],
-        fecha: [new Date()]
+        status: ['', Validators.required],
+        name: ['', Validators.required],
+        // user_id: [id_user, Validators.required],
       }
     )
-    console.log('editedOffer', this.editedOffer.value)
+    this.byId(idd);
   }
 
-
-
   editOffer() {
-    if (this.editedOffer.valid) {
-      this.jobsService.editOffer(this.editedOffer.getRawValue());
-    }
+    this.jobsService.updateJob(this.editedOffer.getRawValue()).subscribe();
+  } 
+
+  byId(id:any){
+    let n:any;
+    
+    this.jobsService.findByIdJob(id).subscribe({
+      next: (data: any) => {
+        n = data[0];
+        console.log('asdasda', n);
+        this.editedOffer.patchValue({
+          cargo: n.cargo,
+          ubicacion: n.ubicacion,
+          sueldo: n.sueldo,
+          descripcion: n.descripcion,
+          telefono: n.telefono,
+          status: n.status,
+          name: n.name
+        });
+      }
+    })
+
   }
 
 }

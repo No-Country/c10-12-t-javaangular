@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './job-card.component.html',
   styleUrls: ['./job-card.component.css']
 })
-export class JobCardComponent implements OnInit {
+export class JobCardComponent implements OnInit {   
 
   @Input() offer!: any;
   faLocationDot = faLocationDot;
@@ -45,7 +45,10 @@ export class JobCardComponent implements OnInit {
 
   }
 
-  openDialog() {
+  openDialog(id:number) {
+    console.log(id)
+    this.jobsService.editOfferId=id;
+
     const dialogRef = this.dialog.open(EditJobOfferComponent);
 
     dialogRef.afterClosed().subscribe(result => {
