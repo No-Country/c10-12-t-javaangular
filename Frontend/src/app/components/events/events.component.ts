@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Offer } from 'src/app/models/offers.model';
+import { OfferComponent } from '../offer/offer.component';
+import { CreateEventComponent } from '../create-event/create-event.component';
 
 @Component({
   selector: 'app-events',
@@ -29,5 +34,50 @@ export class EventsComponent {
       'lugar':"plaza central"
     },
   ]
+  newOffer: FormGroup = new FormGroup({
+
+  });
+
+  constructor(
+    private fb: FormBuilder,public dialog: MatDialog
+  ) {
+
+  }
+
+  offers: Offer[] = [];
+
+  ngOnInit() {
+    this.newOffer = this.fb.group(
+      {
+        cargo: ['', Validators.required],
+        ubicacion: ['', Validators.required],
+        sueldo: [0, Validators.required],
+        descripcion: ['', Validators.required],
+        telefono: [0, Validators.required],
+        logo: ['', Validators.required],
+      }
+    )
+    console.log('newOffer', this.newOffer.value)
+  }
+
+
+
+  createOffer() {
+    if (this.newOffer.valid) {
+      this.offers.push(this.newOffer.getRawValue());
+      console.log('offers',this.offers)
+    }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(CreateEventComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+    
 
 }

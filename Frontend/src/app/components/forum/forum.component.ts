@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { faHouse, faCalendarDays, faComments, faHeart, faMessage } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faCalendarDays, faComments, faHeart, faMessage,faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-forum',
@@ -42,4 +42,5 @@ export class ForumComponent {
   faComent = faComments;
   faHeart = faHeart;
   faMessage = faMessage;
+  faMenu=faEllipsisVertical;
 }
