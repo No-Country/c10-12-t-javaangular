@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { createClient } from '@supabase/supabase-js';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { createClient } from '@supabase/supabase-js';
 export class ApiService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private tokenService: TokenService
   ) { }
 
 
@@ -41,12 +43,32 @@ export class ApiService {
   // }
 
   token: any;
+  // getAllJobs(): Observable<any[]> {
+  //   const url = `${this.supabaseClient}/rest/v1/trabajo`;
+  //   const token = localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token');
+  //   if (token) {
+  //     this.token = JSON.parse(token)
+
+  //   }
+  //   const headers = new HttpHeaders({
+  //     apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo',
+  //     Authorization: `Bearer ${this.token}`,
+  //     // 'Content-Type': 'application/json'
+  //   });
+  //   const options = { headers: headers };
+  //   return this.http.get<any[]>('https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo', options);
+  // }
+
+
+
+
+
   getAllJobs(): Observable<any[]> {
     const url = `${this.supabaseClient}/rest/v1/trabajo`;
-    const token = localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token');
+    const token = this.tokenService.getToken();
     if (token) {
       this.token = JSON.parse(token)
-
+      console.log('hay token', this.token)
     }
     const headers = new HttpHeaders({
       apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo',
@@ -56,6 +78,9 @@ export class ApiService {
     const options = { headers: headers };
     return this.http.get<any[]>('https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo', options);
   }
+
+
+
 
 
 }
