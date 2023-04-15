@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
 
@@ -9,6 +9,7 @@ import { JobsService } from 'src/app/services/jobs.service';
 })
 export class EditJobOfferComponent {
 
+  @Input() offers:any; 
   editedOffer: FormGroup = new FormGroup({
 
   });
@@ -17,10 +18,11 @@ export class EditJobOfferComponent {
     private fb: FormBuilder,
     private jobsService: JobsService
   ) {
-
+   
   }
 
   ngOnInit() {
+    const idd=this.jobsService.editOfferId;
     this.editedOffer = this.fb.group(
       {
         cargo: ['', Validators.required],
@@ -32,14 +34,26 @@ export class EditJobOfferComponent {
       }
     )
     console.log('editedOffer', this.editedOffer.value)
+      console.log('desde jobService', this.jobsService.editOfferId)
+     this.byId(idd)
   }
 
 
+ editOffer() {
 
-  editOffer() {
-    if (this.editedOffer.valid) {
-      this.jobsService.editOffer(this.editedOffer.getRawValue());
-    }
+ 
+  /*     if (this.editedOffer.valid) {
+      console.log(id);
+    } */
+  } 
+
+
+  byId(id:any){
+    let n:any;
+    this.jobsService.findByIdJob(id).subscribe(res=>n=res);
+    console.log(n)
+  
   }
+
 
 }

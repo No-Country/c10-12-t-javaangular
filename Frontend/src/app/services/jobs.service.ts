@@ -11,7 +11,7 @@ export class JobsService {
 
   offers: any = [];
   offers$!: Observable<any[]>;
-
+  editOfferId:number | undefined;
   userOffers: any = [];
   appliedOffers: any = [];
   supabaseClient: any;
@@ -152,6 +152,27 @@ export class JobsService {
     console.log('id jobService',id)
     return this.http.delete(`https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo?id=eq.${id}`, options)
     .subscribe(res => console.log(id))
+  }
+
+  findByIdJob(id: number) {
+    /* id=this.editOfferId; */
+    const url = `${this.supabaseClient}/rest/v1/trabajo`;
+    /* const token = this.tokenService.getToken(); */
+    const token= this.auth.access_token();
+    console.log(token)
+    if (token) {
+      /* this.token = JSON.parse(token) */
+      console.log('hay token', token)
+    }
+    const headers = new HttpHeaders({
+      apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo',
+      Authorization: `Bearer ${token}`,
+      // 'Content-Type': 'application/json'
+    });
+    const options = { headers: headers };
+    console.log('id jobService',id)
+   return this.http.get(`https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo?id=eq.${id}`, options)
+     
   }
 
 

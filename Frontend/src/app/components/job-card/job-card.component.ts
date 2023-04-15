@@ -10,6 +10,8 @@ import { EditJobOfferComponent } from '../edit-job-offer/edit-job-offer.componen
   styleUrls: ['./job-card.component.css']
 })
 export class JobCardComponent {
+  
+   
 
   @Input() offer!: any;
   faLocationDot = faLocationDot;
@@ -36,7 +38,10 @@ export class JobCardComponent {
 
   }
 
-  openDialog() {
+  openDialog(id:number) {
+    console.log(id)
+    this.jobsService.editOfferId=id;
+
     const dialogRef = this.dialog.open(EditJobOfferComponent);
 
     dialogRef.afterClosed().subscribe(result => {
