@@ -36,7 +36,7 @@ export class MembersComponent {
       'role': 'Frontend Dev',
       'img': '../../../../../assets/img/team-members/federico.png',
       'linkedin': '',
-      'quote': '"Amo codear desde que tengo 7 años. Me encanta trabajar de lo que amo."',
+      'quote': '"Creamos experiencias digitales excepcionales para nuestros clientes con soluciones personalizadas."',
     },
     {
       'name': 'Fernando Weisheim',
