@@ -6,20 +6,14 @@
                 los próximos eventos</h3>
         </div>
         <div class="flex justify-end ">
-            <button class="px-10 py-2 text-white rounded-full bg-accent"> +Nuevo evento </button>
+            <button class="px-10 py-2 text-white rounded-full bg-accent" (click)="openDialog()"> +Nuevo evento </button>
         </div>
     </div>
 
     <div class="grid grid-cols-1 events gap-7 lg:grid-cols-2">
-            
-        <app-event-card></app-event-card>
-        <app-event-card></app-event-card>
-        <app-event-card></app-event-card>
-        <app-event-card></app-event-card>
-        
 
+        <app-event-card *ngFor="let event of Events" [Events]="event"></app-event-card>
             
-    
     </div>
 
 

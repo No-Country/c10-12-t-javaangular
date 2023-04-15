@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { style } from '@angular/animations';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Frontend';
-
 }
