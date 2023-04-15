@@ -32,7 +32,7 @@ export class AuthService {
 
   public access_token(){
     const session = JSON.parse(localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token') || '{}');
-   /*  console.log(session['user']['email'])  */
+    console.log(session['user']) 
    return session['access_token'];
   }
 
@@ -40,6 +40,11 @@ export class AuthService {
     const session = JSON.parse(localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token') || '{}');
  /*    console.log(session['user']['email'])  */
     return session['user']['email'];
+  }
+  public idUsuarios(){
+    const session = JSON.parse(localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token') || '{}');
+ /*    console.log(session['user']['email'])  */
+    return session['user']['id'];
   }
 
  get user(): User | null {

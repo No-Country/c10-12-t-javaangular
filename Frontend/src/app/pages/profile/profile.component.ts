@@ -14,7 +14,7 @@ import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/f
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-
+  meOffert=[];
   hidde = true;
   dateUser="";
   faFlech = faEye;
