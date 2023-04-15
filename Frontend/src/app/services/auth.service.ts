@@ -25,14 +25,28 @@ export class AuthService {
   constructor(private afAuth: Auth) {
     this.supabaseClient = createClient(environment.supabase.url, environment.supabase.publicKey);
     // const session = JSON.parse(localStorage.getItem(USER_STORAGE_KEY) || '{}');
-    const session = JSON.parse(localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token') || '{}');
+/*     const session = JSON.parse(localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token') || '{}');
+    console.log(session['access_token']) */
     // this.userSubject.next(session.user);
   }
 
-  get user(): User | null {
+  public access_token(){
+    const session = JSON.parse(localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token') || '{}');
+   /*  console.log(session['user']['email'])  */
+   return session['access_token'];
+  }
+
+  public datosUsuarios(){
+    const session = JSON.parse(localStorage.getItem('sb-xbslofkvpgejobohqcqp-auth-token') || '{}');
+ /*    console.log(session['user']['email'])  */
+    return session['user']['email'];
+  }
+
+ get user(): User | null {
     return this.userSubject.getValue();
   }
 
+  /* firebase */
   // async register(email: string, password: string) {
   //   const user = await createUserWithEmailAndPassword(this.afAuth, email, password);
   //   return await signInWithEmailAndPassword(this.afAuth, email, password);

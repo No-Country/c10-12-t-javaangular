@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { createClient } from '@supabase/supabase-js';
 import { TokenService } from './token.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private auth : AuthService
   ) { }
 
 
@@ -65,14 +67,16 @@ export class ApiService {
 
   getAllJobs(): Observable<any[]> {
     const url = `${this.supabaseClient}/rest/v1/trabajo`;
-    const token = this.tokenService.getToken();
+    /* const token = this.tokenService.getToken(); */
+    const token= this.auth.access_token();
+    console.log(token)
     if (token) {
-      this.token = JSON.parse(token)
-      console.log('hay token', this.token)
+      /* this.token = JSON.parse(token) */
+      console.log('hay token', token)
     }
     const headers = new HttpHeaders({
       apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo',
-      Authorization: `Bearer ${this.token}`,
+      Authorization: `Bearer ${token}`,
       // 'Content-Type': 'application/json'
     });
     const options = { headers: headers };
