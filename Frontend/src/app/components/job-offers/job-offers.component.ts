@@ -46,12 +46,12 @@ export class JobOffersComponent implements OnInit {
 
   offers$: Observable<any[]> = this.jobsService.offers$;
 
-  constructor(public dialog: MatDialog, private jobsService: JobsService,private apiSer:ApiService,private auth:AuthService) { 
+  constructor(public dialog: MatDialog, private jobsService: JobsService,private apiSer:ApiService,private auth:AuthService) {
     this.id_user_log=this.auth.idUsuarios();
-    this.apiSer.getAllJobs().subscribe(res=>{this.trabajos=res}); 
-    
+    this.apiSer.getAllJobs().subscribe(res=>{this.trabajos=res});
 
-    /* 
+
+    /*
     if(this.auth.idUsuarios()){
           console.log(this.auth.idUsuarios());
     console.log(this.trabajos['user_id']);
@@ -101,6 +101,8 @@ export class JobOffersComponent implements OnInit {
       }
     )
   }
+
+
 
   openDialog() {
     const dialogRef = this.dialog.open(OfferComponent);

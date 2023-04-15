@@ -30,8 +30,10 @@ export class JobCardComponent {
     this.editDeleteControls = !this.editDeleteControls;
   }
 
-  deleteOffer() {
+  deleteOffer(id: number) {
     alert('oferta eliminada')
+    this.jobsService.deleteJob(id);
+
   }
 
   openDialog() {
