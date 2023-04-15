@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardModule } from '@angular/fire/auth-guard';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SwiperModule } from 'swiper/angular';
 import { DialogModule } from '@angular/cdk/dialog';
@@ -50,6 +51,10 @@ import { ForumCardComponent } from './components/forum-card/forum-card.component
 import { InfoComponent } from './pages/info/info.component';
 import { NavInfoComponent } from './components/nav-info/nav-info.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { AboutBannerComponent } from './pages/about-us/components/about-banner/about-banner.component';
+import { EditJobOfferComponent } from './components/edit-job-offer/edit-job-offer.component';
+import { AboutInfoComponent } from './pages/about-us/components/about-info/about-info.component';
 
 
 @NgModule({
@@ -89,6 +94,10 @@ import { CreateEventComponent } from './components/create-event/create-event.com
     InfoComponent,
     NavInfoComponent,
     CreateEventComponent,
+    AboutUsComponent,
+    AboutBannerComponent,
+    EditJobOfferComponent,
+    AboutInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,7 +112,8 @@ import { CreateEventComponent } from './components/create-event/create-event.com
     AuthGuardModule,
     DialogModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

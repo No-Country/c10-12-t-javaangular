@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faB } from '@fortawesome/free-solid-svg-icons';
-import { Offer } from 'src/app/models/offers.model';
+import { JobsService } from 'src/app/services/jobs.service';
 
 @Component({
   selector: 'app-offer',
@@ -15,22 +14,21 @@ export class OfferComponent implements OnInit {
   });
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private jobsService: JobsService
   ) {
 
   }
-
-  offers: Offer[] = [];
 
   ngOnInit() {
     this.newOffer = this.fb.group(
       {
         cargo: ['', Validators.required],
         ubicacion: ['', Validators.required],
-        sueldo: [0, Validators.required],
+        sueldo: ['', Validators.required],
         descripcion: ['', Validators.required],
-        telefono: [0, Validators.required],
-        logo: ['', Validators.required],
+        telefono: ['', Validators.required],
+        fecha: [new Date()]
       }
     )
     console.log('newOffer', this.newOffer.value)
@@ -40,8 +38,7 @@ export class OfferComponent implements OnInit {
 
   createOffer() {
     if (this.newOffer.valid) {
-      this.offers.push(this.newOffer.getRawValue());
-      console.log('offers',this.offers)
+      this.jobsService.createOffer(this.newOffer.getRawValue());
     }
   }
 

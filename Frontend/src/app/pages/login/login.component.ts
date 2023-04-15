@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { faPen, faEye, faEyeSlash, faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -39,13 +39,19 @@ export class LoginComponent {
   login() {
     if (this.form.valid) {
       const { email, password } = this.form.getRawValue();
-      this.auth.login(email, password)
-      .then(() => {
-        this.router.navigate(['/landing']);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+      // this.auth.login(email, password)
+      // .then(() => {
+      //   this.router.navigate(['/landing']);
+      // })
+      // .catch(error => {
+      //   console.error(error);
+      // });
+
+      // Supabase
+
+      this.auth.signIn({email, password});
+      this.router.navigate(['/landing']);
+
     } else {
       this.form.markAllAsTouched();
     }

@@ -8,4 +8,8 @@ export const environment = {
     authDomain: 'nomadasnocountry.firebaseapp.com',
     messagingSenderId: '1091732494149',
   },
+  supabase: {
+    publicKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo',
+    url: 'https://xbslofkvpgejobohqcqp.supabase.co'
+  }
 }

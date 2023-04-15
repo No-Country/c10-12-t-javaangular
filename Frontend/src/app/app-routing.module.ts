@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -19,6 +19,7 @@ import { JobPortalsComponent } from './components/job-portals/job-portals.compon
 import { EventsComponent } from './components/events/events.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { InfoComponent } from './pages/info/info.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -41,8 +42,8 @@ const routes: Routes = [
   {
     path: 'alojamiento',
     component: HostingComponent,
-    canActivate: [AuthGuard],
-    data: { authGuardPipe : redirectUnauthorizedToLogin }
+    // canActivate: [AuthGuard],
+    // data: { authGuardPipe : redirectUnauthorizedToLogin }
   },
   {
     path: 'jobs',
@@ -85,8 +86,9 @@ const routes: Routes = [
   {
     path:'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard],
-    data: { authGuardPipe : redirectUnauthorizedToLogin }
+    // canActivate: [AuthGuard]
+    // canActivate: [AuthGuard],
+    // data: { authGuardPipe : redirectUnauthorizedToLogin }
   },
   {
     path: 'info',
@@ -110,6 +112,10 @@ const routes: Routes = [
         component: DataProtectionComponent,
       },
     ]
+  },
+  {
+    path: 'acerca-de-nosotros',
+    component: AboutUsComponent
   },
   {
     path: '**',

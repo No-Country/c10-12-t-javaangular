@@ -1,15 +1,39 @@
 <div class="flex flex-col gap-6">
-  <div class="flex justify-between">
-    <div class="flex gap-5">
-      <select class="pl-4 border border-gray-300 rounded-lg focus:ring-none" name="filter" id="filter">
-        <option value="">Mas recientes</option>
-        <option value="">Mas antiguas</option>
-      </select>
-      <select class="pl-4 border border-gray-300 rounded-lg focus:ring-none" name="filter" id="filter">
-        <option value="">Todas</option>
-        <option value="">Aplicadas</option>
-        <option value="">Creadas</option>
-      </select>
+  <div class="flex flex-col justify-between gap-6 sm:flex-row">
+    <div class="flex items-center gap-5 text-xs sm:text-sm">
+
+      <div class="flex flex-wrap gap-5">
+      
+        <div class="flex flex-col items-center text-xs sm:text-sm">
+          <button class="flex px-4 py-2 border border-gray-300 rounded-lg focus:ring-0 focus:border-gray-300" (click)="toggleAntiguedad()">Antiguedad</button>
+          <div *ngIf="mostrarAntiguedad" class="relative">
+            <ul class="absolute flex-col mt-3 overflow-hidden border border-gray-300 divide-y divide-gray-100 rounded-lg shadow-lg focus:ring-0 focus:border-gray-300">
+              <li class="w-40">
+                <button class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary" (click)="filtrarRecientes()">Más recientes</button>
+              </li>
+              <li>
+                <button class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary" (click)="filtrarAntiguas()">Más antiguas</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="flex flex-col items-center text-xs sm:text-sm">
+          <button class="flex px-4 py-2 border border-gray-300 rounded-lg focus:ring-0 focus:border-gray-300" (click)="togglePortales()">Aplicadas</button>
+          <div *ngIf="mostrarAplicadas" class="relative">
+            <ul class="absolute flex-col mt-3 overflow-hidden border border-gray-300 divide-y divide-gray-100 rounded-lg shadow-lg focus:ring-0 focus:border-gray-300">
+              <li class="w-40">
+                <button class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary">Todas</button>
+              </li>
+              <li>
+                <button class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary">Aplicadas</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      
+      </div>
+
     </div>
     <button mat-button class="px-6 py-2 text-sm font-medium text-white rounded-full bg-primary" (click)="openDialog()">
       <fa-icon class="pr-2" [icon]="faPlus"></fa-icon>

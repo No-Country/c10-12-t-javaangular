@@ -24,6 +24,10 @@ html,body,app-login,app-register,app-landing, app-jobs {
   font-family: 'Be Vietnam Pro', sans-serif;
 }
 
+*:focus {
+  outline: none;
+}
+
 .font-secondary {
   font-family: 'Inter', sans-serif;
 }
@@ -36,4 +40,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: none !important;
   padding: 0 !important;
   box-shadow: none !important;
+}
+
+.mdc-dialog__actions {
+  padding: 0 24px 24px 24px !important;
+}
+
+.cdk-overlay-pane {
+  max-width: 90vw !important;
 }

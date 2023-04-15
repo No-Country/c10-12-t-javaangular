@@ -1,21 +1,56 @@
-<div class="flex flex-col p-5 border border-gray-300 rounded-xl sm:flex-row">
-  <div class="flex gap-5">
-    <div>
-      <div class="w-[80px] aspect-square rounded-full bg-gray-300 bg-face"></div>
+<div class="flex flex-col justify-between gap-4 p-5 border border-gray-300 sm:gap-0 rounded-xl sm:flex-row">
+  <div class="flex flex-col gap-5 sm:flex-row">
+    <div class="flex justify-between sm:block">
+      <div class="w-8 sm:w-[80px] aspect-square rounded-full">
+        <img class="object-cover w-full h-full rounded-full" src="{{ user.img }}" alt="">
+      </div>
+      <div *ngIf="isUserOffer" class="flex flex-col items-end text-xs sm:hidden sm:text-sm">
+        <button class="flex px-4 py-2 rounded-full focus:ring-0"
+          (click)=" editDeleteToggle()"> <fa-icon [icon]="faEllipsisVertical"></fa-icon> </button>
+        <div *ngIf="editDeleteControls" class="relative right-40">
+          <ul
+            class="absolute flex-col mt-3 overflow-hidden border border-gray-300 divide-y divide-gray-100 rounded-lg shadow-lg focus:ring-0 focus:border-gray-300">
+            <li class="w-40">
+              <button
+                class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary" (click)="openDialog()">Editar</button>
+            </li>
+            <li>
+              <button
+                class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary" (click)="deleteOffer()">Eliminar</button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="flex flex-col w-2/3 gap-5">
+    <div class="flex flex-col gap-5 sm:w-2/3">
       <div class="flex flex-col gap-1">
-        <p class="text-3xl">{{offer.title}}</p>
-        <p class="text-sm font-medium text-gray-700">Publicada el: {{offer.date}}</p>
+        <p class="text-xl sm:text-3xl">{{offer.cargo}}</p>
+        <p class="text-sm font-medium text-gray-700">Publicada el: {{offer.fecha | date}}</p>
       </div>
       <div class="flex gap-5">
-        <p class="text-2xl"><fa-icon [icon]="faLocationDot" class="mr-2 text-xl"></fa-icon>{{offer.location}}</p>
-        <p class="text-2xl">{{offer.salary | currency}}</p>
+        <p class="font-medium"><fa-icon [icon]="faLocationDot" class="mr-2 text-xl"></fa-icon>{{offer.ubicacion}}</p>
+        <p class="font-medium">{{offer.sueldo | currency}}</p>
       </div>
-      <p class="text-gray-700">{{offer.description}}</p>
+      <p class="text-gray-700">{{offer.descripcion}}</p>
     </div>
   </div>
-  <div class="flex items-end">
-    <button class="px-6 py-2 text-sm font-medium border rounded-full border-secondary text-secondary">Aplicar</button>
+  <div class="flex flex-col grow sm:justify-between">
+    <div *ngIf="isUserOffer" class="flex-col items-end hidden text-xs sm:flex sm:text-sm">
+      <button class="flex px-4 py-2 rounded-full focus:ring-0"
+        (click)=" editDeleteToggle()"><fa-icon [icon]="faEllipsisVertical"></fa-icon></button>
+      <div *ngIf="editDeleteControls" class="relative right-40">
+        <ul class="absolute flex-col mt-3 overflow-hidden border border-gray-300 divide-y divide-gray-100 rounded-lg shadow-lg focus:ring-0 focus:border-gray-300">
+          <li class="w-40">
+            <button class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary" (click)="openDialog()">Editar</button>
+          </li>
+          <li>
+            <button class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary" (click)="deleteOffer()">Eliminar</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex items-end grow">
+      <button class="px-6 py-2 text-sm font-medium border rounded-full sm:mb-0 border-secondary text-secondary">Aplicar</button>
+    </div>
   </div>
 </div>
