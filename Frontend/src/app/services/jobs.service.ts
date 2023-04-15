@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { AuthService } from './auth.service';
+import { SupabaseAuthClient } from '@supabase/supabase-js/dist/module/lib/SupabaseAuthClient';
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +65,7 @@ export class JobsService {
     const url = `${this.supabaseClient}/rest/v1/trabajo`;
     /* const token = this.tokenService.getToken(); */
     if(this.auth.datosUsuarios()){
+      var Id_user=this.auth.idUsuarios();
         var token= this.auth.access_token();
     }
   

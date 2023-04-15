@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { JobsService } from 'src/app/services/jobs.service';
 
 @Component({
@@ -15,12 +16,14 @@ export class OfferComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private jobsService: JobsService
+    private jobsService: JobsService,
+    private auth: AuthService
   ) {
 
   }
 
   ngOnInit() {
+    let id_user=this.auth.idUsuarios();
     this.newOffer = this.fb.group(
       {
         cargo: ['', Validators.required],
@@ -30,6 +33,7 @@ export class OfferComponent implements OnInit {
         telefono: ['', Validators.required],
         status: ['', Validators.required],
         name: ['', Validators.required],
+        user_id: [id_user, Validators.required],
       }
     )
     console.log('newOffer', this.newOffer.value)
