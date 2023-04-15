@@ -17,19 +17,11 @@ export class OfferComponent implements OnInit {
 
   });
 
-  private supabase: SupabaseClient;
-
   constructor(
     private fb: FormBuilder,
     private jobsService: JobsService,
-    private http: HttpClient,
     private auth: AuthService
-  ) {
-    this.supabase = createClient(
-      environment.supabase.url,
-      environment.supabase.publicKey
-    )
-  }
+  ) {}
 
   ngOnInit() {
     let id_user=this.auth.idUsuarios();
@@ -45,21 +37,10 @@ export class OfferComponent implements OnInit {
         user_id: [id_user, Validators.required],
       }
     )
-    console.log('newOffer', this.newOffer.value)
   }
-
-  // createOffer() {
-    // this.jobsService.createJob(this.newOffer.getRawValue());
-
-    // this.http.post('https://xbslofkvpgejobohqcqp.supabase.co/rest/v1/trabajo', JSON.parse(this.newOffer.getRawValue()));
 
   createOffer() {
-
-      console.log(this.newOffer.value)
-      this.jobsService.createJob(this.newOffer.value);
-
+    this.jobsService.createJob(this.newOffer.getRawValue());
   }
-
-
 
 }

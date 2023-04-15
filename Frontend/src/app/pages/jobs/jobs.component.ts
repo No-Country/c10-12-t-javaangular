@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { faBriefcase, faGlobe } from '@fortawesome/free-solid-svg-icons';
-import { ApiService } from 'src/app/services/api.service';
+import { JobsService } from 'src/app/services/jobs.service';
 
 @Component({
   selector: 'app-jobs',
@@ -13,7 +13,7 @@ export class JobsComponent {
   faGlobe = faGlobe;
 
   constructor(
-    private api: ApiService
+    private jobsService: JobsService
   ) {}
 
   allJobs: any[] = [];
@@ -24,16 +24,14 @@ export class JobsComponent {
 
 
   getAllJobs() {
-    this.api.getAllJobs().subscribe(
+    this.jobsService.getAllOffers().subscribe(
       (data) => {
         this.allJobs = data;
-        console.log(this.allJobs);
       },
       (error) => {
         console.error(error);
       }
     );
-    console.log(this.allJobs)
   }
 
 }

@@ -26,36 +26,11 @@ export class ProfileComponent {
     this.hidde = !this.hidde;
   }
 
-
-
   updateProfilePhoto() {
     console.log('Acá iría la nueva foto');
   }
 
   faUser = faUser;
-
-  // user$ = this.auth.authState$.pipe(
-  //   filter(state => state ? true : false)
-  // );
-
-  // user: User | null = null;
-  // user$: Observable<{ user: User | null }>;
-
-  // ngOnInit(): void {
-  //   this.auth.user$.subscribe(user => {
-  //     this.user = user.user;
-  //   });
-  //   //
-  //   this.auth.user$.subscribe((userData) => {
-  //     this.user = userData.user;
-  //     console.log('ngOnInit de navbar',userData)
-  //   });
-  //   this.auth.userSubject.subscribe(user => {
-  //     this.user = user;
-  //     console.log('desde navbar component', this.user)
-  //   });
-  //   console.log('navbar res', this.user)
-  // }
 
   constructor(
     private auth: AuthService,
@@ -63,15 +38,7 @@ export class ProfileComponent {
     public dialog: MatDialog
   ) {
     this.nombreUsuario();
-    this.dateUser=this.auth.datosUsuarios();
-    console.log(this.auth.datosUsuarios())
   }
-
-  // async logout() {
-  //   await this.auth.logout();
-  //   this.router.navigate(['/login']);
-  //   location.reload();
-  // }
 
   nombreUsuario(){
     if(this.auth.access_token()){

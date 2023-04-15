@@ -15,42 +15,25 @@ export class NavbarComponent {
 
   faUser = faUser;
 
-  // user$ = this.auth.authState$.pipe(
-  //   filter(state => state ? true : false)
-  // );
 
   user: User | null = null;
-  user$: Observable<{ user: User | null }>;
+  user$: Observable<User | null> = this.auth.user$;
 
   constructor(
     private auth: AuthService,
     private router: Router
   ) {
-    this.user$ = this.auth.user$;
-    console.log(this.auth.access_token);
+
+
   }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(user => {
-      this.user = user.user;
-    });
-    //
-    this.auth.user$.subscribe((userData) => {
-      this.user = userData.user;
-      console.log('ngOnInit de navbar',userData)
-    });
-    this.auth.userSubject.subscribe(user => {
-      this.user = user;
-      console.log('desde navbar component', this.user)
-    });
-    console.log('navbar res', this.user)
+    this.auth.setUser()
   }
 
   async logout() {
-    // await this.auth.logout();
     await this.auth.signOut();
     this.router.navigate(['/login']);
-    // location.reload();
   }
 
   isOptionsMenuOpen = false;

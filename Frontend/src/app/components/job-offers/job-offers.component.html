@@ -39,7 +39,6 @@
       <fa-icon class="pr-2" [icon]="faPlus"></fa-icon>
       Crear oferta
     </button>
-    <button (click)="compareId()">compare</button>
   </div>
   <div class="flex flex-col gap-6">
     <app-job-card *ngFor="let item of trabajos" [offer]="item"></app-job-card>

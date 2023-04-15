@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
-import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
-
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+import { RouterModule, Routes } from '@angular/router';
 
 import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -20,6 +17,7 @@ import { EventsComponent } from './components/events/events.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { InfoComponent } from './pages/info/info.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -41,9 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'alojamiento',
-    component: HostingComponent,
-    // canActivate: [AuthGuard],
-    // data: { authGuardPipe : redirectUnauthorizedToLogin }
+    component: HostingComponent
   },
   {
     path: 'jobs',
@@ -86,9 +82,7 @@ const routes: Routes = [
   {
     path:'profile',
     component: ProfileComponent,
-    // canActivate: [AuthGuard]
-    // canActivate: [AuthGuard],
-    // data: { authGuardPipe : redirectUnauthorizedToLogin }
+    canActivate: [AuthGuard]
   },
   {
     path: 'info',
