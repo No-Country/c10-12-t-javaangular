@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { filter } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { User } from '@supabase/supabase-js';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,14 +8,16 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.css']
 })
-export class BannerComponent {
+export class BannerComponent implements OnInit {
 
-  // user$ = this.auth.authState$.pipe(
-  //   filter(state => state ? true : false)
-  // );
+  isLogged$: Observable< User | null> = this.auth.user$;
 
   constructor(
     private auth: AuthService,
   ) { }
+
+  ngOnInit(): void {
+    this.auth.setUser();
+  }
 
 }

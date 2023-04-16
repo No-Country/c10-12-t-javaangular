@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { AuthService } from './auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -12,18 +12,19 @@ export class JobsService {
   private apiUrl = environment.supabase.url;
   private supabaseKey = environment.supabase.publicKey;
 
-  offers: any = [];
-  offers$!: Observable<any[]>;
   editOfferId: number | undefined;
   userOffers: any = [];
   appliedOffers: any = [];
+
+  offers = new BehaviorSubject<any>(null);
+  offers$ = this.offers.asObservable();
 
   constructor(
     private http: HttpClient,
     private auth: AuthService
   ) { }
 
-  getAllOffers(): Observable<any[]> {
+  getAllOffers(): void {
     const url = `${this.apiUrl}/rest/v1/trabajo`;
     const token = this.auth.access_token();
     const headers = new HttpHeaders({
@@ -31,7 +32,13 @@ export class JobsService {
       Authorization: `Bearer ${token}`,
     });
     const options = { headers: headers };
-    return this.http.get<any[]>(url, options);
+    this.http.get<any[]>(url, options).subscribe({
+      next: (res) => {
+        this.offers.next(res)
+        this.offers$ = this.offers.asObservable();
+      },
+      error: error => console.log(error)
+    });
   }
 
   createJob(job: string) {
@@ -42,7 +49,11 @@ export class JobsService {
       Authorization: `Bearer ${token}`
     });
     const options = { headers: headers };
-    return this.http.post(url, job, options).subscribe();
+    this.http.post(url, job, options).subscribe({
+      next: () => {
+        this.getAllOffers();
+      }
+    });
   }
 
   updateJob(jobOffer: any, id: number) {
@@ -53,7 +64,11 @@ export class JobsService {
       Authorization: `Bearer ${token}`,
     });
     const options = { headers: headers };
-    return this.http.patch(`${url}?id=eq.${id}`, jobOffer, options);
+    this.http.patch(`${url}?id=eq.${id}`, jobOffer, options).subscribe({
+      next: () => {
+        this.getAllOffers();
+      }
+    })
   }
 
   deleteJob(id: number) {
@@ -64,7 +79,11 @@ export class JobsService {
       Authorization: `Bearer ${token}`,
     });
     const options = { headers: headers };
-    return this.http.delete(`${url}?id=eq.${id}`, options).subscribe();
+    this.http.delete(`${url}?id=eq.${id}`, options).subscribe({
+      next: () => {
+        this.getAllOffers();
+      }
+    });
   }
 
   findByIdJob(id: number) {
@@ -75,7 +94,6 @@ export class JobsService {
       Authorization: `Bearer ${token}`,
     });
     const options = { headers: headers };
-    console.log('id jobService', id)
     return this.http.get(`${url}?id=eq.${id}`, options);
   }
 

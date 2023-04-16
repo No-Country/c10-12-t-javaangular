@@ -12,26 +12,6 @@ export class JobsComponent {
   faBriefcase = faBriefcase;
   faGlobe = faGlobe;
 
-  constructor(
-    private jobsService: JobsService
-  ) {}
-
-  allJobs: any[] = [];
-
-  ngOnInit() {
-    this.getAllJobs();
-  }
-
-
-  getAllJobs() {
-    this.jobsService.getAllOffers().subscribe(
-      (data) => {
-        this.allJobs = data;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
+  constructor() {}
 
 }
