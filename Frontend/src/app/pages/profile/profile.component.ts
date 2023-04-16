@@ -14,6 +14,11 @@ import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/f
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+
+  img = {
+    default: 'src/assets/img/img.png'
+  };
+
   meOffert=[];
   hidde = true;
   dateUser="";
@@ -46,8 +51,10 @@ export class ProfileComponent {
     }
   }
 
-  deleteAccount() {
-    console.log('Acá se elimina tu cuenta');
-    this.dialog.open(DeleteAccountDialogComponent);
-  }
+  // deleteAccount() {
+  //   console.log('Acá se elimina tu cuenta');
+  //   this.auth.deleteAccount();
+  //   this.dialog.open(DeleteAccountDialogComponent);
+  // }
+
 }
