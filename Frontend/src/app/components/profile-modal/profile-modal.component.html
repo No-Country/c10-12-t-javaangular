@@ -1,0 +1,22 @@
+<div class="w-full bg-white rounded-3xl">
+  <form [formGroup]="newOffer" (ngSubmit)="updateProfile()">
+    <h2 class="p-0 text-2xl font-normal" mat-dialog-title>Editar Perfil</h2>
+    <mat-dialog-content class="mat-typography">
+      <div class="flex flex-col gap-6">
+        <input type="text" placeholder="Nombre" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="cargo">
+        <input type="text" placeholder="Apellido" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="ubicacion">
+        <input type="number" placeholder="Foto" value="Sueldo mensual" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="sueldo">
+        <input type="text" placeholder="País" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="descripcion">
+        <input type="number" placeholder="Descripción" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="telefono">
+        <input type="text" placeholder="Telefono" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="status">
+        <input type="text" placeholder="Social" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="name">
+      </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <div  class="flex gap-2">
+          <button mat-button mat-dialog-close class="px-4 py-2 border border-transparent rounded-full text-secondary hover:border hover:border-secondary">Cancel</button>
+          <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="bg-primary border border-transparent text-white px-4 py-2 rounded-full hover:bg-[#7cdcd4]" type="submit">Actualizar</button>
+        </div>
+      </mat-dialog-actions>
+  </form>
+</div>

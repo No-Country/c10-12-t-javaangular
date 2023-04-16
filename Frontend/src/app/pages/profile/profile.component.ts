@@ -6,6 +6,7 @@ import { filter } from 'rxjs';
 import { DeleteAccountDialogComponent } from 'src/app/components/delete-account-dialog/delete-account-dialog.component';
 
 import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/free-solid-svg-icons';
+import { ProfileModalComponent } from 'src/app/components/profile-modal/profile-modal.component';
 
 
 @Component({
@@ -15,9 +16,7 @@ import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/f
 })
 export class ProfileComponent {
 
-  img = {
-    default: 'src/assets/img/img.png'
-  };
+  profile: any;
 
   meOffert=[];
   hidde = true;
@@ -56,5 +55,13 @@ export class ProfileComponent {
   //   this.auth.deleteAccount();
   //   this.dialog.open(DeleteAccountDialogComponent);
   // }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ProfileModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 }

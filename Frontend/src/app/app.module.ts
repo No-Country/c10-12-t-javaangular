@@ -58,6 +58,7 @@ import { AboutInfoComponent } from './pages/about-us/components/about-info/about
 import { MembersComponent } from './pages/about-us/components/members/members.component';
 import { MembersCardComponent } from './pages/about-us/components/members-card/members-card.component';
 import { NoCountryComponent } from './pages/about-us/components/no-country/no-country.component';
+import { ProfileModalComponent } from './components/profile-modal/profile-modal.component';
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { NoCountryComponent } from './pages/about-us/components/no-country/no-co
     MembersComponent,
     MembersCardComponent,
     NoCountryComponent,
+    ProfileModalComponent,
   ],
   imports: [
     BrowserModule,
