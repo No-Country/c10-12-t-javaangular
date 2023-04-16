@@ -10,10 +10,10 @@ import { AuthService } from './auth.service';
 export class ProfileService {
 
 
-SUPABASE_URL = environment.supabase.url;
-SUPABASE_KEY = environment.supabase.publicKey;
+  SUPABASE_URL = environment.supabase.url;
+  SUPABASE_KEY = environment.supabase.publicKey;
 
-supabase = createClient(this.SUPABASE_URL, this.SUPABASE_KEY);
+  supabase = createClient(this.SUPABASE_URL, this.SUPABASE_KEY);
 
   constructor(
     private auth: AuthService
@@ -31,10 +31,11 @@ supabase = createClient(this.SUPABASE_URL, this.SUPABASE_KEY);
       } else {
         console.log(data[0]);
       }
+    }
   }
-}
 
   updateProfile() {
     alert('Tu perfil se ha actualizado')
   }
+
 }

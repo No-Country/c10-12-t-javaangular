@@ -13,7 +13,7 @@ export class MembersComponent {
       'role': 'Project Manager',
       'img': '../../../../../assets/img/team-members/juan-pablo.png',
       'linkedin': '',
-      'quote': 'upa',
+      'quote': '"Amo codear desde que tengo 7 años. Me encanta trabajar de lo que amo."'
     },
     {
       'name': 'Diego A. Muñoz',
