@@ -38,7 +38,7 @@ export class EditJobOfferComponent {
 
   editOffer() {
     if (this.id) {
-      this.jobsService.updateJob(this.editedOffer.getRawValue(), this.id).subscribe();
+      this.jobsService.updateJob(this.editedOffer.getRawValue(), this.id);
     }
   } 
 

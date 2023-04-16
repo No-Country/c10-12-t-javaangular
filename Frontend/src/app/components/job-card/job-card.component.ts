@@ -40,13 +40,11 @@ export class JobCardComponent implements OnInit {
   }
 
   deleteOffer(id: number) {
-    alert('oferta eliminada')
     this.jobsService.deleteJob(id);
 
   }
 
   openDialog(id:number) {
-    console.log(id)
     this.jobsService.editOfferId=id;
 
     const dialogRef = this.dialog.open(EditJobOfferComponent);

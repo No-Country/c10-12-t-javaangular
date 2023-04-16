@@ -28,7 +28,7 @@ export class NavbarComponent {
   }
 
   ngOnInit(): void {
-    this.auth.setUser()
+    this.auth.setUser();
   }
 
   async logout() {

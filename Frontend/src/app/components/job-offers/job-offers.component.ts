@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./job-offers.component.css']
 })
 export class JobOffersComponent implements OnInit {
-  meOffert=[];
+  meOffert=[];  
 
   faPlus = faPlus;
 
@@ -20,15 +20,15 @@ export class JobOffersComponent implements OnInit {
   trabajos_filter:any[]=[];
   id_user_log:any;
 
-  offers$: Observable<any[]> = this.jobsService.offers$;
+  offers$: Observable<any[]> = this.jobsService.offers;
 
   constructor(
     public dialog: MatDialog,
     private jobsService: JobsService,
     private auth:AuthService) {
     this.id_user_log=this.auth.idUsuarios();
-    this.jobsService.getAllOffers().subscribe(res=>{this.trabajos=res});
   }
+
   compareId(){
     this.trabajos=this.trabajos.filter(a=>a.user_id==this.auth.idUsuarios())
     console.log(this.trabajos_filter);
@@ -48,7 +48,6 @@ export class JobOffersComponent implements OnInit {
 
   ngOnInit(): void {
     this.jobsService.getAllOffers();
-    this.offers$ = this.jobsService.offers$;
   }
 
   filtrarRecientes() {
