@@ -13,21 +13,21 @@ import { CreateEventComponent } from '../create-event/create-event.component';
 export class EventsComponent {
   Events = [
     {
-      'fecha': "22 de septiembre",
+      'fecha': "22 de sep 2023",
       'hora':"19:00hs",
       'descripcion':"Gran Encuentro",
       'confirmacion':'5 personas confirmaron',
       'lugar':"jardin botanico"
     },
     {
-      'fecha': "05 de octubre",
+      'fecha': "05 de oct 2023",
       'hora':"20:00hs",
       'descripcion':"Los pericos",
       'confirmacion':'4 personas confirmaron',
       'lugar':"plaza central"
     },
     {
-      'fecha': "24 de diciembre",
+      'fecha': "24 de dic 2023",
       'hora':"00:00hs",
       'descripcion':"fiesta de navidad",
       'confirmacion':'100 personas confirmaron',

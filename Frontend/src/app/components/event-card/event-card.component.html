@@ -1,17 +1,28 @@
-<div class="flex bg-primary rounded-3xl  border-[#F8F8F8]">
-    <div class="flex flex-col justify-between p-10 pr-5 text-3xl font-medium text-white fechas ">
-        <h2> {{Events.fecha}} </h2>
-        <h3>{{Events.hora}}</h3>
-    </div>
-    <div class="titulo flex flex-col gap-5 grow bg-[#F8F8F8] p-5 rounded-3xl  text-black">
-        <div class="flex flex-col">
-            <h1 class="text-2xl font-medium ">{{Events.descripcion}}</h1>
-            <p class="text-sm font-normal p-1 flex gap-1"><fa-icon [icon]="faLocation"></fa-icon>{{Events.lugar}}</p>
+<div class="flex flex-col-reverse  lg:flex-row bg-primary rounded-3xl  border-[#F8F8F8]">
+
+    <div class="flex flex-col items-center lg:flex-col lg:justify-between lg:items-start lg:p-8 lg:pr-5 text-3xl font-medium text-white fechas ">
+        <h2 class="hidden lg:block lg:w-3/4/3">{{Events.fecha}} </h2>
+        <h3 class="hidden lg:block">{{Events.hora}}</h3>
+        <div class="flex flex-col py-5 w-full items-center p-2 gap-4 lg:hidden">
+            <p class="text-base font-bold ">{{Events.descripcion}}</p>
+            <p class="text-base font-medium hidden sm:block">{{Events.confirmacion}}</p>
+            <button class="text-sm  w-full lg:px-4 py-2 text-white rounded-full bg-accent ">¡Quiero ir!</button>
         </div>
-        <p class="text-base font-medium">{{Events.confirmacion}}</p>
+    </div>
+
+    <div class="titulo flex flex-col gap-5 grow bg-[#F8F8F8] p-5  rounded-3xl  text-black lg:w-2/3">
+        <div class="flex flex-col items-center lg:items-start gap-3">
+            <h1 class="text-[28px] font-medium hidden lg:block">{{Events.descripcion}}</h1>
+           <div class="font-bold">
+               <h2 class="lg:hidden">{{Events.fecha}} </h2>
+               <h3 class="sm:block lg:hidden">{{Events.hora}}</h3>
+               <p class="text-[10px] font-normal gap-1 items-center lg:text-sm lg:font-normal lg:p-1 flex lg:gap-1"><fa-icon [icon]="faLocation" class="text-xl sm:font-normal lg:text-3xl"></fa-icon>{{Events.lugar}}</p>
+           </div>
+        </div>
+        <p class="text-base font-medium hidden lg:block">{{Events.confirmacion}}</p>
         <div class="flex items-center justify-between">
-            <button class="px-4 py-2 text-white rounded-full bg-accent">¡Quiero ir!</button>
-            <img src="../../../assets/img/face-profile.png" alt="" class=" aspect-square h-[3rem]">
+            <button class="px-4 py-2 text-white rounded-full bg-accent hidden lg:block">¡Quiero ir!</button>
+            <img src="../../../assets/img/face-profile.png" alt="" class=" aspect-square h-[3rem] hidden lg:block ">
         </div>
     </div>
 
