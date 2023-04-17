@@ -41,21 +41,19 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login() {
+  errorMessage: boolean = false;
+
+  async login() {
     if (this.form.valid) {
-      const { email, password } = this.form.getRawValue();
-      // this.auth.login(email, password)
-      // .then(() => {
-      //   this.router.navigate(['/landing']);
-      // })
-      // .catch(error => {
-      //   console.error(error);
-      // });
+        try {
+        const { email, password } = this.form.getRawValue();
+        return await this.auth.signIn({ email: email, password: password })
 
-      // Supabase
-
-      this.auth.signIn({email, password});
-      this.router.navigate(['/landing']);
+      } catch (error) {
+        console.log(error)
+        this.errorMessage = true;
+        console.log(this.errorMessage)
+      }
 
     } else {
       this.form.markAllAsTouched();

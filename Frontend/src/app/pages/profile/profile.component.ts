@@ -49,9 +49,12 @@ export class ProfileComponent implements OnInit {
   faPhone = faPhone;
   faHashtag = faHashtag;
 
+  email: string | undefined;
+
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
     this.nombreUsuario();
+    this.email = this.auth.getEmail()
   }
 
   mostrar() {
