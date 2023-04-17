@@ -34,6 +34,10 @@ export class AuthService {
     return this.getSession()['user']['id'];
   }
 
+  public getEmail() {
+    return this.getSession()['user']['email'];
+  }
+
   async signUp(credentials: Credentials): Promise<any>{
     await this.supabaseClient.auth.signUp(credentials);
   }
