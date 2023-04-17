@@ -1,4 +1,4 @@
-<div class="bg-white rounded-3xl  w-[700px]">
+<div class="bg-white rounded-3xl w-full sm:w-[550px]">
 
   <div class="title bg-secondary flex justify-start p-3 text-white font-bold text-4xl gap-10 ">
     <div class="flex aspect-square">
@@ -6,10 +6,11 @@
         <fa-icon [icon]="faInfo" class="text-base font-medium"></fa-icon>
       </div>
     </div>
-    <h1>Detalles del Evento </h1>
+    <h1 class="text-xl">Detalles del Evento </h1>
   </div>
+<div class="p-5">
 
-  <div class="p-4 flex justify-start rounded-md border border-gray-300 m-6 ">
+  <div class="p-7 flex justify-start lg:rounded-md lg:border lg:border-gray-300  ">
     <div class="flex flex-col gap-5">
       <div class="flex">
         <h1>La idea es encontrarnos en plaza serrano y definir un lugar al aire libre para compartir el almuerzo,
@@ -27,15 +28,16 @@
 
         <p class="text-base font-normal text-secondary"><fa-icon [icon]="faClock"
             class="text-base font-medium text-primary mr-3"></fa-icon> 12/12/2023</p>
-
-
       </div>
-
-    </div>
+    </div>  
   </div>
-  <div class="flex flex-row justify-end w-full gap-3 px-5 pb-5">
-    <button class="rounded-full px-4 py-2"> Cancelar</button>
-    <button class="bg-accent rounded-full px-4 py-2"> Confirmar asistencia</button>
+
+</div>
+
+
+  <div class="flex  flex-col px-7 pb-7 gap-5 lg:flex-row lg:justify-end w-full lg:gap-5 lg:px-5 lg:pb-5 lg:p-11">
+    <button mat-button mat-dialog-close class="rounded-full px-2 py-1 border border-secondary lg:rounded-full lg:px-4 lg:py-2"> Cancelar</button>
+    <button class="bg-accent rounded-full px-2 py-1 lg:px-4 lg:py-2 text-white font-bold"> Confirmar asistencia</button>
   </div>
 
 </div>
