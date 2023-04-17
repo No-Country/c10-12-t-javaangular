@@ -33,6 +33,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
+    if (this.auth.access_token()) {
+      this.router.navigate(['/profile']);
+    }
   }
 
   
