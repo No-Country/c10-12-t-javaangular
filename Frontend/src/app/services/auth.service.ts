@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, user } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { createClient, SupabaseClient, User, AuthApiError } from '@supabase/supabase-js';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,7 +19,9 @@ export class AuthService {
   public userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
 
-  constructor(private afAuth: Auth) {
+  constructor(
+    private afAuth: Auth,
+    private router: Router) {
     this.supabaseClient = createClient(environment.supabase.url, environment.supabase.publicKey);
   }
 
@@ -34,25 +37,27 @@ export class AuthService {
     return this.getSession()['user']['id'];
   }
 
-  public getEmail() {
+  getEmail() {
     return this.getSession()['user']['email'];
   }
 
   async signUp(credentials: Credentials): Promise<any>{
     await this.supabaseClient.auth.signUp(credentials);
+    await this.signIn(credentials);
+    await this.router.navigate(['/profile'])
   }
 
-  async signIn(credentials: Credentials): Promise<any> {
+  async signIn(credentials: Credentials): Promise<void> {
     try {
       const { data, error } = await this.supabaseClient.auth.signInWithPassword(credentials);
       if (error) {
-        return error;
+        throw new Error(error.message); // Lanza excepción en caso de error de autenticación
       }
       this.setUser();
-      return user;
-
+      await this.router.navigate(['/profile']);
     } catch (error) {
-      return error as AuthApiError;
+      console.log('auth error:', error);
+      throw new Error('Error de autenticación'); // Lanza excepción para manejar errores de manera más efectiva
     }
   }
 

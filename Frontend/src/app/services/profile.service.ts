@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileService implements OnInit {
+export class ProfileService {
 
   private apiUrl = environment.supabase.url;
   private supabaseKey = environment.supabase.publicKey;
@@ -25,110 +25,22 @@ export class ProfileService implements OnInit {
     private http: HttpClient,
   ) { }
 
-  email: any = '';
 
-  ngOnInit() {
-    // this.getProfile()
-    console.log(this.email = this.auth.getEmail())
-    console.log('email desde el profile', this.email)
+  submitProfile(profile: any) {
+    const url = `${this.apiUrl}/rest/v1/profile`;
+    const token = this.auth.access_token();
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization: `Bearer ${token}`
+    });
+    const options = { headers: headers };
+    this.http.post(url, profile, options).subscribe({
+      next: () => {
+        // this.submitProfile();
+      }
+    });
   }
 
-  session: any;
 
-
-
-//   async getProfile() {
-//     this.session = this.auth.getSession()
-//     if (this.session) {
-//       const { data, error } = await this.supabase.from('profiles').select('*').eq('user_id', this.session.user.id);
-//       console.log('data y error desde profile-service', data, error)
-//       if (error) {
-//         console.error(error);
-//       } else {
-//         console.log(data[0]);
-//       }
-//   }
-// }
-
-// async getPerfil() {
-//   try {
-//     const { data: perfil, error } = await this.supabase
-//       .from('perfil')
-//       .select('photo')
-//       .eq('id', 1);
-
-//     if (error) {
-//       throw error;
-//     }
-//     return perfil;
-
-//   } catch (error) {
-//     console.error(error);
-//     return null;
-//   }
-// }
-
-  // updateProfile(photo: any, id: number) {
-  //   const url = `${this.apiUrl}/rest/v1/perfil`;
-  //   const token = this.auth.access_token();
-  //   const headers = new HttpHeaders({
-  //     apikey: this.supabaseKey,
-  //     Authorization: `Bearer ${token}`,
-  //   });
-  //   const options = { headers: headers };
-  //   this.http.patch(`${url}`, photo, options)
-    // .subscribe(res => {
-    //   // return this.getPerfil();
-    // })}
-
-
-
-// ChatGPT
-
-// async getProfile(userId: string): Promise<any> {
-//   const { data, error } = await this.supabaseClient
-//     .from('profiles')
-//     .select('*')
-//     .eq('user_id', userId);
-
-//   if (error) {
-//     console.error(error);
-//   } else {
-//     console.log(data);
-//     return data;
-//   }
-// }
-
-// async updateProfile(userId: string, updates: any): Promise<any> {
-//   const { data, error } = await this.supabaseClient
-//     .from('profiles')
-//     .update(updates)
-//     .eq('user_id', userId)
-//     .single();
-
-//   if (error) {
-//     throw error;
-//   }
-
-//   return data;
-// }
-// }
-// }
-//   async getProfile() {
-//     this.session = this.auth.getSession()
-//     if (this.session) {
-//       const { data, error } = await this.supabase.from('profiles').select('*').eq('user_id', this.session.user.id);
-//       console.log('data y error desde profile-service', data, error)
-//       if (error) {
-//         console.error(error);
-//       } else {
-//         console.log(data[0]);
-//       }
-//     }
-//   }
-
-//   updateProfile() {
-//     alert('Tu perfil se ha actualizado')
-//   }
 
 }
