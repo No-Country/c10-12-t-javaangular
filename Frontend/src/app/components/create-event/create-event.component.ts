@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Offer } from 'src/app/models/offers.model';
+import { faInfo,faLocationDot,faCalendarDays,faClock } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-create-event',
@@ -8,6 +10,11 @@ import { Offer } from 'src/app/models/offers.model';
   styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent {
+
+  faClock=faClock;
+  faUbication=faLocationDot;
+  faCalendari=faCalendarDays;
+
   newOffer: FormGroup = new FormGroup({
 
   });
