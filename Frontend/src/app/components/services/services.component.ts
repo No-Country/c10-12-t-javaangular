@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { User } from '@supabase/supabase-js';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-services',
@@ -24,5 +27,15 @@ export class ServicesComponent {
       'img': '../../../assets/img/comunidad.png'
     }
   ]
+
+  isLogged$: Observable<User | null> = this.auth.user$;
+
+  constructor(
+    private auth: AuthService,
+  ) { }
+
+  ngOnInit(): void {
+    this.auth.setUser();
+  }
 
 }

@@ -1,16 +1,11 @@
 <ng-container *ngIf="isLogged$ | async; else elseTemplate">
 
-  <div class="container px-5 mx-auto mt-5 xl:mt-10">
-    
+  <div class="container px-5 mx-auto mt-5 xl:mt-10">    
     <div class="relative h-44 bg-[center] w-full bg-img sm:bg-[center_top_-28rem] lg:bg-[center_top_-48rem] xl:bg-[center_top_-58rem] 2xl:bg-[center_top_-68rem]  rounded-xl xl:rounded-3xl sm:h-56 md:h-[350px] xl:h-[400px]">
-
       <div class="absolute flex items-end w-full h-full p-5 xl:p-9 rounded-xl xl:rounded-3xl bg-black/30">
         <p class="text-2xl font-bold text-white md:text-5xl lg:text-6xl sm:text-3xl font-primary xl:w-2/3">Explorá los servicios populares</p>
-      </div>
-
-      
-    </div>
-    
+      </div>      
+    </div>    
   </div>
   
 </ng-container>
@@ -18,24 +13,22 @@
 <ng-template #elseTemplate>
 
   <div class="flex w-full py-4 md:py-10">
-    <div class="container grid grid-cols-3 gap-3 px-5 mx-auto md:gap-5 lg:grid-cols-2 lg:flex-row sm:space-y-0">
-      <div class="flex flex-col items-start justify-center w-full col-span-2 lg:col-span-1 lg:py-14">
-        <h1 class="w-full text-2xl font-semibold md:text-6xl sm:text-4xl font-primary xl:w-11/12">Haz de Argentina tu
-          nuevo hogar</h1>
-        <p class="mt-2 text-sm font-semibold sm:text-base md:text-xl md:mt-11 sm:mt-5 xl:w-4/5">No te sientas solo en tu
-          nueva aventura.</p>
-        <p class="hidden mt-2 text-xs font-normal md:text-xl sm:block xl:w-4/5">Te ofrecemos toda la ayuda y el apoyo que
-          necesitas para establecerte en Argentina con éxito.</p>
-        <!-- <ng-container *ngIf="user$ | async as user; else notUser">
-        </ng-container> -->
-        <ng-template #notUser>
+    <div class="container grid grid-cols-12 gap-3 px-5 mx-auto md:gap-5">
+      <div class="flex flex-col items-start justify-center w-full col-span-7 lg:py-14">
+        <div class="w-full xl:w-4/5">
+          <h1 class="w-full text-2xl font-semibold md:text-6xl sm:text-4xl font-primary">Haz de Argentina tu nuevo hogar</h1>
+          <p class="mt-2 text-sm font-semibold sm:text-base md:text-xl md:mt-11 sm:mt-5">No te sientas solo en tu nueva aventura.</p>
+          <p class="hidden mt-2 text-xs font-normal md:text-xl sm:block">Te ofrecemos toda la ayuda y el apoyo que
+            necesitas para establecerte en Argentina con éxito.</p>
           <button
             class="px-10 py-2 mt-3 text-sm font-semibold text-white rounded-full md:text-2xl bg-accent md:mt-11 font-primary"
-            routerLink="/register">¡Comenzá hoy!</button>
-        </ng-template>
+            routerLink="/register">
+            ¡Comenzá hoy!
+          </button>
+        </div>
       </div>
-      <div class="col-span-1 overflow-hidden bg-img-2 rounded-3xl">
-      </div>
+      <div class="col-span-5 overflow-hidden bg-img-2 rounded-3xl">
+      </div>      
     </div>
   </div>
 

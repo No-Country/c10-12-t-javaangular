@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
   profile: any;
 
@@ -48,6 +48,11 @@ export class ProfileComponent {
   faLocation = faLocationDot;
   faPhone = faPhone;
   faHashtag = faHashtag;
+
+  ngOnInit(): void {
+    window.scrollTo({ top: 0 });
+    this.nombreUsuario();
+  }
 
   mostrar() {
     this.hidde = !this.hidde;
@@ -108,10 +113,10 @@ export class ProfileComponent {
   user: any;
 
 
-  async ngOnInit() {
-    let userId = this.auth.idUsuarios();
-    // this.user = await this.profileService.getProfile(userId);
-  }
+  // async ngOnInit() {
+  //   let userId = this.auth.idUsuarios();
+  //   this.user = await this.profileService.getProfile(userId);
+  // }
 
   // async updateProfile() {
   //   const file = this.formularioPerfil.getRawValue();

@@ -1,55 +1,118 @@
-<nav class="border-b border-gray-300">
-  <div class="container flex flex-row-reverse flex-wrap items-center justify-between p-5 mx-auto lg:justify-between lg:flex-row">
-    <button data-collapse-toggle="navbar-default" type="button"
-      class="inline-flex items-center mr-3 text-sm text-gray-500 rounded-lg lg:hidden focus:outline-none"
-      aria-controls="navbar-default" aria-expanded="false">
-      <span class="sr-only">Open main menu</span>
-      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd"
-          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-          clip-rule="evenodd"></path>
-      </svg>
-    </button>
-    <a href="/" class="flex items-center">
-      <img src="./../../../assets/img/logo.png" alt="logo">
+<!-- nav -->
+<div class="border-b-2 border-gray-300 ">
+  <div class="container flex items-center justify-between gap-5 px-5 py-4 mx-auto">
+    <a href="/" class="flex items-center w-auto">
+      <img class="w-40 aspect-auto" src="./../../../assets/img/6. Logo Horizontal.png" alt="logo">
     </a>
-    <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
-      <ul class="flex flex-col mt-4 text-xl font-medium rounded-lg lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0">
+    <ul class="hidden gap-5 md:flex">
+      <li>
+        <a routerLink="/alojamiento" routerLinkActive="active" class="text-lg font-medium">Alojamiento</a>
+      </li>
+      <li>
+        <a routerLink="/jobs" routerLinkActive="active" class="text-lg font-medium">Trabajo</a>
+      </li>
+      <li>
+        <a routerLink="/comunidad" routerLinkActive="active" class="text-lg font-medium">Comunidad</a>
+      </li>
+    </ul>
+    <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+      type="button"
+      class="md:hidden">
+      <span class="sr-only">Open sidebar</span>
+      <fa-icon class="text-dark" [icon]="faBars"></fa-icon>
+    </button>
+    <div class="hidden md:block">      
+      <ng-container *ngIf="user$ | async as user; else notUser">
+        <div *ngIf="user" class="relative items-center hidden md:flex">
+          <button type="button" id="options-menu-button" (click)="toggleOptionsMenu()"
+            [attr.aria-expanded]="isOptionsMenuOpen ? 'true' : 'false'"
+            class="inline-flex justify-center w-full text-sm font-medium rounded-full shadow-sm focus:outline-none">
+            <span class="sr-only">Open options</span>
+            <img class="w-10 h-10 rounded-full" src="./../../../assets/img/face-profile.png" alt="">
+          </button>
+          <div id="options-menu" [hidden]="!isOptionsMenuOpen" aria-labelledby="options-menu-button"
+            class="absolute right-0 z-10 w-48 overflow-hidden bg-white rounded-tr-none shadow-lg top-16 rounded-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <a routerLink="/profile" class="block p-4 cursor-pointer text-primary hover:bg-primary hover:text-white"
+              (click)="toggleOptionsMenu()">Perfil</a>
+            <a (click)="logout(); toggleOptionsMenu()" routerLink="/login"
+              class="block p-4 cursor-pointer text-primary hover:bg-primary hover:text-white">Salir</a>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #notUser>
+        <button class="px-6 py-2 text-sm font-semibold text-white rounded-full bg-primary font-primary"
+          routerLink="/login">Iniciar</button>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<aside id="default-sidebar"
+  class="fixed top-0 left-0 z-40 w-full h-screen transition-transform -translate-x-full sm:w-80 md:hidden"
+  aria-label="Sidebar">
+  <div class="flex flex-col h-full overflow-y-auto bg-white">    
+    <!-- esto tiene que ser igual al nav -->
+    <div class="border-b-2 border-gray-300">
+      <div class="container flex justify-between gap-5 px-5 py-4 mx-auto">    
+        <a href="/" class="flex items-center w-auto">
+          <img class="w-40 aspect-auto" src="./../../../assets/img/6. Logo Horizontal.png" alt="logo">
+        </a>
+        <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+          type="button" class="md:hidden">
+          <span class="sr-only">Close sidebar</span>
+          <fa-icon class="text-dark" [icon]="faXmark"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <!-- =============================== -->
+    <div *ngIf="user$ | async" class="flex flex-col items-center justify-center gap-2 px-5 py-6 border-b border-gray-300 sm:items-start">
+      <div class="w-20 overflow-hidden rounded-full aspect-square">
+        <img class="object-cover w-full h-full" src="./../../../assets/img/couchsurfing-banner.png" alt="">
+      </div>
+      <p class="text-xl font-bold">Thomas Wayne</p>
+    </div>      
+    <div class="px-5 py-6 border-b border-gray-300">
+      <ul class="flex flex-col gap-5 text-lg font-medium text-center sm:text-left">
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 rounded lg:p-0" aria-current="page">Migración</a>
+          <a 
+            data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" routerLink="/alojamiento">
+            Alojamiento
+          </a>
         </li>
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 rounded lg:p-0" aria-current="page">Guias</a>
+          <a 
+            data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" routerLink="/jobs">
+            Trabajo
+          </a>
         </li>
         <li>
-          <a routerLink="/alojamiento" routerLinkActive="active" class="block py-2 pl-3 pr-4 border-b-4 border-transparent rounded lg:p-0" aria-current="page">Alojamiento</a>
-        </li>
-        <li>
-          <a class="block py-2 pl-3 pr-4 border-b-4 border-transparent rounded lg:p-0" aria-current="page" routerLink="/jobs" routerLinkActive="active">Trabajo</a>
-        </li>
-        <li>
-          <a routerLink="/comunidad" class="block py-2 pl-3 pr-4 border-b-4 border-transparent rounded lg:p-0" aria-current="page" routerLinkActive="active">Comunidad</a>
+          <a
+            data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" routerLink="/comunidad">
+            Comunidad
+          </a>
         </li>
       </ul>
     </div>
-    <ng-container *ngIf="user$ | async as user; else notUser">
-      <div *ngIf="user" class="relative">
-        <button type="button" id="options-menu-button" (click)="toggleOptionsMenu()"
-          [attr.aria-expanded]="isOptionsMenuOpen ? 'true' : 'false'"
-          class="inline-flex justify-center w-full text-sm font-medium rounded-full shadow-sm focus:outline-none">
-          <span class="sr-only">Open options</span>
-          <img class="w-10 h-10 rounded-full" src="./../../../assets/img/face-profile.png" alt="">
+    <div class="flex flex-col items-center justify-center gap-5 px-5 py-6 sm:items-start">
+      <ng-container *ngIf="user$ | async; else noUser">
+        <button *ngIf="user$ | async"
+          data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+          class="text-lg font-medium underline text-accent underline-offset-4" (click)="logout()">
+          Cerrar sesión
         </button>
-        <div id="options-menu" [hidden]="!isOptionsMenuOpen" aria-labelledby="options-menu-button"
-          class="absolute right-0 z-10 w-48 mt-2 overflow-hidden bg-white rounded-tr-none shadow-lg rounded-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <a routerLink="/profile" class="block p-4 cursor-pointer text-primary hover:bg-primary hover:text-white" (click)="toggleOptionsMenu()">Perfil</a>
-          <a (click)="logout(); toggleOptionsMenu()" routerLink="/login" class="block p-4 cursor-pointer text-primary hover:bg-primary hover:text-white">Salir</a>
-        </div>
-      </div>
-    </ng-container>
-    <ng-template #notUser>
-      <button class="px-12 py-2 text-xl font-semibold text-white rounded-full bg-primary font-primary" routerLink="/login">Iniciar</button>
-    </ng-template>
+      </ng-container>
+      <ng-template #noUser>
+        <button
+          data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+          class="text-lg font-medium underline text-primary underline-offset-4" routerLink="/login">
+          Iniciar sesión
+        </button>
+        <button 
+          data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+          class="text-lg font-medium underline text-primary underline-offset-4" routerLink="/register">
+          Registrarse
+        </button>
+      </ng-template>
+    </div>
   </div>
-</nav>
+</aside>

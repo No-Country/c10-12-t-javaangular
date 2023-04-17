@@ -1,25 +1,28 @@
-<div class="bg-white rounded-3xl  w-[700px] h-[400px]">
-      <div class="title bg-secondary flex justify-center p-3 text-white font-bold text-4xl"> <h1>Crear Evento</h1></div>
-    <div class="container">
-      
+<div class="bg-white rounded-3xl  w-full sm:w-[550px] md:w-[650px]">
+    <div class="title bg-secondary flex justify-center p-3 text-white font-bold text-4xl">
+        <h1>Crear Evento</h1>
+    </div>
+    <div class="">
+
         <form [formGroup]="newOffer" (ngSubmit)="createOffer()">
-            
+
             <mat-dialog-content class="mat-typography">
-                <div class="flex flex-row gap-10">
+                <div class="flex flex-col lg:flex-row gap-10 ">
                     <div class="flex flex-col gap-4 rounded-sm">
-                        <input type="text" placeholder="nombreEvento"
-                            class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
+                        <input type="text" placeholder="Nombre del evento"
+                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
                             formControlName="nombreEvento">
                         <input type="date" placeholder=""
-                            class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="dia">
-                        <input type="number" placeholder="hora" value="Sueldo mensual"
-                            class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="hora">
-                        <input type="text" placeholder="ubicacion"
-                            class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
+                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="dia">
+                        <input type="time" placeholder="hora" value="Hora"
+                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="hora">
+                        <input type="text" placeholder="Ingrese la ubicación"
+                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
                             formControlName="ubicacion">
                     </div>
                     <div class="flex ">
-                        <textarea name="" id="" cols="30" class="resize-none"></textarea>
+                        <textarea name="" id="" cols="27" class="resize-none rounded p-3 sm:w-full"
+                            placeholder="Acerca del evento"></textarea>
                     </div>
 
                 </div>
@@ -36,12 +39,6 @@
             </mat-dialog-actions>
         </form>
     </div>
-    <!-- <div *ngFor="let offer of offers">
-    <div class="bg-primary">
-      <h1>{{ offer.cargo }}</h1>
-      <span>{{ offer.ubicacion }}</span><span>{{ offer.sueldo | currency }}</span>
-      <p>{{ offer.descripcion }}</p>
-    </div>
-  </div> -->
+
 
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   form = this.formBuilder.group({
     nombre_apellido: ['', Validators.required],
@@ -28,8 +28,17 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private auth: AuthService
-    ) {}
+    private auth: AuthService,
+  ) {}
+
+  ngOnInit(): void {
+    window.scrollTo({ top: 0 });
+    if (this.auth.access_token()) {
+      this.router.navigate(['/profile']);
+    }
+  }
+
+  
 
   register() {
     if (this.form.valid) {
@@ -50,4 +59,3 @@ export class RegisterComponent {
   }
 
 }
-

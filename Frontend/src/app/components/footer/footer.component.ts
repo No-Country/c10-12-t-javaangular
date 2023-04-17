@@ -15,6 +15,4 @@ export class FooterComponent {
 
   faHeart = faHeart;
 
-  constructor() {}
-
 }

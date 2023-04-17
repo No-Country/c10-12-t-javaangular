@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { faPen, faEye, faEyeSlash, faHome, faLaptop, faHeart } from '@fortawesom
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   form = this.formBuilder.nonNullable.group({
     email: ['', [Validators.email, Validators.required]],
@@ -31,9 +31,14 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private auth: AuthService
-  ) {
+    private auth: AuthService,
+  ) {}
 
+  ngOnInit(): void {
+    window.scrollTo({ top: 0 });
+    if (this.auth.access_token()) {
+      this.router.navigate(['/profile']);
+    }
   }
 
   login() {
