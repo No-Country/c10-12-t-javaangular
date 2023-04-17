@@ -113,22 +113,22 @@ export class ProfileService implements OnInit {
 //   return data;
 // }
 // }
-}
-  async getProfile() {
-    this.session = this.auth.getSession()
-    if (this.session) {
-      const { data, error } = await this.supabase.from('profiles').select('*').eq('user_id', this.session.user.id);
-      console.log('data y error desde profile-service', data, error)
-      if (error) {
-        console.error(error);
-      } else {
-        console.log(data[0]);
-      }
-    }
-  }
+// }
+//   async getProfile() {
+//     this.session = this.auth.getSession()
+//     if (this.session) {
+//       const { data, error } = await this.supabase.from('profiles').select('*').eq('user_id', this.session.user.id);
+//       console.log('data y error desde profile-service', data, error)
+//       if (error) {
+//         console.error(error);
+//       } else {
+//         console.log(data[0]);
+//       }
+//     }
+//   }
 
-  updateProfile() {
-    alert('Tu perfil se ha actualizado')
-  }
+//   updateProfile() {
+//     alert('Tu perfil se ha actualizado')
+//   }
 
 }
