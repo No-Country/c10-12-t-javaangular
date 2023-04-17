@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faEllipsisVertical, faPen, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-couchsurfing-card',
@@ -11,6 +11,23 @@ export class CouchsurfingCardComponent {
   @Input() hosting!: any;
 
   faLocationDot = faLocationDot;
+  faEllipsisVertical = faEllipsisVertical;
+  faPen = faPen;
+  faCircleXmark = faCircleXmark;
+
+  isUserPost: boolean = true;
+  editDeleteControls: boolean = false;
+
+
+  openDialog() {
+  }
+
+  deleteOffer() {
+  }
+
+  editDeleteToggle() {
+    this.editDeleteControls = !this.editDeleteControls
+  }
 
 }
 
