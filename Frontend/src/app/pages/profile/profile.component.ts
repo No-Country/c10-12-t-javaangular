@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { ProfileModalComponent } from 'src/app/components/profile-modal/profile-
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
   profile: any;
 
@@ -26,6 +26,17 @@ export class ProfileComponent {
   faPhone = faPhone;
   faHashtag = faHashtag;
 
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    public dialog: MatDialog,
+  ) {}
+  
+  ngOnInit(): void {
+    window.scrollTo({ top: 0 });
+    this.nombreUsuario();
+  }
+
   mostrar() {
     this.hidde = !this.hidde;
   }
@@ -36,13 +47,7 @@ export class ProfileComponent {
 
   faUser = faUser;
 
-  constructor(
-    private auth: AuthService,
-    private router: Router,
-    public dialog: MatDialog
-  ) {
-    this.nombreUsuario();
-  }
+  
 
   nombreUsuario(){
     if(this.auth.access_token()){

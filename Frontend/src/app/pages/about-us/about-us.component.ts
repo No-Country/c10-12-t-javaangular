@@ -1,18 +1,16 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.css']
 })
-export class AboutUsComponent {
+export class AboutUsComponent implements OnInit {
 
-  constructor(private elRef: ElementRef) {
-
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    this.elRef.nativeElement.ownerDocument.body.scrollTop = 0;
+    window.scrollTo({ top: 0 });
   }
 
 }

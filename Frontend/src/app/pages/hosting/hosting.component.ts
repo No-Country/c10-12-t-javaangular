@@ -23,8 +23,10 @@ export class HostingComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {
+  constructor() {}
 
+  ngOnInit(): void {
+    window.scrollTo({ top: 0 });
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faHouse,faCalendarDays,faComments,faHeart,faMessage } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -6,7 +6,7 @@ import { faHouse,faCalendarDays,faComments,faHeart,faMessage } from '@fortawesom
   templateUrl: './comunidad.component.html',
   styleUrls: ['./comunidad.component.css']
 })
-export class ComunidadComponent {
+export class ComunidadComponent implements OnInit {
 
   faHouse = faHouse;
   faCalendari = faCalendarDays;
@@ -14,5 +14,10 @@ export class ComunidadComponent {
   faHeart = faHeart;
   faMessage = faMessage;
 
+  constructor() {}
+
+  ngOnInit() {
+    window.scrollTo({ top: 0 });
+  }
 }
 
