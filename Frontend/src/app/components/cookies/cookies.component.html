@@ -1,0 +1,16 @@
+<div class="z-10 flex flex-col gap-6 sm:gap-7 p-6 bg-white border-2 border-gray-300 rounded-tl-[30px] rounded-tr-[30px] pt-7">
+  <div class="flex flex-col items-center justify-center gap-3 text-center text-secondary">
+    <p class="text-xl font-bold sm:text-2xl lg:text-[26px] font-primary"><fa-icon class="mr-2" [icon]="faCookieBite"></fa-icon>Valoramos tu privacidad</p>
+    <p class="sm:text-lg lg:text-xl sm:w-11/12 lg:w-7/12">Nuestro sitio utiliza cookies para <span class="font-bold">mejorar su experiencia</span> de navegación
+    en nuestra web y para mostrarle <span class="font-bold">contenidos personalizados.</span></p>
+  </div>
+  <div class="flex flex-col gap-4 sm:items-center">
+    <div class="flex gap-3 sm:w-1/2 lg:w-1/4 sm:text-lg">
+      <button class="w-full py-1 font-bold text-white rounded-full bg-primary" (click)="setCookiesConfig()">Aceptar</button>
+      <button class="w-full py-1 bg-white border-2 rounded-full border-primary text-primary" (click)="setCookiesConfig()">Declinar</button>
+    </div>
+    <div class="flex justify-center">
+      <a routerLink="/" class="text-sm font-bold sm:text-base text-primary">Conocer más <fa-icon [icon]="faAngleRight"></fa-icon></a>
+    </div>
+  </div>
+</div>
