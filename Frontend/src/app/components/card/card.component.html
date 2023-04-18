@@ -1,5 +1,5 @@
 <div class="flex h-full flex-col rounded-xl overflow-hidden border border-[#CAC4D0]">
-  <div class="aspect-video">
+  <div class="aspect-video xl:h-[250px]">
     <img class="object-cover w-full h-full bg-gray-300 aspect-video" src="{{ item.img }}" alt="">
   </div>
   <div class="flex flex-col items-center justify-between h-full pt-4 sm:px-4 sm:items-start pb-7">
@@ -7,6 +7,6 @@
       <p class="text-sm font-semibold sm:text-xl lg:text-2xl">{{ item.titulo }}</p>
       <p class="hidden text-base sm:block">{{ item.descripcion }}</p>
     </div>
-    <a class="px-3 md:px-6 py-2 text-sm mt-2 md:mt-4 md:text-xl text-white rounded-full bg-primary font-primary hover:bg-[#7edcd4] hover:border-[#7edcd4]" href="{{ item.url }}">Conocer más</a>
+    <a class="px-3 md:px-6 py-2 text-sm mt-2 md:mt-4 md:text-xl text-white rounded-full bg-primary font-primary hover:bg-[#7edcd4] hover:border-[#7edcd4]" href="{{ item.url }}">{{ item.buttonText? item.buttonText : 'Conocer más' }}</a>
   </div>
 </div>

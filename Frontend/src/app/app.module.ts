@@ -61,6 +61,7 @@ import { NoCountryComponent } from './pages/about-us/components/no-country/no-co
 import { ProfileModalComponent } from './components/profile-modal/profile-modal.component';
 import { DetailsEventComponent } from './components/details-event/details-event.component';
 import { CookiesComponent } from './components/cookies/cookies.component';
+import { ToolsComponent } from './components/tools/tools.component';
 
 
 @NgModule({
@@ -110,6 +111,7 @@ import { CookiesComponent } from './components/cookies/cookies.component';
     ProfileModalComponent,
     DetailsEventComponent,
     CookiesComponent,
+    ToolsComponent,
   ],
   imports: [
     BrowserModule,
