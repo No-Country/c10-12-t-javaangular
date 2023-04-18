@@ -31,8 +31,9 @@ export class ProfileModalComponent {
   // }
 
   updateProfile() {
-    // this.profileService.updateProfile(this.)
-    // this.jobsService.createJob(this.newOffer.getRawValue());
+   /*    this.profileService.updateProfile() */
+     
+/*      this.jobsService.createJob(this.newOffer.getRawValue()); */
   }
 
 }

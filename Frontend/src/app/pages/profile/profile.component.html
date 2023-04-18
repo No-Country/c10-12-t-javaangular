@@ -30,7 +30,7 @@
           <picture>
             <div class="bg-face w-[10rem] h-[10rem] rounded-[50%] grid justify-end">
               <!-- <input type="file" formControlName="photo" id="fileInput"> -->
-              <button type="submit"
+              <button type="submit" (click)="createProfile()"
                 class="w-[2.8rem] h-[2.8rem] text-4xl text-white bg-accent rounded-[50%] flex justify-center items-center border-[0.37rem] border-white self-end pb-1"
                 >+</button>
             </div>
@@ -69,7 +69,8 @@
       </div>
       <div class="h-1/3"></div>
       <button mat-button class="px-3 md:px-6 py-2 text-sm mt-2 md:mt-4 md:text-xl text-white rounded-full bg-primary font-primary hover:bg-[#7edcd4] hover:border-[#7edcd4]" type="button" (click)="openDialog()">Editar</button>
-      </div>
+      <button (click)="createProfile()">crear perfil</button>
+    </div>
     </div>
   </div>
 
