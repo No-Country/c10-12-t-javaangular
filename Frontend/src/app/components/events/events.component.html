@@ -1,41 +1,14 @@
 <div class="container flex flex-col min-h-screen px-5 py-8 mx-auto gap-7">
     <div class="flex flex-col gap-5 title ">
         <div class="flex flex-col gap-5">
-            <h1 class="text-4xl font-bold  text-secondary"> Eventos </h1>
-            <h3>En esta sección podrás encontrar información sobre 
-                los próximos eventos</h3>
+            <h1 class="text-4xl font-bold text-secondary"> Eventos </h1>
+            <h3>En esta sección podrás encontrar información sobre los próximos eventos</h3>
         </div>
         <div class="flex justify-end ">
-            <button class="px-10 py-2 text-white rounded-full bg-accent" (click)="openDialog()"> +Nuevo evento </button>
+            <button class="px-10 py-2 text-white rounded-full bg-accent" (click)="openDialog()">+ Nuevo evento</button>
         </div>
     </div>
-
-    <div class="grid grid-cols-2 gap-5 lg:grid-cols-2">
-
-        <app-event-card *ngFor="let event of Events" [Events]="event"></app-event-card>
-            
+    <div class="grid grid-cols-2 gap-4 sm:gap-12 lg:gap-x-[120px] lg:gap-y-[50px] lg:grid-cols-2">
+        <app-event-card class="col-span" *ngFor="let event of Events" [Events]="event"></app-event-card>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
