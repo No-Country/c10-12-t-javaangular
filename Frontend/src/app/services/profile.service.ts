@@ -23,7 +23,11 @@ export class ProfileService {
   constructor(
     private auth: AuthService,
     private http: HttpClient,
-  ) {}
+  ) { /* this.getProfile() */
+    let id=this.auth.idUsuarios();
+    console.log(id)
+   this.findByIdProfile(id);
+  }
 
 
   // submitProfile(profile: any) {
@@ -42,10 +46,11 @@ export class ProfileService {
   // }
 
 
-  apiUrl = 'https://your-supabase-url.com';
-  supabaseKey = 'your-supabase-key';
+  /* apiUrl = 'https://xbslofkvpgejobohqcqp.supabase.co';
+  supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo'; */
 
-
+  private apiUrl = environment.supabase.url;
+  private supabaseKey = environment.supabase.publicKey;
 
   // createProfile(): Observable<any> {
   //   const url = `${this.apiUrl}/rest/v1/profile`;
@@ -65,7 +70,7 @@ export class ProfileService {
 
 
 
-  async createProfile(name: string): Promise<any> {
+ /*  async createProfile(name: string): Promise<any> {
     const { data, error } = await this.supabase
       .from('profile')
       .insert({ name: name })
@@ -79,7 +84,46 @@ export class ProfileService {
       return of(data);
     }
   }
+ */
+
+  createPerfil(perfil: any) {
+    const url = `${this.apiUrl}/rest/v1/profile`;
+    const token = this.auth.access_token();
+    console.log(token)
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization:`Bearer ${token}`
+    });
+    const options = { headers: headers };
+
+    this.http.post(url, perfil, options).subscribe({
+      next: (data) => {
+        console.log(data)
+      }
+    });
+  }
+
+  getProfile(): void {
+    const url = `${this.apiUrl}/rest/v1/profile`;
+    const token = this.auth.access_token();
+    console.log(token)
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization: `Bearer ${token}`,
+    });
+    const options = { headers: headers };
+    this.http.get<any[]>(url, options).subscribe(res=>{console.log(res)})
+  }
+  findByIdProfile(id: number) {
+    const url = `${this.apiUrl}/rest/v1/profile`;
+    const token = this.auth.access_token();
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization: `Bearer ${token}`,
+    });
+    const options = { headers: headers };
+    return this.http.get(`${url}?user_id=eq.${id}`, options).subscribe(res=>{console.log(res)});
+  }
+  }
 
 
-
-}

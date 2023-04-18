@@ -23,27 +23,38 @@ export class ProfileComponent implements OnInit {
 
   formularioPerfil: FormGroup;
 
-  // ngOnInit() {
+  /*   ngOnInit() {
+  
+      this.profile = this.fb.group(
+        {
+          name: [''],
+          lastname: [''],
+          photo: [''],
+          country: [''],
+          description: [''],
+          location: [''],
+          phone: [''],
+          user_id: [id_user, Validators.required],
+        }
+      )
+    } */
 
-  //   this.profile = this.fb.group(
-  //     {
-  //       name: [''],
-  //       lastname: [''],
-  //       photo: [''],
-  //       country: [''],
-  //       description: [''],
-  //       location: [''],
-  //       phone: [''],
-  //       social: [''],
-  //       // user_id: [id_user, Validators.required],
-  //     }
-  //   )
-  // }
+
+  datos = {
+
+    name: "elcira",
+    lastname: "code",
+    country: "eeuu",
+    description: "kpa",
+    phone: 111111,
+    instagram: "elcirakapa"
 
 
-  meOffert=[];
+  }
+
+  meOffert = [];
   hidde = true;
-  dateUser="";
+  dateUser = "";
   faFlech = faEye;
   faLocation = faLocationDot;
   faPhone = faPhone;
@@ -52,14 +63,30 @@ export class ProfileComponent implements OnInit {
   email: string | undefined;
 
   ngOnInit(): void {
+
+    this.profile = this.fb.group(
+      {
+        name: [''],
+        lastname: [''],
+        photo: [''],
+        country: [''],
+        description: [''],
+        location: [''],
+        phone: [''],
+        /* user_id: [id_user, Validators.required], */
+      }
+    )
     window.scrollTo({ top: 0 });
     this.nombreUsuario();
     this.email = this.auth.getEmail()
   }
 
   createProfile() {
-    return this.profileService.createProfile('Paula')
+    return this.profileService.createPerfil(this.datos);
   }
+
+
+
 
   mostrar() {
     this.hidde = !this.hidde;
@@ -81,8 +108,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  nombreUsuario(){
-    if(this.auth.access_token()){
+  nombreUsuario() {
+    if (this.auth.access_token()) {
       console.log("holasusana")
     }
   }
@@ -105,13 +132,13 @@ export class ProfileComponent implements OnInit {
   //   let userId = this.auth.idUsuarios();
   // }
 
-  getProfile(){
+  getProfile() {
     // this.profileService.getPerfil()
   }
 
   updateProfilePhoto() {
     const id = this.auth.idUsuarios();
-    console.log('elci',id);
+    console.log('elci', id);
     const foto = this.formularioPerfil.getRawValue();
     // this.profileService.updateProfile(foto, id);
   }
@@ -181,37 +208,37 @@ export class ProfileComponent implements OnInit {
     // }
   }
 
-form = document.getElementById('avatar-form');
-input = document.getElementById('avatar-input');
-submit = document.getElementById('avatar-submit');
-error: string | undefined;
+  form = document.getElementById('avatar-form');
+  input = document.getElementById('avatar-input');
+  submit = document.getElementById('avatar-submit');
+  error: string | undefined;
 
-onFileSelected(event: any) {
-  this.input = event.target.files[0];
-}
-
-onUpload() {
-  if (!this.input) {
-    this.error = 'Seleccione un archivo para subir.';
-    return;
+  onFileSelected(event: any) {
+    this.input = event.target.files[0];
   }
 
-  const formData = new FormData();
-  formData.append('avatar', 'avatar-input');
-
-  this.http.post('/upload-avatar', formData).subscribe(
-    (response: any) => {
-      // Verificar si la carga del archivo se realizó con éxito y actualizar la interfaz de usuario en consecuencia
-      this.form = response.avatarUrl;
-      this.error = undefined;
-    },
-    (error: any) => {
-      // Mostrar una notificación al usuario si hay algún error durante el proceso de carga
-      this.error = 'Ocurrió un error al subir el archivo.';
-      console.error(error);
+  onUpload() {
+    if (!this.input) {
+      this.error = 'Seleccione un archivo para subir.';
+      return;
     }
-  );
-}
+
+    const formData = new FormData();
+    formData.append('avatar', 'avatar-input');
+
+    this.http.post('/upload-avatar', formData).subscribe(
+      (response: any) => {
+        // Verificar si la carga del archivo se realizó con éxito y actualizar la interfaz de usuario en consecuencia
+        this.form = response.avatarUrl;
+        this.error = undefined;
+      },
+      (error: any) => {
+        // Mostrar una notificación al usuario si hay algún error durante el proceso de carga
+        this.error = 'Ocurrió un error al subir el archivo.';
+        console.error(error);
+      }
+    );
+  }
 }
 
   // async updateProfile() {

@@ -26,10 +26,10 @@ export class RegisterComponent implements OnInit {
 
   registro: any[] = [];
 
-  user_id = this.auth.idUsuarios();
+ /*  user_id = this.auth.idUsuarios(); */
 
   profileData: Object = {
-    user_id: this.user_id,
+  /*   user_id: this.user_id, */
     name: '',
     lastname: '',
     country: '',
