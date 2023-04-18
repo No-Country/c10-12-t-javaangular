@@ -4,10 +4,10 @@ import { CookiesService } from './services/cookies.service';
 @Component({
   selector: 'app-root',
   template: `
-  <app-navbar></app-navbar>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
-  <app-cookies *ngIf="!cookiesAccepted" class="fixed bottom-0 left-0 right-0"></app-cookies>
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+    <app-cookies *ngIf="!cookiesAccepted" class="fixed z-10 bottom-0 left-0 right-0"></app-cookies>
   `,
 })
 export class AppComponent implements OnInit {
