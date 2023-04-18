@@ -29,14 +29,14 @@ export class MembersComponent {
       'role': 'Frontend Dev',
       'img': '../../../../../assets/img/team-members/elcira.png',
       'linkedin': '',
-      'quote': '"Amo codear desde que tengo 7 años. Me encanta trabajar de lo que amo."',
+      'quote': '"Disfruto programando y colaborando con personas talentosas."',
     },
     {
       'name': 'Federico Burgos',
       'role': 'Frontend Dev',
       'img': '../../../../../assets/img/team-members/federico.png',
       'linkedin': '',
-      'quote': '"Creamos experiencias digitales excepcionales para nuestros clientes con soluciones personalizadas."',
+      'quote': '"Soy un amante del arte de la maquetación frontend, disfruto creando interfaces interactivas y dinámicas."',
     },
     {
       'name': 'Fernando Weisheim',
@@ -53,7 +53,7 @@ export class MembersComponent {
       'role': 'Diseñadora UX/UI',
       'img': '../../../../../assets/img/team-members/celina.png',
       'linkedin': '',
-      'quote': '"Amo codear desde que tengo 7 años. Me encanta trabajar de lo que amo."',
+      'quote': '"Poder transformar ideas en historias visuales, denota mi amor por el diseño digital."',
     },
     {
       'name': 'Luis Vasquez',
@@ -67,7 +67,7 @@ export class MembersComponent {
       'role': 'Diseñadora UX/UI',
       'img': '../../../../../assets/img/team-members/paula.png',
       'linkedin': '',
-      'quote': '"Amo codear desde que tengo 7 años. Me encanta trabajar de lo que amo."',
+      'quote': '"Disfruto crear experiencias digitales minimalistas que faciliten la vida de las personas."',
     },
   ];
 
