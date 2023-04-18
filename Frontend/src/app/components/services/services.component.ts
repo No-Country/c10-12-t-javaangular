@@ -12,25 +12,6 @@ export class ServicesComponent {
 
   services = [
     {
-      'img': '../../../assets/img/tramites.png',
-      'titulo': 'Trámites legales',
-      'descripcion': 'Recursos y guías para migrantes.',
-      'url': 'https://www.argentina.gob.ar/interior/migraciones',
-    },
-    {
-      'img': '../../../assets/img/transporte.png',
-      'titulo': 'Medios de transporte',
-      'descripcion': 'Descubrí cómo viajar por el país.',
-      'url': 'https://www.argentina.gob.ar/transporte',
-    },
-    {
-      'img': '../../../assets/img/salud.png',
-      'titulo': 'Centros de salud',
-      'descripcion': 'Conocé los lugares de emergencia.',
-      'url': '/https://buenosaires.gob.ar/establecimientos-hospitales-y-centros-de-salud',
-    },
-
-    {
       'img': '../../../assets/img/empleos.png',
       'titulo': 'Sitios de empleos',
       'descripcion': 'Encontrá tu nuevo y proóximo trabajo.',
@@ -47,6 +28,24 @@ export class ServicesComponent {
       'titulo': 'Comunidad',
       'descripcion': 'Saber dónde contratar servicios.',
       'url': '/comunidad',
+    },
+    {
+      'img': '../../../assets/img/tramites.png',
+      'titulo': 'Trámites legales',
+      'descripcion': 'Recursos y guías para migrantes.',
+      'url': 'https://www.argentina.gob.ar/interior/migraciones',
+    },
+    {
+      'img': '../../../assets/img/transporte.png',
+      'titulo': 'Medios de transporte',
+      'descripcion': 'Descubrí cómo viajar por el país.',
+      'url': 'https://www.argentina.gob.ar/transporte',
+    },
+    {
+      'img': '../../../assets/img/salud.png',
+      'titulo': 'Centros de salud',
+      'descripcion': 'Conocé los lugares de emergencia.',
+      'url': 'https://buenosaires.gob.ar/establecimientos-hospitales-y-centros-de-salud',
     }
   ]
 
