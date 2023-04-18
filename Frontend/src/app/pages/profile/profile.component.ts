@@ -57,6 +57,10 @@ export class ProfileComponent implements OnInit {
     this.email = this.auth.getEmail()
   }
 
+  createProfile() {
+    return this.profileService.createProfile('Paula')
+  }
+
   mostrar() {
     this.hidde = !this.hidde;
   }

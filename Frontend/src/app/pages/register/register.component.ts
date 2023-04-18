@@ -14,7 +14,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class RegisterComponent implements OnInit {
 
   form = this.formBuilder.group({
-    // nombre_apellido: ['', Validators.required],
+    nombre_apellido: ['', Validators.required],
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     agree: [false, [Validators.required]],
@@ -53,14 +53,18 @@ export class RegisterComponent implements OnInit {
   }
 
   submitProfile() {
-    this.profileService.submitProfile(this.profileData)
+    // this.profileService.submitProfile(this.profileData)
   }
 
   register() {
     if (this.form.valid) {
       const { email, password }:any = this.form.getRawValue();
 
-      this.auth.signUp({email, password})
+      this.auth.signUp({email, password}).then(() => {
+        return this.auth.signIn({email, password});
+      }).then(() => {
+      }).catch((error) => {
+      });
 
     } else {
       this.form.markAllAsTouched();
