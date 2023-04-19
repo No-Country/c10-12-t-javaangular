@@ -13,12 +13,6 @@ import { ProfileService } from 'src/app/services/profile.service';
 
 export class RegisterComponent implements OnInit {
 
-  
-
-
-
-
-
 
   form = this.formBuilder.group({
     nombre_apellido: ['', Validators.required],

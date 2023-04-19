@@ -4,25 +4,29 @@
     </div>
     <div class="">
 
-        <form [formGroup]="newOffer" (ngSubmit)="createOffer()">
+        <form [formGroup]="newEvent" (ngSubmit)="createEvent()">
 
             <mat-dialog-content class="mat-typography">
                 <div class="flex flex-col lg:flex-row gap-10 ">
                     <div class="flex flex-col gap-4 rounded-sm">
-                        <input type="text" placeholder="Nombre del evento"
+                        <input type="text" placeholder="titulo"
                             class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
-                            formControlName="nombreEvento">
-                        <input type="date" placeholder=""
-                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="dia">
+                            formControlName="titulo">
+                        <input type="date" placeholder="fecha"
+                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" 
+                            formControlName="fecha">
                         <input type="time" placeholder="hora" value="Hora"
-                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="hora">
+                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" 
+                            formControlName="hora">
                         <input type="text" placeholder="Ingrese la ubicación"
-                            class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
-                            formControlName="ubicacion">
+                        class="border rounded focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
+                        formControlName="ubicacion">
                     </div>
                     <div class="flex ">
-                        <textarea name="" id="" cols="27" class="resize-none rounded p-3 sm:w-full"
-                            placeholder="Acerca del evento"></textarea>
+                        <textarea id="" cols="27" class="resize-none rounded p-3 sm:w-full"
+                            placeholder="Acerca del evento"
+                            formControlName="descripcion">
+                        </textarea>
                     </div>
 
                 </div>
@@ -30,7 +34,7 @@
             </mat-dialog-content>
             <mat-dialog-actions align="end">
                 <div class="flex gap-2 pr-4">
-                    <button mat-button mat-dialog-close
+                    <button mat-button mat-dialog-close type="button"
                         class="text-secondary border border-transparent hover:border hover:border-secondary px-4 py-2 rounded-full">Cancel</button>
                     <button mat-button [mat-dialog-close]="true" cdkFocusInitial
                         class="bg-accent border border-transparent text-white px-4 py-2 rounded-full"
