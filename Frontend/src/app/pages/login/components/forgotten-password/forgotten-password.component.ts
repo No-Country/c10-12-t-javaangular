@@ -15,7 +15,7 @@ export class ForgottenPasswordComponent implements OnInit {
   canSubmitEmail: boolean | undefined;
   
   segundos: number = 0;
-  minutos: number = 2;
+  minutos: number = 0;
   interval: any;
 
   constructor(
@@ -32,7 +32,7 @@ export class ForgottenPasswordComponent implements OnInit {
   }
 
   submitEmail() {
-    this.minutos = 2;
+    this.segundos = 15;
     this.canSubmitEmail = false;
     this.email = true;
     this.interval = setInterval(() => {
