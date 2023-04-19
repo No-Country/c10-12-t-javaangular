@@ -13,6 +13,13 @@ import { ProfileService } from 'src/app/services/profile.service';
 
 export class RegisterComponent implements OnInit {
 
+  
+
+
+
+
+
+
   form = this.formBuilder.group({
     nombre_apellido: ['', Validators.required],
     email: ['', [Validators.email, Validators.required]],
@@ -26,10 +33,9 @@ export class RegisterComponent implements OnInit {
 
   registro: any[] = [];
 
- /*  user_id = this.auth.idUsuarios(); */
 
   profileData: Object = {
-  /*   user_id: this.user_id, */
+    user_id:'',
     name: '',
     lastname: '',
     country: '',
@@ -57,11 +63,17 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    
     if (this.form.valid) {
       const { email, password }:any = this.form.getRawValue();
-
       this.auth.signUp({email, password}).then(() => {
-        return this.auth.signIn({email, password});
+       let id=this.auth.idUsuarios();
+       let user_id={
+          "user_id": id
+        }
+        this.profileService.AutoCreateProfile(user_id);
+        /* console.log(this.auth.access_token); */
+        return this.auth.signIn({email, password}); /* aaca */
       }).then(() => {
       }).catch((error) => {
       });

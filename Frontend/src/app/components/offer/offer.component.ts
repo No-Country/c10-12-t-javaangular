@@ -17,6 +17,10 @@ export class OfferComponent implements OnInit {
 
   });
 
+  datos={
+    cargo: "hooasdf"
+  }
+
   constructor(
     private fb: FormBuilder,
     private jobsService: JobsService,
@@ -37,10 +41,11 @@ export class OfferComponent implements OnInit {
         user_id: [id_user, Validators.required],
       }
     )
+/*     this.createOffer(); */
   }
 
   createOffer() {
-    this.jobsService.createJob(this.newOffer.getRawValue());
+    this.jobsService.createJob(this.datos);
   }
 
 }

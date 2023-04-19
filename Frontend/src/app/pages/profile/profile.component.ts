@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
 
   profile: any;
 
+
   formularioPerfil: FormGroup;
 
   /*   ngOnInit() {
@@ -42,14 +43,9 @@ export class ProfileComponent implements OnInit {
 
   datos = {
 
-    name: "elcira",
-    lastname: "code",
-    country: "eeuu",
-    description: "kpa",
-    phone: 111111,
-    instagram: "elcirakapa"
-
-
+    nombre: "elcira",
+    apellido: "code",
+    nacionalidad: "eeuu",
   }
 
   meOffert = [];
@@ -79,11 +75,18 @@ export class ProfileComponent implements OnInit {
     window.scrollTo({ top: 0 });
     this.nombreUsuario();
     this.email = this.auth.getEmail()
+
+    this.auth.setUser().subscribe(res=>{
+      this.profile=res
+    })
+    
+    console.log(this.profileService.findByIdProfile())
+
   }
 
-  createProfile() {
-    return this.profileService.createPerfil(this.datos);
-  }
+   createProfile() {
+   /*  return this.profileService.createPerfil(this.datos); */
+  } 
 
 
 
@@ -108,6 +111,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
+
+
   nombreUsuario() {
     if (this.auth.access_token()) {
       console.log("holasusana")
@@ -121,24 +127,26 @@ export class ProfileComponent implements OnInit {
   // }
 
   openDialog() {
+    this.profileService.updatePerfil(this.datos);
     const dialogRef = this.dialog.open(ProfileModalComponent);
 
     dialogRef.afterClosed().subscribe(result => {
+
       console.log(`Dialog result: ${result}`);
     });
   }
 
-  // ngOnInit() {
-  //   let userId = this.auth.idUsuarios();
-  // }
+  /*  ngOnInit() {
+     let userId = this.auth.idUsuarios();
+   } */
 
-  getProfile() {
-    // this.profileService.getPerfil()
+ /*  getProfile() {
+     this.profileService.getProfile
   }
-
+ */
   updateProfilePhoto() {
-    const id = this.auth.idUsuarios();
-    console.log('elci', id);
+/*     const id = this.auth.idUsuarios();
+    console.log('elci', id); */
     const foto = this.formularioPerfil.getRawValue();
     // this.profileService.updateProfile(foto, id);
   }
