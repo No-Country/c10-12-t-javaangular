@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { AlojamientoService } from 'src/app/services/alojamiento.service';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { CouchsurfingCreateComponent } from 'src/app/components/couchsurfing-create/couchsurfing-create.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-hosting',
@@ -9,37 +12,32 @@ import { AlojamientoService } from 'src/app/services/alojamiento.service';
 })
 export class HostingComponent implements OnInit {
 
+  faPlus = faPlus;
   faHouse = faHouse;
 
-  /* hostingArray = [
-    { 
-      'title': 'titulo de item',
-      'location': 'Buenos Aires, Argentina',
-      'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo repudiandae provident illo aut rem architecto in delectus voluptatum aliquid quae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo repudiandae provident illo aut rem architecto in delectus voluptatum aliquid quae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo repudiandae provident illo aut rem architecto in delectus voluptatum aliquid quae.'
-    },
-    {
-      'title': 'titulo de item 2',
-      'location': 'Buenos Aires, Argentina',
-      'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo repudiandae provident illo aut rem architecto in delectus voluptatum aliquid quae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo repudiandae provident illo aut rem architecto in delectus voluptatum aliquid quae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo repudiandae provident illo aut rem architecto in delectus voluptatum aliquid quae.'
-    },
-  ]; */
-  alojamientoList=[];
-  constructor(private alojamiento:AlojamientoService) {}
+  alojamientoList: any = [];
+
+  constructor(
+    private alojamientoService: AlojamientoService,
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
-    this.getAlojamiento()
-    this.alojamiento.getalojamientos().subscribe(
-      res=>{this.alojamientoList=res}
-      )
-      console.log(this.alojamientoList);
+    this.alojamientoService.getAlojamientosObservable().subscribe({
+      next: (data) => {
+        this.alojamientoList = data;
+      }
+    })
   }
 
-  getAlojamiento(){
-    this.alojamiento.getalojamientos()
+  openDialog() {
+    const dialogRef = this.dialog.open(CouchsurfingCreateComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
+    
   }
-
- 
-
 
 }

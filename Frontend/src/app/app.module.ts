@@ -63,6 +63,7 @@ import { CookiesComponent } from './components/cookies/cookies.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { ForgottenPasswordComponent } from './pages/login/components/forgotten-password/forgotten-password.component';
 import { GalletitasComponent } from './pages/galletitas/galletitas.component';
+import { CouchsurfingCreateComponent } from './components/couchsurfing-create/couchsurfing-create.component';
 
 
 @NgModule({
@@ -114,6 +115,7 @@ import { GalletitasComponent } from './pages/galletitas/galletitas.component';
     ToolsComponent,
     ForgottenPasswordComponent,
     GalletitasComponent,
+    CouchsurfingCreateComponent,
   ],
   imports: [
     BrowserModule,

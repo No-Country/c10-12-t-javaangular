@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AlojamientoService {
+
   private apiUrl = environment.supabase.url;
   private supabaseKey = environment.supabase.publicKey;
 
@@ -17,6 +18,27 @@ export class AlojamientoService {
     private http: HttpClient,
     private auth: AuthService
   ) { }
+
+  getAlojamientosObservable() {
+    this.getAllAlojamientos();
+    return this.events.asObservable();
+  }
+
+  getAllAlojamientos(): void {
+    const url = `${this.apiUrl}/rest/v1/alojamiento`;
+    const token = this.auth.access_token();
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization: `Bearer ${token}`,
+    });
+    const options = { headers: headers };
+    this.http.get<any[]>(url, options).subscribe({
+      next: (res) => {
+        this.events.next(res);
+      },
+      error: error => console.log(error)
+    });
+  } 
 
   createAlojamiento(event: any) {
     const url = `${this.apiUrl}/rest/v1/alojamiento`;
@@ -37,7 +59,7 @@ export class AlojamientoService {
     });
   }
 
-  getAllAlojamientos(): void {
+  updateCouchsurfing(couchsurfing: any, id: number) {
     const url = `${this.apiUrl}/rest/v1/alojamiento`;
     const token = this.auth.access_token();
     const headers = new HttpHeaders({
@@ -45,17 +67,11 @@ export class AlojamientoService {
       Authorization: `Bearer ${token}`,
     });
     const options = { headers: headers };
-    this.http.get<any[]>(url, options).subscribe({
-      next: (res) => {
-        this.events.next(res);
-        console.log(res)
-      },
-      error: error => console.log(error)
+    this.http.patch(`${url}?id=eq.${id}`, couchsurfing, options).subscribe({
+      next: () => {
+        this.getAllAlojamientos();
+      }
     });
   }
-  
-  getalojamientos() {
-    this.getAllAlojamientos();
-    return this.events.asObservable();
-  }
+
 }

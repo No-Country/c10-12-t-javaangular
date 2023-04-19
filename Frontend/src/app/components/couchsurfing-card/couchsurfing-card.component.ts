@@ -9,7 +9,8 @@ import { AlojamientoService } from 'src/app/services/alojamiento.service';
 })
 export class CouchsurfingCardComponent {
   
-   href:string=`https://api.whatsapp.com/send?phone=&text=Hola%20,te%20asesoramos%20por%20whatsapp%20gestiona%20tu%20compra%20por%20este%20canal.`
+   href:string=`https://api.whatsapp.com/send?phone=&text=Hola%20,te%20asesoramos%20por%20whatsapp%20gestiona%20tu%20compra%20por%20este%20canal.`;
+
   @Input() hosting!: any;
 
 
@@ -21,34 +22,21 @@ export class CouchsurfingCardComponent {
   isUserPost: boolean = true;
   editDeleteControls: boolean = false;
   
-  constructor(private alojamiento:AlojamientoService){
-    
-  }
-  openDialog() {
-  }
-  
-  deleteOffer() {
-  }
-
-  editDeleteToggle() {
-    console.log('asd')
-    this.editDeleteControls = !this.editDeleteControls
-  }
-
+  constructor(private alojamiento:AlojamientoService) {}
 
   ngOnInit() {
 
- /*    this.getAlojamiento()
-     this.alojamiento.getalojamientos().subscribe(
-       res=>{this.alojamientoList=res}
-       )
-       console.log(this.alojamientoList);
-   }
- 
-   getAlojamiento(){
-     this.alojamiento.getalojamientos()
-   }
-  */
+  }
 
-  }}
+  openDialog() {
+  }
+  
+  deletePost() {
+  }
+
+  editDeleteToggle() {
+    this.editDeleteControls = !this.editDeleteControls;
+  }  
+
+}
 
