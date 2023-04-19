@@ -32,61 +32,13 @@ export class ProfileService {
   }
 
 
-  // submitProfile(profile: any) {
-  //   const url = `${this.apiUrl}/rest/v1/profile`;
-  //   const token = this.auth.access_token();
-  //   const headers = new HttpHeaders({
-  //     apikey: this.supabaseKey,
-  //     Authorization: `Bearer ${token}`
-  //   });
-  //   const options = { headers: headers };
-  //   this.http.post(url, profile, options).subscribe({
-  //     next: () => {
-  //       // this.submitProfile();
-  //     }
-  //   });
-  // }
-
-
   /* apiUrl = 'https://xbslofkvpgejobohqcqp.supabase.co';
   supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhic2xvZmt2cGdlam9ib2hxY3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0Mjg2NzUsImV4cCI6MTk5NzAwNDY3NX0.kUbt1mX5Z_SWaB2gwsEjPNga07MsSw8o5yKImiWLRQo'; */
 
   private apiUrl = environment.supabase.url;
   private supabaseKey = environment.supabase.publicKey;
 
-  // createProfile(): Observable<any> {
-  //   const url = `${this.apiUrl}/rest/v1/profile`;
-  //   const token = 'your-supabase-token';
 
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'apikey': this.supabaseKey,
-  //     'Authorization': `Bearer ${token}`
-  //   });
-
-  //   const options = { headers: headers };
-
-  //   return this.http.post(url,{"name": "paula"}, options);
-  // }
-
-
-
-
- /*  async createProfile(name: string): Promise<any> {
-    const { data, error } = await this.supabase
-      .from('profile')
-      .insert({ name: name })
-      .single();
-
-    if (error) {
-      console.error(error);
-      return throwError(error);
-    } else {
-      console.log(data);
-      return of(data);
-    }
-  }
- */
 
   updatePerfil(perfil: any) {
     let idd= this.auth.idUsuarios();
@@ -145,7 +97,7 @@ export class ProfileService {
     
   }
 
-  getPerfi(){
+  getPerfil(){
     this.findByIdProfile();
     return this.perfil.asObservable();
   }

@@ -10,6 +10,7 @@ import { ProfileModalComponent } from 'src/app/components/profile-modal/profile-
 import { ProfileService } from 'src/app/services/profile.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import swal from'sweetalert2';
 
 
 @Component({
@@ -18,6 +19,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+  titularAlerta: string = '';
 
   Datosprofile: any;
 
@@ -36,10 +39,17 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.email = this.auth.getEmail()
     window.scrollTo({ top: 0 });
-  
+    //  let userId = this.auth.idUsuarios();
 
+    if(this.email) {
+      swal.fire('Registro exitoso...', this.titularAlerta, 'success');
+    } else {
+      swal.update({
+        icon: 'success'
+      })
+    }
     
-    this.profileService.getPerfi().subscribe(
+    this.profileService.getPerfil().subscribe(
     {
       next:(data)=>{
         this.Datosprofile=data
@@ -47,16 +57,12 @@ export class ProfileComponent implements OnInit {
       }
     }
     );
-    
-    
+
+    this.auth.setUser().subscribe(data => this.datos = data)
+
   }
 
-   createProfile() {
-   /*  return this.profileService.createPerfil(this.datos); */
-  } 
-
-
-
+  datos: any;
 
   mostrar() {
     this.hidde = !this.hidde;
@@ -103,9 +109,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  /*  ngOnInit() {
-     let userId = this.auth.idUsuarios();
-   } */
 
  /*  getProfile() {
      this.profileService.getProfile
@@ -118,148 +121,7 @@ export class ProfileComponent implements OnInit {
     // this.profileService.updateProfile(foto, id);
   }
 
-  // ChatGPT
-  user: any;
 
-
-  // async ngOnInit() {
-  //   let userId = this.auth.idUsuarios();
-  //   this.user = await this.profileService.getProfile(userId);
-  // }
-
-  // async updateProfile() {
-  //   const file = this.formularioPerfil.getRawValue();
-  //   if (file instanceof File || file instanceof Blob) {
-
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = async () => {
-  //       if (reader.result !== null) {
-  //         const base64Image = reader.result.toString().split(',')[1];
-  //         console.log(base64Image)
-  //         const updates = { name: 'John', bio: 'Hello, world!', photo: base64Image };
-  //         const userId = this.auth.idUsuarios();
-  //         try {
-  //           const updatedProfile = await this.profileService.updateProfile(userId, updates);
-  //           console.log('Profile updated:', updatedProfile);
-  //         } catch (error) {
-  //           console.error('Error updating profile:', error);
-  //         }
-  //       } else {
-  //         console.error('Error: FileReader result is null.');
-  //       }
-  //     };
-  //   }
-  // }
-
-  async updateProfile() {
-    this.onUpload()
-
-    // const file = this.formularioPerfil.getRawValue();
-    // console.log('File:', file);
-
-    // if (file instanceof File || file instanceof Blob) {
-    //   const reader = new FileReader();
-    //   reader.readAsDataURL(file);
-
-    //   reader.onload = async () => {
-    //     console.log('FileReader onload function called.');
-    //     console.log('reader.result:', reader.result);
-    //     try {
-    //       if (reader.result !== null) {
-    //         const base64Image = reader.result.toString().split(',')[1];
-    //         console.log('Base64 image:', base64Image);
-    //         const updates = { name: 'John', bio: 'Hello, world!', photo: base64Image };
-    //         const userId = this.auth.idUsuarios();
-    //         const updatedProfile = await this.profileService.updateProfile(userId, updates);
-    //         console.log('Profile updated:', updatedProfile);
-    //       } else {
-    //         console.error('Error: FileReader result is null.');
-    //       }
-    //     } catch (error) {
-    //       console.error('Error in FileReader onload function:', error);
-    //     }
-    //   };
-    // }
-  }
-
-  form = document.getElementById('avatar-form');
-  input = document.getElementById('avatar-input');
-  submit = document.getElementById('avatar-submit');
-  error: string | undefined;
-
-  onFileSelected(event: any) {
-    this.input = event.target.files[0];
-  }
-
-  onUpload() {
-    if (!this.input) {
-      this.error = 'Seleccione un archivo para subir.';
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('avatar', 'avatar-input');
-
-    this.http.post('/upload-avatar', formData).subscribe(
-      (response: any) => {
-        // Verificar si la carga del archivo se realizó con éxito y actualizar la interfaz de usuario en consecuencia
-        this.form = response.avatarUrl;
-        this.error = undefined;
-      },
-      (error: any) => {
-        // Mostrar una notificación al usuario si hay algún error durante el proceso de carga
-        this.error = 'Ocurrió un error al subir el archivo.';
-        console.error(error);
-      }
-    );
-  }
 }
-
-  // async updateProfile() {
-  //   const file = this.formularioPerfil.getRawValue();
-  //   console.log(file);
-  //   if (file instanceof File || file instanceof Blob) {
-  //     console.log('File:', file);
-
-  //     const reader = new FileReader();
-  //     reader.readAsArrayBuffer(file);
-  //     reader.onload = async () => {
-  //       console.log('FileReader onload function called.');
-  //       try {
-  //         const buffer = reader.result as ArrayBuffer;
-  //         const base64Image = btoa(new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-  //         console.log('Base64 image:', base64Image);
-  //         const updates = { name: 'John', bio: 'Hello, world!', photo: base64Image };
-  //         const userId = this.auth.idUsuarios();
-  //         const updatedProfile = await this.profileService.updateProfile(userId, updates);
-  //         console.log('Profile updated:', updatedProfile);
-  //       } catch (error) {
-  //         console.error('Error in FileReader onload function:', error);
-  //       }
-  //     };
-  //   }
-  // }
-
-  // async updateProfile() {
-  //   const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-  //   const file = fileInput.files && fileInput.files[0];
-
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = async () => {
-  //       const base64Image = reader.result?.toString().split(',')[1];
-  //       const updates = { name: 'John', bio: 'Hello, world!', photo: base64Image };
-  //       const userId = this.auth.idUsuarios();
-  //       try {
-  //         const updatedProfile = await this.profileService.updateProfile(userId, updates);
-  //         console.log('Profile updated:', updatedProfile);
-  //       } catch (error) {
-  //         console.error('Error updating profile:', error);
-  //       }
-  //     };
-  //   }
-  // }
 
 
