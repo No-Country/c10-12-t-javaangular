@@ -62,6 +62,7 @@ import { ProfileModalComponent } from './components/profile-modal/profile-modal.
 import { DetailsEventComponent } from './components/details-event/details-event.component';
 import { CookiesComponent } from './components/cookies/cookies.component';
 import { ToolsComponent } from './components/tools/tools.component';
+import { ForgottenPasswordComponent } from './pages/login/components/forgotten-password/forgotten-password.component';
 
 
 @NgModule({
@@ -112,6 +113,7 @@ import { ToolsComponent } from './components/tools/tools.component';
     DetailsEventComponent,
     CookiesComponent,
     ToolsComponent,
+    ForgottenPasswordComponent,
   ],
   imports: [
     BrowserModule,

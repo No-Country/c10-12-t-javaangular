@@ -3,7 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { faPen, faEye, faEyeSlash, faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ForgottenPasswordComponent } from './components/forgotten-password/forgotten-password.component';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -59,4 +61,12 @@ export class LoginComponent implements OnInit {
       this.form.markAllAsTouched();
     }
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ForgottenPasswordComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }

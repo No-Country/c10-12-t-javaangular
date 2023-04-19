@@ -43,7 +43,8 @@
               <p *ngIf="errorMessage" class="mt-1 ml-1 text-xs font-medium text-red-500">
                 Upss! Algo salió mal.
               </p>
-              <button type="submit" class="bg-[#59d3c6] w-full h-[56px] rounded-full text-xl" [disabled]="form.invalid"
+              <p class="w-full text-lg text-left text-black underline cursor-pointer underline-offset-2" (click)="openDialog()">¿Olvidaste tu contraseña?</p>
+              <button type="submit" class="bg-[#59d3c6] w-full h-[56px] mt-5 rounded-full text-xl" [disabled]="form.invalid"
                 [ngClass]="form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'">Iniciar sesión</button>
               <p class="text-lg font-semibold text-center text-black">
                 ¿Aún no tienes cuenta? <a class="underline text-secondary underline-offset-2"
