@@ -1,8 +1,8 @@
 <div class="flex flex-col overflow-hidden border border-gray-300 border-solid rounded-xl">  
   <div class="flex justify-between w-full p-3 border-b border-gray-300 border-solid md:px-5">
     <div>
-      <p class="text-xl font-bold md:text-2xl">{{hosting.title}}</p>
-      <p class="text-sm font-normal sm:text-base"><fa-icon [icon]="faLocationDot" class="mr-2"></fa-icon>{{hosting.location}}</p>
+      <p class="text-xl font-bold md:text-2xl">{{hosting.titulo}}</p>
+      <p class="text-sm font-normal sm:text-base"><fa-icon [icon]="faLocationDot" class="mr-2"></fa-icon>{{hosting.ubicacion}}</p>
     </div>
 
     <!-- editar y eliminar si el post pertenece al usuario logueado -->
@@ -37,11 +37,12 @@
       <img class="object-cover w-full h-full" src="../../../assets/img/hostel.jpg" alt="">
     </div>
     <div class="flex flex-col items-start gap-5 p-3 overflow-y-hidden lg:p-5 sm:w-2/3">
-      <p class="text-sm font-normal sm:text-base lg:text-xl ">{{hosting.description}}</p>
+      <p class="text-sm font-normal sm:text-base lg:text-xl ">{{hosting.descripcion}}</p>
     </div>
   </div>
   <div class="flex justify-center w-full p-5 py-4 sm:justify-end bg-secondary">
-    <button class="px-6 py-1 text-base font-medium text-white rounded-full lg:py-2 lg:text-xl bg-primary font-primary">Contactar Anunciante</button>
+    <a href= "https://api.whatsapp.com/send?phone={{hosting.telefono}}&text=Hola%20,te%20asesoramos%20por
+    %20whatsapp%20gestiona%20tu%20compra%20por%20este%20canal." class="px-6 py-1 text-base font-medium text-white rounded-full lg:py-2 lg:text-xl bg-primary font-primary">Contactar Anunciante</a>
   </div>
   
 </div>

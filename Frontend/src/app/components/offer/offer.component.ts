@@ -17,9 +17,7 @@ export class OfferComponent implements OnInit {
 
   });
 
-  datos={
-    cargo: "hooasdf"
-  }
+
 
   constructor(
     private fb: FormBuilder,
@@ -31,21 +29,19 @@ export class OfferComponent implements OnInit {
     let id_user=this.auth.idUsuarios();
     this.newOffer = this.fb.group(
       {
+        user_id: [id_user, Validators.required],
         cargo: ['', Validators.required],
         ubicacion: ['', Validators.required],
         sueldo: ['', Validators.required],
         descripcion: ['', Validators.required],
-        telefono: ['', Validators.required],
-        status: ['', Validators.required],
-        name: ['', Validators.required],
-        user_id: [id_user, Validators.required],
+        telefono: ['', Validators.required]
       }
     )
 /*     this.createOffer(); */
   }
 
   createOffer() {
-    this.jobsService.createJob(this.datos);
+    this.jobsService.createJob(this.newOffer.getRawValue());
   }
 
 }

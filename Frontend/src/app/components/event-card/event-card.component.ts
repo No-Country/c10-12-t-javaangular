@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { DetailsEventComponent } from '../details-event/details-event.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -9,9 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./event-card.component.css']
 })
 export class EventCardComponent {
-  
+  isUserOffer: boolean = true;
+  editDeleteControls: boolean = false;
   @Input() Events:any;
-
+  faEllipsisVertical = faEllipsisVertical;
 
 faLocation=faLocationDot;
   constructor(private dialog:MatDialog) {}
@@ -23,5 +24,9 @@ openDetailsEvents() {
     console.log(`Dialog result: ${result}`);
   });
 }
+editDeleteToggle() {
+  this.editDeleteControls = !this.editDeleteControls;
+}
+
 
 }

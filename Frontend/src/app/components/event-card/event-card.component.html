@@ -6,18 +6,40 @@
         <div class="flex flex-col items-center w-full gap-4 p-2 py-5 lg:hidden">
             <p class="text-base font-bold ">{{Events.descripcion}}</p>
             <p class="hidden text-base font-medium sm:block">{{Events.confirmacion}}</p>
-            <button class="w-full py-2 text-sm text-white rounded-full lg:px-4 bg-accent " (click)="openDetailsEvents()">¡Quiero ir!</button>
+            <button class="w-full py-2 text-sm text-white rounded-full lg:px-4 bg-accent" (click)="openDetailsEvents()">¡Quiero ir!</button>
         </div>
     </div>
 
     <div class="titulo flex flex-col gap-5 grow bg-[#F8F8F8] p-5 border border-[#CAC4D0]  rounded-3xl justify-between text-black lg:w-2/3">
         <div class="flex flex-col items-center gap-3 lg:items-start">
-            <h1 class="text-[28px] font-medium hidden lg:block">{{Events.descripcion}}</h1>
+            <div class="flex flex-row">
+                  <h1 class="text-[28px] font-medium hidden lg:block">{{Events.descripcion}}</h1>
+            <div *ngIf="isUserOffer" class="flex flex-col items-end text-xs sm:hidden sm:text-sm lg:block">
+                <button class="flex px-4 py-2 rounded-full focus:ring-0"
+                  (click)=" editDeleteToggle()"> <fa-icon [icon]="faEllipsisVertical"></fa-icon> </button>
+                <div *ngIf="editDeleteControls" class="relative right-40">
+                  <ul
+                    class="absolute flex-col mt-3 overflow-hidden border border-gray-300 divide-y divide-gray-100 rounded-lg shadow-lg focus:ring-0 focus:border-gray-300">
+                    <li class="w-40">
+                      <button
+                        class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary" >Editar</button>
+                    </li>
+                    <li>
+                      <button
+                        class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary" >Eliminar</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            
+
            <div class="font-bold">
                <h2 class="lg:hidden">{{Events.fecha}} </h2>
                <h3 class="sm:block lg:hidden">{{Events.hora}}</h3>
                <p class="text-[10px] font-normal gap-1 items-center lg:text-sm lg:font-normal lg:p-1 flex lg:gap-1"><fa-icon [icon]="faLocation" class="text-xl sm:font-normal lg:text-3xl"></fa-icon>{{Events.lugar}}</p>
            </div>
+            </div>
+          
         </div>
         <p class="hidden text-base font-medium lg:block">{{Events.confirmacion}}</p>
         <div class="flex items-center justify-between">

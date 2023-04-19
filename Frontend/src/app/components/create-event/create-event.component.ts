@@ -27,24 +27,26 @@ export class CreateEventComponent {
   ) {}
 
   ngOnInit() {
+    let id=this.auth.idUsuarios();
     this.newEvent = this.fb.group(
       {
+        user_id: [id,''],
         titulo: ['', Validators.required],
         fecha: ['', Validators.required],
         hora: [0, Validators.required],
         ubicacion: ['', Validators.required],
         descripcion: [0, Validators.required],
         asistentes: [0, Validators.required],
-        user_id: ['']
       }
     )
   }
 
   createEvent() {
     if (this.newEvent.valid) {
-      const user_id = this.auth.idUsuarios();
-      this.newEvent.patchValue({user_id: user_id});
-      this.eventsService.createEvent(this.newEvent.getRawValue())
+     const user_id = this.auth.idUsuarios();
+      console.log(this.newEvent.getRawValue());
+     /*       this.newEvent.patchValue({user_id: user_id});*/
+      this.eventsService.createEvent(this.newEvent.getRawValue()) 
     }
   }
 

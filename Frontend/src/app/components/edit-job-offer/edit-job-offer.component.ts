@@ -29,8 +29,6 @@ export class EditJobOfferComponent {
         sueldo: ['', Validators.required],
         descripcion: ['', Validators.required],
         telefono: ['', Validators.required],
-        status: ['', Validators.required],
-        name: ['', Validators.required],
       }
     )
     this.byId(this.id);
@@ -38,6 +36,7 @@ export class EditJobOfferComponent {
 
   editOffer() {
     if (this.id) {
+      console.log('as')
       this.jobsService.updateJob(this.editedOffer.getRawValue(), this.id);
     }
   } 
