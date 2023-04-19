@@ -47,7 +47,8 @@ export class JobOffersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.jobsService.getAllOffers();
+  /*   this.jobsService.getAllOffers(); */
+  this.jobsService.deleteJob(2)
   }
 
   filtrarRecientes() {

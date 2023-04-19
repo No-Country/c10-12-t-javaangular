@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { updateProfile } from '@firebase/auth';
-import { createClient } from '@supabase/supabase-js';
-import { Observable, of, throwError } from 'rxjs';
+import { SupabaseClient, createClient } from '@supabase/supabase-js';
+import { BehaviorSubject, Observable, Subject, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 
@@ -10,6 +10,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ProfileService {
+
+  public perfil = new BehaviorSubject<any | null>(null);  
 
   // private apiUrl = environment.supabase.url;
   // private supabaseKey = environment.supabase.publicKey;
@@ -24,9 +26,9 @@ export class ProfileService {
     private auth: AuthService,
     private http: HttpClient,
   ) { /* this.getProfile() */
-    let id=this.auth.idUsuarios();
-    console.log(id)
-   this.findByIdProfile(id);
+  /*   let id=this.auth.idUsuarios(); */
+    /* console.log(id) */
+  /*  this.findByIdProfile(id); */
   }
 
 
@@ -86,8 +88,9 @@ export class ProfileService {
   }
  */
 
-  createPerfil(perfil: any) {
-    const url = `${this.apiUrl}/rest/v1/profile`;
+  updatePerfil(perfil: any) {
+    let idd= this.auth.idUsuarios();
+    const url = `${this.apiUrl}/rest/v1/perfil`;
     const token = this.auth.access_token();
     console.log(token)
     const headers = new HttpHeaders({
@@ -96,34 +99,58 @@ export class ProfileService {
     });
     const options = { headers: headers };
 
-    this.http.post(url, perfil, options).subscribe({
-      next: (data) => {
-        console.log(data)
-      }
-    });
+    return this.http.patch(`${url}?user_id=eq.${idd}`,perfil,options).subscribe(res=>{console.log(res)});
   }
 
-  getProfile(): void {
-    const url = `${this.apiUrl}/rest/v1/profile`;
+
+   
+    AutoCreateProfile(per: any) {
+      const url = `${this.apiUrl}/rest/v1/perfil`;
+      const token = this.auth.access_token();
+      console.log(token);
+      const headers = new HttpHeaders({
+        apikey: this.supabaseKey,
+        Authorization: `Bearer ${token}`
+      });
+      const options = { headers: headers };
+      this.http.post(url, per, options).subscribe({
+        next: () => {
+  
+         console.log('asd')
+        },
+        error:(error)=>{
+          console.log(error)
+        }
+      });
+    }
+ 
+
+  findByIdProfile() {
+    let idd= this.auth.idUsuarios();
+    const url = `${this.apiUrl}/rest/v1/perfil`;
     const token = this.auth.access_token();
-    console.log(token)
     const headers = new HttpHeaders({
       apikey: this.supabaseKey,
       Authorization: `Bearer ${token}`,
     });
     const options = { headers: headers };
-    this.http.get<any[]>(url, options).subscribe(res=>{console.log(res)})
+    this.http.get(`${url}?user_id=eq.${idd}`, options).subscribe(
+      {
+        next:(data)=>{
+          this.perfil.next(data)
+          
+        }
+      }
+    )
+    
   }
-  findByIdProfile(id: number) {
-    const url = `${this.apiUrl}/rest/v1/profile`;
-    const token = this.auth.access_token();
-    const headers = new HttpHeaders({
-      apikey: this.supabaseKey,
-      Authorization: `Bearer ${token}`,
-    });
-    const options = { headers: headers };
-    return this.http.get(`${url}?user_id=eq.${id}`, options).subscribe(res=>{console.log(res)});
+
+  getPerfi(){
+    this.findByIdProfile();
+    return this.perfil.asObservable();
   }
+
+
   }
 
 

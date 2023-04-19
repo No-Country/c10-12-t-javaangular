@@ -41,9 +41,10 @@ export class JobsService {
     });
   }
 
-  createJob(job: string) {
+  createJob(job: any) {
     const url = `${this.apiUrl}/rest/v1/trabajo`;
     const token = this.auth.access_token();
+    console.log(token);
     const headers = new HttpHeaders({
       apikey: this.supabaseKey,
       Authorization: `Bearer ${token}`
@@ -51,7 +52,11 @@ export class JobsService {
     const options = { headers: headers };
     this.http.post(url, job, options).subscribe({
       next: () => {
-        this.getAllOffers();
+
+       console.log('asd')
+      },
+      error:(error)=>{
+        console.log(error)
       }
     });
   }
@@ -66,7 +71,7 @@ export class JobsService {
     const options = { headers: headers };
     this.http.patch(`${url}?id=eq.${id}`, jobOffer, options).subscribe({
       next: () => {
-        this.getAllOffers();
+    this.getAllOffers(); 
       }
     })
   }

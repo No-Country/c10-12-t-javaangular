@@ -49,8 +49,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
         try {
         const { email, password } = this.form.getRawValue();
-        return await this.auth.signIn({ email: email, password: password })
-
+        return await this.auth.signIn({ email: email, password: password }) /* aaa */
       } catch (error) {
         console.log(error)
         this.errorMessage = true;

@@ -8,7 +8,7 @@ import { DeleteAccountDialogComponent } from 'src/app/components/delete-account-
 import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/free-solid-svg-icons';
 import { ProfileModalComponent } from 'src/app/components/profile-modal/profile-modal.component';
 import { ProfileService } from 'src/app/services/profile.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -19,38 +19,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: any;
+  Datosprofile: any;
 
   formularioPerfil: FormGroup;
-
-  /*   ngOnInit() {
-  
-      this.profile = this.fb.group(
-        {
-          name: [''],
-          lastname: [''],
-          photo: [''],
-          country: [''],
-          description: [''],
-          location: [''],
-          phone: [''],
-          user_id: [id_user, Validators.required],
-        }
-      )
-    } */
-
-
-  datos = {
-
-    name: "elcira",
-    lastname: "code",
-    country: "eeuu",
-    description: "kpa",
-    phone: 111111,
-    instagram: "elcirakapa"
-
-
-  }
 
   meOffert = [];
   hidde = true;
@@ -63,27 +34,26 @@ export class ProfileComponent implements OnInit {
   email: string | undefined;
 
   ngOnInit(): void {
-
-    this.profile = this.fb.group(
-      {
-        name: [''],
-        lastname: [''],
-        photo: [''],
-        country: [''],
-        description: [''],
-        location: [''],
-        phone: [''],
-        /* user_id: [id_user, Validators.required], */
-      }
-    )
-    window.scrollTo({ top: 0 });
-    this.nombreUsuario();
     this.email = this.auth.getEmail()
+    window.scrollTo({ top: 0 });
+  
+
+    
+    this.profileService.getPerfi().subscribe(
+    {
+      next:(data)=>{
+        this.Datosprofile=data
+        console.log(this.Datosprofile)
+      }
+    }
+    );
+    
+    
   }
 
-  createProfile() {
-    return this.profileService.createPerfil(this.datos);
-  }
+   createProfile() {
+   /*  return this.profileService.createPerfil(this.datos); */
+  } 
 
 
 
@@ -108,6 +78,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
+
+
   nombreUsuario() {
     if (this.auth.access_token()) {
       console.log("holasusana")
@@ -121,24 +94,26 @@ export class ProfileComponent implements OnInit {
   // }
 
   openDialog() {
+   /*  this.profileService.updatePerfil(this.datos); */
     const dialogRef = this.dialog.open(ProfileModalComponent);
 
     dialogRef.afterClosed().subscribe(result => {
+
       console.log(`Dialog result: ${result}`);
     });
   }
 
-  // ngOnInit() {
-  //   let userId = this.auth.idUsuarios();
-  // }
+  /*  ngOnInit() {
+     let userId = this.auth.idUsuarios();
+   } */
 
-  getProfile() {
-    // this.profileService.getPerfil()
+ /*  getProfile() {
+     this.profileService.getProfile
   }
-
+ */
   updateProfilePhoto() {
-    const id = this.auth.idUsuarios();
-    console.log('elci', id);
+/*     const id = this.auth.idUsuarios();
+    console.log('elci', id); */
     const foto = this.formularioPerfil.getRawValue();
     // this.profileService.updateProfile(foto, id);
   }
