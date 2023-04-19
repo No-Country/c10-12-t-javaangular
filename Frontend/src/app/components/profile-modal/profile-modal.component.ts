@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 
@@ -10,14 +10,30 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class ProfileModalComponent {
 
-  newOffer: FormGroup = new FormGroup({});
+  perfill: FormGroup = new FormGroup({});
 
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
     private auth: AuthService,){}
 
-
+    ngOnInit() {
+      let id_user=this.auth.idUsuarios();
+      this.perfill = this.fb.group(
+        {
+          user_id: [id_user, Validators.required],
+          nombre: ['', Validators.required],
+          apellido: ['', Validators.required],
+          descripcion: ['', Validators.required],
+          ubicacion: ['', Validators.required],
+          nacionalidad: ['', Validators.required],
+          telefono: ['', Validators.required],
+          social: ['', Validators.required],
+        }
+      )
+  /*     this.createOffer(); */
+    }
+  
 
   // async updateProfilePhoto() {
   //   const id = 1; // ID del usuario actual
@@ -30,10 +46,10 @@ export class ProfileModalComponent {
   //   }
   // }
 
-  updateProfile() {
-   /*    this.profileService.updateProfile() */
+  updateProfil() {
+    this.profileService.updatePerfil(this.perfill.getRawValue())
+
      
-/*      this.jobsService.createJob(this.newOffer.getRawValue()); */
   }
 
 }

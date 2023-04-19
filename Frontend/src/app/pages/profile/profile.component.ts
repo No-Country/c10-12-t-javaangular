@@ -8,7 +8,7 @@ import { DeleteAccountDialogComponent } from 'src/app/components/delete-account-
 import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/free-solid-svg-icons';
 import { ProfileModalComponent } from 'src/app/components/profile-modal/profile-modal.component';
 import { ProfileService } from 'src/app/services/profile.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -59,17 +59,18 @@ export class ProfileComponent implements OnInit {
   email: string | undefined;
 
   ngOnInit(): void {
-
+    let id_user=this.auth.idUsuarios();
     this.profile = this.fb.group(
       {
-        name: [''],
-        lastname: [''],
-        photo: [''],
-        country: [''],
-        description: [''],
-        location: [''],
-        phone: [''],
-        /* user_id: [id_user, Validators.required], */
+        user_id: [id_user, Validators.required],
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        descripcion: ['', Validators.required],
+/*         photo: ['', Validators.required], */
+        ubicacion: ['', Validators.required],
+        nacionalidad: ['', Validators.required],
+        telefono: ['', Validators.required],
+        social: ['', Validators.required],
       }
     )
     window.scrollTo({ top: 0 });
@@ -127,7 +128,7 @@ export class ProfileComponent implements OnInit {
   // }
 
   openDialog() {
-    this.profileService.updatePerfil(this.datos);
+   /*  this.profileService.updatePerfil(this.datos); */
     const dialogRef = this.dialog.open(ProfileModalComponent);
 
     dialogRef.afterClosed().subscribe(result => {
