@@ -32,7 +32,6 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
-import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequents-questions.component';
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -63,6 +62,7 @@ import { DetailsEventComponent } from './components/details-event/details-event.
 import { CookiesComponent } from './components/cookies/cookies.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { ForgottenPasswordComponent } from './pages/login/components/forgotten-password/forgotten-password.component';
+import { GalletitasComponent } from './pages/galletitas/galletitas.component';
 
 
 @NgModule({
@@ -84,7 +84,6 @@ import { ForgottenPasswordComponent } from './pages/login/components/forgotten-p
     CouchsurfingAdComponent,
     CouchsurfingCardComponent,
     TermsConditionComponent,
-    FrequentsQuestionsComponent,
     DataProtectionComponent,
     ProfileComponent,
     DeleteAccountDialogComponent,
@@ -114,6 +113,7 @@ import { ForgottenPasswordComponent } from './pages/login/components/forgotten-p
     CookiesComponent,
     ToolsComponent,
     ForgottenPasswordComponent,
+    GalletitasComponent,
   ],
   imports: [
     BrowserModule,

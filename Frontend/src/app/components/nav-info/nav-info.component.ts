@@ -23,11 +23,11 @@ export class NavInfoComponent {
           case '/info/terms':
             this.title = 'Términos y condiciones';
             break;
-          case '/info/frequents':
-            this.title = 'Protección de datos';
+          case '/info/cookies':
+            this.title = 'Política de cookies';
             break;
           case '/info/data-protection':
-            this.title = 'Política de cookies';
+            this.title = 'Protección de datos';
             break;
 
           default:

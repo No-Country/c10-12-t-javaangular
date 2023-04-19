@@ -6,7 +6,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HostingComponent } from './pages/hosting/hosting.component';
 import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
-import { FrequentsQuestionsComponent } from './pages/frequents-questions/frequents-questions.component';
 import { DataProtectionComponent } from './pages/data-protection/data-protection.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ComunidadComponent } from './pages/comunidad/comunidad.component';
@@ -18,6 +17,7 @@ import { ForumComponent } from './components/forum/forum.component';
 import { InfoComponent } from './pages/info/info.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AuthGuard } from './guards/auth.guard';
+import { GalletitasComponent } from './pages/galletitas/galletitas.component';
 
 const routes: Routes = [
   {
@@ -98,13 +98,13 @@ const routes: Routes = [
         component: TermsConditionComponent
       },
       {
-        path: 'frequents',
-        component: FrequentsQuestionsComponent
-      },
-      {
         path: 'data-protection',
         component: DataProtectionComponent,
       },
+      {
+        path: 'cookies',
+        component: GalletitasComponent
+      }
     ]
   },
   {
