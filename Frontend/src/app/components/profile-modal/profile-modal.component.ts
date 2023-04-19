@@ -11,7 +11,6 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class ProfileModalComponent {
 
   perfill: FormGroup = new FormGroup({});
-
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
@@ -31,7 +30,6 @@ export class ProfileModalComponent {
           social: ['', Validators.required],
         }
       )
-  /*     this.createOffer(); */
     }
   
 
@@ -48,8 +46,6 @@ export class ProfileModalComponent {
 
   updateProfil() {
     this.profileService.updatePerfil(this.perfill.getRawValue())
-
-     
   }
 
 }

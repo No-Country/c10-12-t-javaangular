@@ -19,34 +19,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: any;
-
+  Datosprofile: any;
 
   formularioPerfil: FormGroup;
-
-  /*   ngOnInit() {
-  
-      this.profile = this.fb.group(
-        {
-          name: [''],
-          lastname: [''],
-          photo: [''],
-          country: [''],
-          description: [''],
-          location: [''],
-          phone: [''],
-          user_id: [id_user, Validators.required],
-        }
-      )
-    } */
-
-
-  datos = {
-
-    nombre: "elcira",
-    apellido: "code",
-    nacionalidad: "eeuu",
-  }
 
   meOffert = [];
   hidde = true;
@@ -59,30 +34,21 @@ export class ProfileComponent implements OnInit {
   email: string | undefined;
 
   ngOnInit(): void {
-    let id_user=this.auth.idUsuarios();
-    this.profile = this.fb.group(
-      {
-        user_id: [id_user, Validators.required],
-        nombre: ['', Validators.required],
-        apellido: ['', Validators.required],
-        descripcion: ['', Validators.required],
-/*         photo: ['', Validators.required], */
-        ubicacion: ['', Validators.required],
-        nacionalidad: ['', Validators.required],
-        telefono: ['', Validators.required],
-        social: ['', Validators.required],
-      }
-    )
-    window.scrollTo({ top: 0 });
-    this.nombreUsuario();
     this.email = this.auth.getEmail()
+    window.scrollTo({ top: 0 });
+  
 
-    this.auth.setUser().subscribe(res=>{
-      this.profile=res
-    })
     
-    console.log(this.profileService.findByIdProfile())
-
+    this.profileService.getPerfi().subscribe(
+    {
+      next:(data)=>{
+        this.Datosprofile=data
+        console.log(this.Datosprofile)
+      }
+    }
+    );
+    
+    
   }
 
    createProfile() {

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { updateProfile } from '@firebase/auth';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
-import { Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 
@@ -10,6 +10,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ProfileService {
+
+  public perfil = new BehaviorSubject<any | null>(null);  
 
   // private apiUrl = environment.supabase.url;
   // private supabaseKey = environment.supabase.publicKey;
@@ -132,8 +134,23 @@ export class ProfileService {
       Authorization: `Bearer ${token}`,
     });
     const options = { headers: headers };
-    return this.http.get(`${url}?user_id=eq.${idd}`, options).subscribe(res=>{console.log(res)});
+    this.http.get(`${url}?user_id=eq.${idd}`, options).subscribe(
+      {
+        next:(data)=>{
+          this.perfil.next(data)
+          
+        }
+      }
+    )
+    
   }
+
+  getPerfi(){
+    this.findByIdProfile();
+    return this.perfil.asObservable();
+  }
+
+
   }
 
 
