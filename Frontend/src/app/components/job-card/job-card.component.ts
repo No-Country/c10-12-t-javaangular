@@ -4,6 +4,7 @@ import { faLocationDot, faEllipsisVertical } from '@fortawesome/free-solid-svg-i
 import { JobsService } from 'src/app/services/jobs.service';
 import { EditJobOfferComponent } from '../edit-job-offer/edit-job-offer.component';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-job-card',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./job-card.component.css']
 })
 export class JobCardComponent implements OnInit {   
-
+  titularAlerta="";
   @Input() offer!: any;
   faLocationDot = faLocationDot;
   faEllipsisVertical = faEllipsisVertical;
@@ -52,5 +53,14 @@ export class JobCardComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+
+  confirmar(){
+
+    Swal.fire('Oferta Aplicada', this.titularAlerta, 'success');
+
+  
+}
+
 
 }
