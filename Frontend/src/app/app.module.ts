@@ -63,6 +63,7 @@ import { CookiesComponent } from './components/cookies/cookies.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { ForgottenPasswordComponent } from './pages/login/components/forgotten-password/forgotten-password.component';
 import { GalletitasComponent } from './pages/galletitas/galletitas.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
 
 
 @NgModule({
@@ -114,6 +115,7 @@ import { GalletitasComponent } from './pages/galletitas/galletitas.component';
     ToolsComponent,
     ForgottenPasswordComponent,
     GalletitasComponent,
+    EventEditComponent,
   ],
   imports: [
     BrowserModule,
