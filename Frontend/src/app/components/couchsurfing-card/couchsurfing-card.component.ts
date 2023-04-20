@@ -4,6 +4,7 @@ import { faLocationDot, faEllipsisVertical, faPen, faCircleXmark } from '@fortaw
 import { AlojamientoService } from 'src/app/services/alojamiento.service';
 import { CouchsurfingUpdateComponent } from '../couchsurfing-update/couchsurfing-update.component';
 import { CouchsurfingDeleteComponent } from '../couchsurfing-delete/couchsurfing-delete.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-couchsurfing-card',
@@ -21,16 +22,21 @@ export class CouchsurfingCardComponent {
   faPen = faPen;
   faCircleXmark = faCircleXmark;
 
-  isUserPost: boolean = true;
+  isUserPost: boolean = false;
   editDeleteControls: boolean = false;
   
   constructor(
+    private authService: AuthService,
     private alojamientoService:AlojamientoService,
     private matDialog: MatDialog
   ) {}
 
   ngOnInit() {
-
+    if (this.couchsurfing.user_id == this.authService.idUsuarios()) {
+      this.isUserPost = true;
+    } else {
+      this.isUserPost = false;
+    }
   }
 
   openEditDialog() {
@@ -54,4 +60,3 @@ export class CouchsurfingCardComponent {
   }  
 
 }
-

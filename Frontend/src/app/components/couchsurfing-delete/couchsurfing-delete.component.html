@@ -1,0 +1,10 @@
+<div class="bg-white w-[285px] md:w-[640px] rounded-[30px] p-8 md:p-10 flex flex-col gap-3">
+  <div class="flex flex-col gap-1 sm:gap-4 text-secondary">
+    <p class="w-5/6 text-xl font-bold md:text-2xl font-primary">¿Deseas eliminar la oferta?</p>
+    <p class="text-sm md:text-xl">Recuerda que una vez eliminado <span class="font-bold">no se encontrará disponible para los usuarios.</span></p>
+  </div>
+  <div class="flex flex-col gap-3 text-sm md:text-lg md:gap-4 md:flex-row-reverse">
+    <button mat-dialog-close class="w-full py-1 border-2 rounded-full border-accent text-accent" (click)="deleteCouchsurfing()">Eliminar alojamiento</button>
+    <button mat-dialog-close class="w-full py-1 font-bold text-white border-2 rounded-full bg-accent border-accent">Mantener alojamiento activo</button>
+  </div>
+</div>

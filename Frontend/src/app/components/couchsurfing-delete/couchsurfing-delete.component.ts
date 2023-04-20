@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlojamientoService } from 'src/app/services/alojamiento.service';
 
 @Component({
@@ -6,18 +6,14 @@ import { AlojamientoService } from 'src/app/services/alojamiento.service';
   templateUrl: './couchsurfing-delete.component.html',
   styleUrls: ['./couchsurfing-delete.component.css']
 })
-export class CouchsurfingDeleteComponent implements OnInit {  
+export class CouchsurfingDeleteComponent {  
 
   constructor(
     private alojamientoService: AlojamientoService
   ) {}
 
-  ngOnInit(): void {
-    
-  }
-
   deleteCouchsurfing() {
-    
+    this.alojamientoService.deleteCouchsurfing();
   }
 
 }

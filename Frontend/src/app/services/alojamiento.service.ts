@@ -12,8 +12,7 @@ export class AlojamientoService {
   private apiUrl = environment.supabase.url;
   private supabaseKey = environment.supabase.publicKey;
 
-  public events = new BehaviorSubject<any | null>(null); 
-
+  public events = new BehaviorSubject<any | null>(null);
 
   // este id se setea cuando el usuario hace abre los dialog de update o delete desde la couchsurfing-card, cuando en el dialog se guardan los cambios o se elimina el post, se usa este valor en updateCouchsurfing() o deleteCouchsurfing() y despues se setea a undefined.
   idForUpdateOrDelete: number | undefined;
@@ -44,7 +43,7 @@ export class AlojamientoService {
     });
   } 
 
-  createAlojamiento(event: any) {
+  createAlojamiento(couchsurfing: any) {
     const url = `${this.apiUrl}/rest/v1/alojamiento`;
     const token = this.auth.access_token();
     const headers = new HttpHeaders({
@@ -52,8 +51,7 @@ export class AlojamientoService {
       Authorization: `Bearer ${token}`
     });
     const options = { headers: headers };
-    console.log(event)
-    this.http.post(url, event, options)
+    this.http.post(url, couchsurfing, options)
     .subscribe({
       next: (data) => {
         this.getAllAlojamientos();
@@ -85,6 +83,21 @@ export class AlojamientoService {
     this.http.patch(`${url}?id=eq.${this.idForUpdateOrDelete}`, couchsurfing, options).subscribe({
       next: () => {
         this.idForUpdateOrDelete = undefined;
+        this.getAllAlojamientos();
+      }
+    });
+  }
+
+  deleteCouchsurfing() {
+    const url = `${this.apiUrl}/rest/v1/alojamiento`;
+    const token = this.auth.access_token();
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization: `Bearer ${token}`,
+    });
+    const options = { headers: headers };
+    this.http.delete(`${url}?id=eq.${this.idForUpdateOrDelete}`, options).subscribe({
+      next: () => {
         this.getAllAlojamientos();
       }
     });
