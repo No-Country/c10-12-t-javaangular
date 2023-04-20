@@ -43,7 +43,7 @@ export class MembersComponent {
       'role': 'Frontend Dev',
       'img': '../../../../../assets/img/team-members/fernando.png',
       'linkedin': '',
-      'quote': '"Amo codear desde que tengo 7 años. Me encanta trabajar de lo que amo."',
+      'quote': '"Estoy encontrando una pasion en la maquetacion, me encanta que se vea bonita la interface"',
     },
   ];
 
