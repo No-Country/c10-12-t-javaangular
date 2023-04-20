@@ -1,8 +1,8 @@
 <div class="flex flex-col overflow-hidden border border-gray-300 border-solid rounded-xl">  
   <div class="flex justify-between w-full p-3 border-b border-gray-300 border-solid md:px-5">
     <div>
-      <p class="text-xl font-bold md:text-2xl">{{hosting.titulo}}</p>
-      <p class="text-sm font-normal sm:text-base"><fa-icon [icon]="faLocationDot" class="mr-2"></fa-icon>{{hosting.ubicacion}}</p>
+      <p class="text-xl font-bold md:text-2xl">{{couchsurfing.titulo}}</p>
+      <p class="text-sm font-normal sm:text-base"><fa-icon [icon]="faLocationDot" class="mr-2"></fa-icon>{{couchsurfing.ubicacion}}</p>
     </div>
 
     <!-- editar y eliminar si el post pertenece al usuario logueado -->
@@ -16,18 +16,18 @@
             class="absolute flex-col mt-3 overflow-hidden border border-gray-300 divide-y divide-gray-100 rounded-lg shadow-lg focus:ring-0 focus:border-gray-300">
             <li class="w-40">
               <button class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary"
-                (click)="openDialog()">Editar</button>
+                (click)="openEditDialog()">Editar</button>
             </li>
             <li>
               <button class="w-full px-4 py-2 text-left bg-white hover:bg-primary hover:text-white text-primary"
-                (click)="deletePost()">Eliminar</button>
+                (click)="openDeleteDialog()">Eliminar</button>
             </li>
           </ul>
         </div>
       </div>
       <div class="items-center hidden h-full gap-6 text-xl lg:text-2xl sm:flex">
-        <button (click)="openDialog()"><fa-icon class="text-gray-600 " [icon]="faPen"></fa-icon></button>
-        <button (click)="deletePost()"><fa-icon class=" text-accent" [icon]="faCircleXmark"></fa-icon></button>        
+        <button (click)="openEditDialog()"><fa-icon class="text-gray-600 " [icon]="faPen"></fa-icon></button>
+        <button (click)="openDeleteDialog()"><fa-icon class=" text-accent" [icon]="faCircleXmark"></fa-icon></button>        
       </div>
     </div>
     
@@ -37,11 +37,11 @@
       <img class="object-cover w-full h-full" src="../../../assets/img/hostel.jpg" alt="">
     </div>
     <div class="flex flex-col items-start gap-5 p-3 overflow-y-hidden lg:p-5 sm:w-2/3">
-      <p class="text-sm font-normal sm:text-base lg:text-xl ">{{hosting.descripcion}}</p>
+      <p class="text-sm font-normal sm:text-base lg:text-xl ">{{couchsurfing.descripcion}}</p>
     </div>
   </div>
   <div class="flex justify-center w-full p-5 py-4 sm:justify-end bg-secondary">
-    <a href= "https://api.whatsapp.com/send?phone={{hosting.telefono}}&text=Hola%20,te%20asesoramos%20por
+    <a href= "https://api.whatsapp.com/send?phone={{couchsurfing.telefono}}&text=Hola%20,te%20asesoramos%20por
     %20whatsapp%20gestiona%20tu%20compra%20por%20este%20canal." class="px-6 py-1 text-base font-medium text-white rounded-full lg:py-2 lg:text-xl bg-primary font-primary">Contactar Anunciante</a>
   </div>
   

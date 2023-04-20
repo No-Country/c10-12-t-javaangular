@@ -1,0 +1,35 @@
+<div class="w-full overflow-hidden bg-white rounded-3xl shadow-sm sm:w-[550px]">
+  <div class="p-6 bg-primary">
+    <h2 class="p-0 font-bold text-white sm:text-2xl"><fa-icon [icon]="faPen" class="mr-2 sm:text-xl"></fa-icon>Editar alojamiento</h2>
+  </div>
+  <form [formGroup]="editedCouchsurfing" (ngSubmit)="updateCouchsurfing()">
+    <mat-dialog-content class="mat-typography">
+      <div class="flex flex-col gap-6">
+        <input type="text" placeholder="Título"
+          class="border-b border-t-0 border-r-0 border-l-0 focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
+          formControlName="titulo">
+        <input type="text" placeholder="Ubicación"
+          class="border-b border-t-0 border-r-0 border-l-0 focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
+          formControlName="ubicacion">
+        <input type="text" placeholder="Descripción"
+          class="border-b border-t-0 border-r-0 border-l-0 focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
+          formControlName="descripcion">
+        <input type="email" placeholder="Email"
+          class="border-b border-t-0 border-r-0 border-l-0 focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
+          formControlName="email">
+        <input type="number" placeholder="Teléfono"
+          class="border-b border-t-0 border-r-0 border-l-0 focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]"
+          formControlName="telefono">
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <div class="flex gap-2 mt-5">
+        <button mat-button mat-dialog-close
+          class="px-4 py-2 border border-transparent rounded-full text-secondary hover:border hover:border-secondary">Cancel</button>
+        <button [ngClass]="editedCouchsurfing.valid? 'bg-primary' : 'bg-[#BEBEBE]'" mat-button [mat-dialog-close]="true"
+          cdkFocusInitial class="px-4 py-2 text-white border border-transparent rounded-full" type="submit"
+          [disabled]="!editedCouchsurfing.valid">Guardar cambios</button>
+      </div>
+    </mat-dialog-actions>
+  </form>
+</div>

@@ -64,6 +64,8 @@ import { ToolsComponent } from './components/tools/tools.component';
 import { ForgottenPasswordComponent } from './pages/login/components/forgotten-password/forgotten-password.component';
 import { GalletitasComponent } from './pages/galletitas/galletitas.component';
 import { CouchsurfingCreateComponent } from './components/couchsurfing-create/couchsurfing-create.component';
+import { CouchsurfingDeleteComponent } from './components/couchsurfing-delete/couchsurfing-delete.component';
+import { CouchsurfingUpdateComponent } from './components/couchsurfing-update/couchsurfing-update.component';
 
 
 @NgModule({
@@ -116,6 +118,8 @@ import { CouchsurfingCreateComponent } from './components/couchsurfing-create/co
     ForgottenPasswordComponent,
     GalletitasComponent,
     CouchsurfingCreateComponent,
+    CouchsurfingDeleteComponent,
+    CouchsurfingUpdateComponent,
   ],
   imports: [
     BrowserModule,
