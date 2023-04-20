@@ -10,9 +10,9 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ProfileService {
-
+  img64:string|undefined;
   public perfil = new BehaviorSubject<any | null>(null);  
-
+  
   // private apiUrl = environment.supabase.url;
   // private supabaseKey = environment.supabase.publicKey;
 
@@ -51,7 +51,12 @@ export class ProfileService {
     });
     const options = { headers: headers };
 
-    return this.http.patch(`${url}?user_id=eq.${idd}`,perfil,options).subscribe(res=>{console.log(res)});
+     this.http.patch(`${url}?user_id=eq.${idd}`,perfil,options).subscribe({
+      next:()=>{
+        this.findByIdProfile();
+      }
+     });
+
   }
 
 

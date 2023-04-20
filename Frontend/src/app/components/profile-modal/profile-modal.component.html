@@ -11,6 +11,7 @@
         <input type="text" placeholder="nacionalidad" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="nacionalidad">
         <input type="number" placeholder="telefono" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="telefono">
         <input type="text" placeholder="Social" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="social">
+        <input type="file" (change)="handleImageUpload($event)" placeholder="foto-perfil" class="border-none focus:ring-0 bg-[#F2F2F2] hover:bg-[#dad8d8]" formControlName="foto">
       </div>
       </mat-dialog-content>
       <mat-dialog-actions align="end">

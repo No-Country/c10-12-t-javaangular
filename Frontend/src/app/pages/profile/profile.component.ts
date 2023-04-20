@@ -21,7 +21,7 @@ import swal from'sweetalert2';
 export class ProfileComponent implements OnInit {
 
   titularAlerta: string = '';
-
+  im:string|undefined;
   Datosprofile: any;
 
   formularioPerfil: FormGroup;
@@ -35,8 +35,9 @@ export class ProfileComponent implements OnInit {
   faHashtag = faHashtag;
 
   email: string | undefined;
-
+  img64:string|undefined;
   ngOnInit(): void {
+  
     this.email = this.auth.getEmail()
     window.scrollTo({ top: 0 });
     //  let userId = this.auth.idUsuarios();
@@ -53,7 +54,7 @@ export class ProfileComponent implements OnInit {
     {
       next:(data)=>{
         this.Datosprofile=data
-        console.log(this.Datosprofile)
+       console.log(this.Datosprofile)
       }
     }
     );
@@ -67,6 +68,7 @@ export class ProfileComponent implements OnInit {
   mostrar() {
     this.hidde = !this.hidde;
   }
+
 
 
   faUser = faUser;
@@ -121,6 +123,16 @@ export class ProfileComponent implements OnInit {
     // this.profileService.updateProfile(foto, id);
   }
 
+  handleImageUpload(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event:any) => {
+         this.im = event.target.result.toString(); 
+        console.log(this.im)
+    };
+    reader.readAsDataURL(file);
+  }
+  
 
 }
 

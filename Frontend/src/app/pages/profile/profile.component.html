@@ -1,4 +1,4 @@
-<div class="min-h-screen">
+<div class="min-h-screen" *ngIf="Datosprofile">
   <div class="w-full gap-5">
     <div class="flex items-center justify-center w-full h-20 text-center bg-secondary py-9">
       <h1 class="text-4xl text-white"> Tus ofertas </h1>
@@ -27,6 +27,7 @@
             </div>
           </picture>
         </form> -->
+        <h1>{{Datosprofile.id}}</h1>
           <picture>
             <div class="bg-face w-[10rem] h-[10rem] rounded-[50%] grid justify-end">
               <!-- <input type="file" formControlName="photo" id="fileInput"> -->
@@ -38,7 +39,7 @@
 
           <!-- <h1>{{dateUser}}</h1> -->
           <h1>{{ this.email }}</h1>
-          <h3 class="text-2xl font-bold text-secondary font-primary">{{ datos }}Argentina</h3>
+          <h3 class="text-2xl font-bold text-secondary font-primary">{{ Datosprofile.nombre }}Argentina</h3>
           <ul class="ml-6 text-xl list-disc">
             <li>Ingeniera</li>
             <li>Vivo con Manchis</li>
@@ -69,7 +70,11 @@
       </div>
       <div class="h-1/3"></div>
       <button mat-button class="px-3 md:px-6 py-2 text-sm mt-2 md:mt-4 md:text-xl text-white rounded-full bg-primary font-primary hover:bg-[#7edcd4] hover:border-[#7edcd4]" type="button" (click)="openDialog()">Editar</button>
-      <!-- <button (click)="createProfile()">crear perfil</button> -->
+      <input type="file" (change)="handleImageUpload($event)">crear perfil>
+     <div class="">
+      <img [src]="im" alt="">
+     </div>
+      
     </div>
     </div>
   </div>

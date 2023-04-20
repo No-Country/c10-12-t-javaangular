@@ -9,15 +9,20 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./profile-modal.component.css']
 })
 export class ProfileModalComponent {
-
+img:string|undefined;
   perfill: FormGroup = new FormGroup({});
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
-    private auth: AuthService,){}
+    private auth: AuthService,){
+     this.img=this.profileService.img64;
+     console.log('desde el formulario oninit',this.img);
+    }
 
     ngOnInit() {
       let id_user=this.auth.idUsuarios();
+      
+     
       this.perfill = this.fb.group(
         {
           user_id: [id_user, Validators.required],
@@ -28,6 +33,7 @@ export class ProfileModalComponent {
           nacionalidad: ['', Validators.required],
           telefono: ['', Validators.required],
           social: ['', Validators.required],
+          foto:['']
         }
       )
     }
@@ -46,6 +52,19 @@ export class ProfileModalComponent {
 
   updateProfil() {
     this.profileService.updatePerfil(this.perfill.getRawValue())
+  }
+
+  handleImageUpload(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event:any) => {
+        const im = event.target.result.toString(); 
+        this.perfill.patchValue({
+          foto:im
+        })
+        console.log(im)
+    };
+    reader.readAsDataURL(file);
   }
 
 }
