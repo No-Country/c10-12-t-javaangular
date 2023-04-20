@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { ProfileService } from 'src/app/services/profile.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 
 export class RegisterComponent implements OnInit {
 
+  titularAlerta: string = '';
 
   form = this.formBuilder.group({
     nombre_apellido: ['', Validators.required],
@@ -61,8 +63,9 @@ export class RegisterComponent implements OnInit {
     if (this.form.valid) {
       const { email, password }:any = this.form.getRawValue();
       this.auth.signUp({email, password}).then(() => {
-       let id=this.auth.idUsuarios();
-       let user_id={
+        swal.fire('Registro exitoso...', this.titularAlerta, 'success');
+        let id=this.auth.idUsuarios();
+        let user_id={
           "user_id": id
         }
         this.profileService.AutoCreateProfile(user_id);

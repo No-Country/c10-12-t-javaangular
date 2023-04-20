@@ -2,15 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs';
-import { DeleteAccountDialogComponent } from 'src/app/components/delete-account-dialog/delete-account-dialog.component';
 
 import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/free-solid-svg-icons';
 import { ProfileModalComponent } from 'src/app/components/profile-modal/profile-modal.component';
 import { ProfileService } from 'src/app/services/profile.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import swal from'sweetalert2';
+
 
 
 @Component({
@@ -19,8 +17,6 @@ import swal from'sweetalert2';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  titularAlerta: string = '';
 
   Datosprofile: any;
 
@@ -38,17 +34,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.email = this.auth.getEmail()
-    window.scrollTo({ top: 0 });
-    //  let userId = this.auth.idUsuarios();
-
-    if(this.email) {
-      swal.fire('Registro exitoso...', this.titularAlerta, 'success');
-    } else {
-      swal.update({
-        icon: 'success'
-      })
-    }
-    
+    window.scrollTo({ top: 0 });    
     this.profileService.getPerfil().subscribe(
     {
       next:(data)=>{
