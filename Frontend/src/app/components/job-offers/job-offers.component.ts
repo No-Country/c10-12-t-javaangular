@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { OfferComponent } from '../offer/offer.component';
-import { Observable, of } from 'rxjs';
 import { JobsService } from 'src/app/services/jobs.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -12,26 +11,15 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./job-offers.component.css']
 })
 export class JobOffersComponent implements OnInit {
-  meOffert=[];  
-
+  
   faPlus = faPlus;
 
-  trabajos:any[]=[];
-  trabajos_filter:any[]=[];
-  id_user_log:any;
-
-  offers$: Observable<any[]> = this.jobsService.offers;
+  offers: any;
 
   constructor(
     public dialog: MatDialog,
     private jobsService: JobsService,
     private auth:AuthService) {
-    this.id_user_log=this.auth.idUsuarios();
-  }
-
-  compareId(){
-    this.trabajos=this.trabajos.filter(a=>a.user_id==this.auth.idUsuarios())
-    console.log(this.trabajos_filter);
   }
 
   mostrarAntiguedad = false;
@@ -41,32 +29,19 @@ export class JobOffersComponent implements OnInit {
     this.mostrarAntiguedad = !this.mostrarAntiguedad;
     this.mostrarAplicadas = false;
   }
+
   togglePortales() {
     this.mostrarAplicadas = !this.mostrarAplicadas;
     this.mostrarAntiguedad = false;
   }
 
   ngOnInit(): void {
-  /*   this.jobsService.getAllOffers(); */
-  }
-
-  filtrarRecientes() {
-    this.offers$.subscribe(
-      data => {
-        const datosFiltrados = data.sort((a, b) => b.fecha.getTime() - a.fecha.getTime());
-        this.offers$ = of(datosFiltrados);
+    this.jobsService.getOffersObservable().subscribe({
+      next: (data) => {
+        this.offers = data;
       }
-    )
-  }
-
-  filtrarAntiguas() {
-    this.offers$.subscribe(
-      data => {
-        const datosFiltrados = data.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
-        this.offers$ = of(datosFiltrados);
-      }
-    )
-  }
+    })
+  }  
 
   openDialog() {
     const dialogRef = this.dialog.open(OfferComponent);

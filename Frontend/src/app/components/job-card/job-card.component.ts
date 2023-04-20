@@ -16,8 +16,6 @@ export class JobCardComponent implements OnInit {
   faLocationDot = faLocationDot;
   faEllipsisVertical = faEllipsisVertical;
 
-  loggedUserId: any = this.auth.idUsuarios()
-
   user = {
     'img': '../../../assets/img/face-profile.png'
   }
@@ -25,13 +23,17 @@ export class JobCardComponent implements OnInit {
   isUserOffer: boolean = false;
   editDeleteControls: boolean = false;
 
-  constructor(public dialog: MatDialog, private jobsService: JobsService, private auth: AuthService) {
-
+  constructor(
+    public dialog: MatDialog,
+    private jobsService: JobsService,
+    private auth: AuthService) {
   }
 
   ngOnInit(): void {
-    if (this.offer.user_id == this.loggedUserId) {
+    if (this.offer.user_id == this.auth.idUsuarios()) {
       this.isUserOffer = true;
+    } else {
+      this.isUserOffer = false;
     }
   }
 
@@ -41,14 +43,11 @@ export class JobCardComponent implements OnInit {
 
   deleteOffer(id: number) {
     this.jobsService.deleteJob(id);
-
   }
 
   openDialog(id:number) {
     this.jobsService.editOfferId=id;
-
     const dialogRef = this.dialog.open(EditJobOfferComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

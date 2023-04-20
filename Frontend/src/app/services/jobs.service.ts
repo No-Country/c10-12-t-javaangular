@@ -13,16 +13,18 @@ export class JobsService {
   private supabaseKey = environment.supabase.publicKey;
 
   editOfferId: number | undefined;
-  userOffers: any = [];
-  appliedOffers: any = [];
 
-  offers = new BehaviorSubject<any>(null);
-  offers$ = this.offers.asObservable();
+  offers = new BehaviorSubject<any | null>(null);
 
   constructor(
     private http: HttpClient,
     private auth: AuthService
   ) { }
+
+  getOffersObservable() {
+    this.getAllOffers();
+    return this.offers.asObservable();
+  }
 
   getAllOffers(): void {
     const url = `${this.apiUrl}/rest/v1/trabajo`;
@@ -34,8 +36,7 @@ export class JobsService {
     const options = { headers: headers };
     this.http.get<any[]>(url, options).subscribe({
       next: (res) => {
-        this.offers.next(res)
-        this.offers$ = this.offers.asObservable();
+        this.offers.next(res);
       },
       error: error => console.log(error)
     });
@@ -51,9 +52,8 @@ export class JobsService {
     });
     const options = { headers: headers };
     this.http.post(url, job, options).subscribe({
-      next: () => {
-
-       console.log('asd')
+      next: (data) => {
+        this.getAllOffers();
       },
       error:(error)=>{
         console.log(error)
@@ -71,7 +71,7 @@ export class JobsService {
     const options = { headers: headers };
     this.http.patch(`${url}?id=eq.${id}`, jobOffer, options).subscribe({
       next: () => {
-    this.getAllOffers(); 
+        this.getAllOffers(); 
       }
     })
   }
