@@ -13,13 +13,14 @@ export class MembersComponent {
       'role': 'Project Manager',
       'img': '../../../../../assets/img/team-members/juan-pablo.png',
       'linkedin': '',
-      'quote': '"Amo codear desde que tengo 7 años. Me encanta trabajar de lo que amo."'
+      'quote': '"Se hoy tu mejor versión que tu futuro esté orgulloso mañana."'
     },
     {
       'name': 'Diego A. Muñoz',
       'role': 'Team Leader',
       'img': '../../../../../assets/img/team-members/diego.png',
-      'linkedin': ''
+      'linkedin': '',
+      'quote': '"Me motiva la idea de que mi trabajo pueda tener un impacto significativo en la vida de muchas personas."'
     },
   ]
 
@@ -60,7 +61,7 @@ export class MembersComponent {
       'role': 'Diseñadora UX/UI',
       'img': '../../../../../assets/img/team-members/luis.png',
       'linkedin': '',
-      'quote': '"Amo codear desde que tengo 7 años. Me encanta trabajar de lo que amo."',
+      'quote': '"Primero las personas, luego el diseño."',
     },
     {
       'name': 'Paula Gareis',

@@ -66,10 +66,10 @@
     </div>
     <!-- =============================== -->
     <div *ngIf="user$ | async" class="flex flex-col items-center justify-center gap-2 px-5 py-6 border-b border-gray-300 sm:items-start">
-      <div class="w-20 overflow-hidden rounded-full aspect-square">
+      <div data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" routerLink="/profile" class="w-20 overflow-hidden rounded-full aspect-square">
         <img class="object-cover w-full h-full" src="./../../../assets/img/couchsurfing-banner.png" alt="">
       </div>
-      <p class="text-xl font-bold">Thomas Wayne</p>
+      <p data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" routerLink="/profile" class="text-xl font-bold">Thomas Wayne</p>
     </div>      
     <div class="px-5 py-6 border-b border-gray-300">
       <ul class="flex flex-col gap-5 text-lg font-medium text-center sm:text-left">
