@@ -3,7 +3,7 @@
     <p class="flex items-center text-2xl font-bold text-white sm:text-2xl lg:text-4xl font-primary"><fa-icon [icon]="faHouse" class="px-2 mr-2 text-xl sm:text-2xl lg:text-3xl"></fa-icon>Alojamientos</p>
   </div>
 </div>
-<div class="container flex flex-col px-5 py-5 mx-auto sm:gap-12 sm:py-6 lg:py-12">  
+<div class="container flex flex-col min-h-screen px-5 py-5 mx-auto sm:gap-12 sm:py-6 lg:py-12">  
   <div class="hidden grid-cols-1 sm:grid sm:grid-cols-12">
     <div class="flex items-center justify-center col-span-7 md:w-5/6">
       <div class="flex flex-col gap-5 lg:gap-8">
@@ -30,9 +30,20 @@
     </div>
   </div>  
   <div class="flex flex-col gap-6 lg:gap-9">
-    <p class="hidden text-3xl font-bold text-center sm:text-left lg:text-4xl sm:block font-primary text-secondary md:text-start">Lugares disponibles</p>
+    <div class="flex justify-between">
+      <p class="hidden text-3xl font-bold text-center sm:text-left lg:text-4xl sm:block font-primary text-secondary md:text-start">Lugares disponibles</p>
+      <button class="w-full px-6 py-2 text-sm font-medium text-white rounded-full sm:w-auto bg-primary" (click)="openDialog()">
+        <fa-icon class="pr-2" [icon]="faPlus"></fa-icon>
+        Crear oferta
+      </button>
+    </div>
     <div class="grid grid-cols-1 gap-9">
-      <app-couchsurfing-card *ngFor="let item of alojamientoList" [hosting]="item"></app-couchsurfing-card>
+      <ng-container *ngIf="alojamientoList && alojamientoList.length > 0; else noData">
+        <app-couchsurfing-card *ngFor="let item of alojamientoList" [couchsurfing]="item"></app-couchsurfing-card>
+      </ng-container>
+      <ng-template #noData>
+        <p class="py-10 text-xl font-bold text-center md:text-2xl font-primary text-secondary">En este momento no se encuentran ofertas disponibles.</p>
+      </ng-template>      
     </div>
   </div>  
 </div>

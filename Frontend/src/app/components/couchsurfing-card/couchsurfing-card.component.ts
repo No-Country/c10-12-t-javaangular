@@ -1,6 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { faLocationDot, faEllipsisVertical, faPen, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { AlojamientoService } from 'src/app/services/alojamiento.service';
+import { CouchsurfingUpdateComponent } from '../couchsurfing-update/couchsurfing-update.component';
+import { CouchsurfingDeleteComponent } from '../couchsurfing-delete/couchsurfing-delete.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-couchsurfing-card',
@@ -9,46 +13,50 @@ import { AlojamientoService } from 'src/app/services/alojamiento.service';
 })
 export class CouchsurfingCardComponent {
   
-   href:string=`https://api.whatsapp.com/send?phone=&text=Hola%20,te%20asesoramos%20por%20whatsapp%20gestiona%20tu%20compra%20por%20este%20canal.`
-  @Input() hosting!: any;
+   href:string=`https://api.whatsapp.com/send?phone=&text=Hola%20,te%20asesoramos%20por%20whatsapp%20gestiona%20tu%20compra%20por%20este%20canal.`;
 
+  @Input() couchsurfing!: any;
 
   faLocationDot = faLocationDot;
   faEllipsisVertical = faEllipsisVertical;
   faPen = faPen;
   faCircleXmark = faCircleXmark;
 
-  isUserPost: boolean = true;
+  isUserPost: boolean = false;
   editDeleteControls: boolean = false;
   
-  constructor(private alojamiento:AlojamientoService){
-    
+  constructor(
+    private authService: AuthService,
+    private alojamientoService:AlojamientoService,
+    private matDialog: MatDialog
+  ) {}
+
+  ngOnInit() {
+    if (this.couchsurfing.user_id == this.authService.idUsuarios()) {
+      this.isUserPost = true;
+    } else {
+      this.isUserPost = false;
+    }
   }
-  openDialog() {
+
+  openEditDialog() {
+    this.alojamientoService.idForUpdateOrDelete = this.couchsurfing.id;
+    const dialogRef = this.matDialog.open(CouchsurfingUpdateComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   
-  deleteOffer() {
+  openDeleteDialog() {
+    this.alojamientoService.idForUpdateOrDelete = this.couchsurfing.id;
+    const dialogRef = this.matDialog.open(CouchsurfingDeleteComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   editDeleteToggle() {
-    console.log('asd')
-    this.editDeleteControls = !this.editDeleteControls
-  }
+    this.editDeleteControls = !this.editDeleteControls;
+  }  
 
-
-  ngOnInit() {
-
- /*    this.getAlojamiento()
-     this.alojamiento.getalojamientos().subscribe(
-       res=>{this.alojamientoList=res}
-       )
-       console.log(this.alojamientoList);
-   }
- 
-   getAlojamiento(){
-     this.alojamiento.getalojamientos()
-   }
-  */
-
-  }}
-
+}

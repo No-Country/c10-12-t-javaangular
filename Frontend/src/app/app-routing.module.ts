@@ -39,7 +39,8 @@ const routes: Routes = [
   },
   {
     path: 'alojamiento',
-    component: HostingComponent
+    component: HostingComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'jobs',
