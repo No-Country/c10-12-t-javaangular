@@ -63,6 +63,7 @@ import { CookiesComponent } from './components/cookies/cookies.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { ForgottenPasswordComponent } from './pages/login/components/forgotten-password/forgotten-password.component';
 import { GalletitasComponent } from './pages/galletitas/galletitas.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
 import { CouchsurfingCreateComponent } from './components/couchsurfing-create/couchsurfing-create.component';
 import { CouchsurfingDeleteComponent } from './components/couchsurfing-delete/couchsurfing-delete.component';
 import { CouchsurfingUpdateComponent } from './components/couchsurfing-update/couchsurfing-update.component';
@@ -117,6 +118,7 @@ import { CouchsurfingUpdateComponent } from './components/couchsurfing-update/co
     ToolsComponent,
     ForgottenPasswordComponent,
     GalletitasComponent,
+    EventEditComponent,
     CouchsurfingCreateComponent,
     CouchsurfingDeleteComponent,
     CouchsurfingUpdateComponent,
