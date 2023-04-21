@@ -12,7 +12,9 @@ export class EventsService {
   private apiUrl = environment.supabase.url;
   private supabaseKey = environment.supabase.publicKey;
 
-  public events = new BehaviorSubject<any | null>(null); 
+  public events = new BehaviorSubject<any | null>(null);
+
+  userEvents = new BehaviorSubject<any | null>(null); 
 
   constructor(
     private http: HttpClient,
@@ -32,6 +34,7 @@ export class EventsService {
     .subscribe({
       next: (data) => {
         this.getAllEvents();
+        this.getUserEvents();
       },
       error:(error)=>{
       }
@@ -52,6 +55,7 @@ export class EventsService {
       next: () => {
         this.getAllEvents();
         this.idForEditDelete=undefined;
+        this.getUserEvents();
       },
       error:(error)=>{
         console.log(error)
@@ -73,6 +77,7 @@ export class EventsService {
       next: () => {
         this.getAllEvents();
         this.idForEditDelete=undefined;
+        this.getUserEvents();
       },
       error:(error)=>{
         console.log(error)
@@ -112,5 +117,27 @@ export class EventsService {
     });
     const options = { headers: headers };
     return this.http.get(`${url}?id=eq.${this.idForEditDelete}`, options);
+  }
+
+  // recuperar eventos creados por el usuario
+  getUserEvents() {
+    let idd = this.auth.idUsuarios();
+    const url = `${this.apiUrl}/rest/v1/eventos`;
+    const token = this.auth.access_token();
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization: `Bearer ${token}`,
+    });
+    const options = { headers: headers };
+    this.http.get(`${url}?user_id=eq.${idd}`, options).subscribe({
+      next: (data) => {
+        this.userEvents.next(data);
+      }
+    });
+  }
+
+  getUserEventsObservable() {
+    this.getUserEvents();
+    return this.userEvents.asObservable();
   }
 }

@@ -1,82 +1,193 @@
-<div class="min-h-screen" *ngIf="Datosprofile">
-  <div class="w-full gap-5">
-    <div class="flex items-center justify-center w-full h-20 text-center bg-secondary py-9">
-      <h1 class="text-4xl text-white"> Tus ofertas </h1>
-    </div>
-    <div class="container flex flex-wrap px-5 mx-auto">
-      <div class="flex flex-col mt-[-50px] gap-4 md:w-1/4">
+<div class="flex flex-col min-h-screen">
 
-        <!-- <form id="avatar-form">
-          <picture>
-            <div class="bg-face w-[10rem] h-[10rem] rounded-[50%] grid justify-end">
-              <input type="file" id="avatar-input" accept="image/*">
-              <button type="submit" id="avatar-submit"
-                class="w-[2.8rem] h-[2.8rem] text-4xl text-white bg-accent rounded-[50%] flex justify-center items-center border-[0.37rem] border-white self-end pb-1"
-                >+</button>
-            </div>
-          </picture>
-        </form>
+  <div class="bg-secondary" *ngIf="profileData">
+    <div class="container flex flex-col p-5 mx-auto lg:px-5 lg:pt-5 lg:pb-0">
 
-        <form [formGroup]="formularioPerfil" (ngSubmit)="updateProfile()">
-          <picture>
-            <div class="bg-face w-[10rem] h-[10rem] rounded-[50%] grid justify-end">
-              <input type="file" formControlName="photo" id="fileInput">
-              <button type="submit"
-                class="w-[2.8rem] h-[2.8rem] text-4xl text-white bg-accent rounded-[50%] flex justify-center items-center border-[0.37rem] border-white self-end pb-1"
-                >+</button>
-            </div>
-          </picture>
-        </form> -->
-        <h1>{{Datosprofile.id}}</h1>
-          <picture>
-            <div class="bg-face w-[10rem] h-[10rem] rounded-[50%] grid justify-end">
-              <!-- <input type="file" formControlName="photo" id="fileInput"> -->
-              <button type="button"
-                class="w-[2.8rem] h-[2.8rem] text-4xl text-white bg-accent rounded-[50%] flex justify-center items-center border-[0.37rem] border-white self-end pb-1"
-                >+</button>
-            </div>
-          </picture>
-
-          <!-- <h1>{{dateUser}}</h1> -->
-          <h1>{{ this.email }}</h1>
-          <h3 class="text-2xl font-bold text-secondary font-primary">{{ Datosprofile.nombre }}Argentina</h3>
-          <ul class="ml-6 text-xl list-disc">
-            <li>Ingeniera</li>
-            <li>Vivo con Manchis</li>
-            <li>Noos encanta ser</li>
-            <li>te hospedamos sin costo </li>
-          </ul>
-          <h1 class="text-2xl font-bold text-secondary font-primary">Contacto</h1>
-          <ul class="text-xl ">
-            <li> <fa-icon [icon]="faLocation" class="pr-2">
-              </fa-icon>Buenos aires</li>
-            <li> <fa-icon [icon]="faPhone" class="pr-2">
-              </fa-icon> 34334234</li>
-            <li> <fa-icon [icon]="faHashtag" class="pr-2">
-              </fa-icon> <a href=""> Link a Intagram</a>
-            </li>
-          </ul>
-
-          <!-- <button mat-button class="px-3 md:px-6 py-2 text-sm mt-2 md:mt-4 md:text-xl text-white rounded-full bg-primary font-primary hover:bg-[#7edcd4] hover:border-[#7edcd4]" (click)="openDialog()">Editar</button> -->
+      <div class="flex w-full">
+        <div class="hidden lg:w-1/3 xl:w-1/4 lg:block"></div>  
+        <div class="lg:w-2/3 xl:w-3/4">
+          <p class="text-xl font-bold text-white lg:pl-5 lg:mb-5 lg:text-4xl lg:pt-14 font-primary">Tu perfil</p>
         </div>
-        <div
-        class="flex flex-wrap justify-start max-h-screen col-span-2 gap-3 py-5 overflow-y-auto sm:flex sm:h-auto md:w-3/4">
-        <!-- <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card> -->
       </div>
-      <div class="h-1/3"></div>
-      <button mat-button class="px-3 md:px-6 py-2 text-sm mt-2 md:mt-4 md:text-xl text-white rounded-full bg-primary font-primary hover:bg-[#7edcd4] hover:border-[#7edcd4]" type="button" (click)="openDialog()">Editar</button>
-      <input type="file" (change)="handleImageUpload($event)">crear perfil>
-     <div class="">
-      <img [src]="im" alt="">
-     </div>
-      
-    </div>
+
+      <div class="h-[0px] hidden items-center lg:flex">
+        <div class="w-[200px] h-[200px] relative rounded-full overflow-hidden">
+          <img class="object-cover w-full h-full" src="{{ profileData.foto? profileData.foto : '../../../assets/img/face-profile.png' }}" alt="">
+        </div>
+      </div>
+
     </div>
   </div>
 
+  <div class="lg:hidden">
+    <div class="container flex flex-col gap-5 p-5 mx-auto">
+    
+      <div class="relative flex gap-5">
+    
+        <div class="m-auto w-[145px] h-[145px] rounded-full overflow-hidden">
+          <img class="object-cover w-full h-full"
+            src="{{ profileData.foto? profileData.foto : '../../../assets/img/face-profile.png' }}" alt="">
+        </div>
 
+        <ng-container *ngIf="profileData.nombre; else elseTemplate">
+
+          <div class="relative flex flex-col justify-center w-2/4 gap-5 center grow text-secondary">
+            <button class="absolute top-0 right-0" (click)="openDialog()"><fa-icon [icon]="faPen"></fa-icon></button>
+            <div>
+              <p class="flex text-xl font-bold sm:text-2xl flex-wra font-primary">{{profileData.nombre}}
+                {{profileData.apellido}}</p>
+              <p class="text-sm font-medium sm:text-xl font-primary">{{profileData.nacionalidad}}</p>
+            </div>
+            <p class="hidden font-medium text-dark sm:block">{{ profileData.descripcion }}</p>
+          </div>
+          
+        </ng-container>
+        
+        <ng-template #elseTemplate>
+
+          <div class="hidden text-[#6D6D6D] sm:flex flex-col justify-center w-2/4 center grow border-[#6D6D6D] border border-dashed rounded-xl cursor-pointer p-5" (click)="openDialog()">
+            <p>¡Hola!</p>
+            <p>Te invitamos a añadas una pequeña descripción de presentación para que las personas puedan conocerte un poco más.
+            </p>
+            <p class="mt-4">Podés nombrar tu perfil profesional, motivaciones y gustos.</p>
+          </div>
+          
+        </ng-template>
+    
+      </div>
+    
+      <div class="w-full text-sm font-medium sm:hidden">
+
+        <ng-container *ngIf="profileData.nombre; else noData">
+          <p>{{ profileData.descripcion }}</p>          
+        </ng-container>
+        
+        <ng-template #noData>
+          <div class="text-[#6D6D6D] border-[#6D6D6D] border border-dashed w-full rounded-xl cursor-pointer p-5"
+            (click)="openDialog()">
+            <p>¡Hola!</p>
+            <p>Te invitamos a añadas una pequeña descripción de presentación para que las personas puedan conocerte un poco más.</p>
+            <p class="mt-4">Podés nombrar tu perfil profesional, motivaciones y gustos.</p>
+          </div>          
+        </ng-template>
+    
+      </div>
+
+      <div *ngIf="profileData.nombre" class="flex flex-col gap-3">
+        <p class="text-xl font-bold text-secondary font-primary">Contacto</p>
+        <div class="flex flex-col flex-wrap justify-between sm:flex-row">
+          <div class="flex">
+            <div class="flex justify-center w-8">
+              <fa-icon class="mr-1 text-primary" [icon]="faLocation"></fa-icon>
+            </div>
+            <p>{{profileData.ubicacion}}</p>
+          </div>
+          
+          <div class="flex">
+            <div class="flex justify-center w-8">
+              <fa-icon class="mr-1 text-primary" [icon]="faMobile"></fa-icon>
+            </div>
+            <p>{{profileData.telefono}}</p>
+          </div>
+          
+          <a class="flex" href="{{profileData.social}}" target="_blank">
+            <div class="flex justify-center w-8">
+              <fa-icon class="mr-1 text-primary" [icon]="faUserGroup"></fa-icon>
+            </div>
+            <p>Red social</p>
+          </a>
+        </div>
+      </div>
+    
+    </div>
+  </div>  
+
+  <div class="flex w-full border-b border-gray-300 rounded-br-[40px] rounded-bl-[40px]">
+    <div class="container flex justify-center mx-auto lg:justify-start lg:px-5">
+      <div class="lg:w-1/3 xl:w-1/4 md:block"></div>
+      <div class="lg:w-2/3 xl:w-3/4 text-[#1C1B1F] text-sm sm:text-base lg:text-lg font-medium lg:pl-5 flex">
+        <button [ngClass]="{'border-b-primary': couchsurfingDisplay}" class="px-2 py-3 border-transparent sm:px-5 hover:border-b-primary border-y-4" (click)="showCouchsurfing()"><fa-icon class="mr-1" [icon]="faBed"></fa-icon>Alojamientos</button>
+        <button [ngClass]="{'border-b-primary': jobsDisplay}" class="px-2 py-3 border-transparent sm:px-5 hover:border-b-primary border-y-4" (click)="showJobs()"><fa-icon class="mr-1" [icon]="faBriefcase"></fa-icon>Trabajo</button>
+        <button [ngClass]="{'border-b-primary': eventsDisplay}" class="px-2 py-3 border-transparent sm:px-5 hover:border-b-primary border-y-4" (click)="showEvents()"><fa-icon class="mr-1" [icon]="faCalendarDays"></fa-icon>Eventos</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container flex px-5 mx-auto grow">
+
+    <div class="flex-col justify-between hidden gap-5 pt-16 pb-10 lg:flex lg:w-1/3 xl:w-1/4">
+
+      <ng-container *ngIf="profileData.nombre; else noDataLG">
+
+        <div class="flex flex-col gap-5">
+          <div class="font-bold text-secondary">
+            <p class="text-3xl font-primary">{{profileData.nombre}} {{profileData.apellido}}</p>
+            <p class="text-2xl font-primary">{{profileData.nacionalidad}}</p>
+          </div>
+          <p class="text-lg text-dark">{{profileData.descripcion}}</p>
+          <div class="flex flex-col gap-2">
+            <p class="text-3xl font-bold text-secondary font-primary">Contacto</p>
+            <div class="flex flex-col gap-2 text-xl">
+
+              <div class="flex">
+                <div class="flex justify-center w-8">
+                  <fa-icon class="mr-1 text-primary" [icon]="faLocation"></fa-icon>
+                </div>
+                <p>{{profileData.ubicacion}}</p>
+              </div>
+              
+              <div class="flex">
+                <div class="flex justify-center w-8">
+                  <fa-icon class="mr-1 text-primary" [icon]="faMobile"></fa-icon>
+                </div>
+                <p>{{profileData.telefono}}</p>
+              </div>
+
+              <a class="flex" href="{{profileData.social}}" target="_blank">
+                <div class="flex justify-center w-8">
+                  <fa-icon class="mr-1 text-primary" [icon]="faUserGroup"></fa-icon>
+                </div>
+                <p>Red social</p>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        
+      </ng-container>
+      <ng-template #noDataLG>
+
+        <div class="text-[#6D6D6D] text-xl border-[#6D6D6D] border border-dashed w-full rounded-xl cursor-pointer p-5"
+          (click)="openDialog()">
+          <p>¡Hola!</p>
+          <p>Te invitamos a añadas una pequeña descripción de presentación para que las personas puedan conocerte un poco más.
+          </p>
+          <p class="mt-4">Podés nombrar tu perfil profesional, motivaciones y gustos.</p>
+        </div>
+        
+      </ng-template>
+
+      <div class="flex flex-col gap-4 text-lg font-bold">
+        <button *ngIf="profileData.nombre" class="w-full py-2 text-lg font-bold text-white border-2 rounded-full font-primary border-primary bg-primary"
+          (click)="openDialog()">Editar perfil</button>
+        <button class="w-full py-2 bg-transparent border-2 rounded-full font-primary border-accent text-accent">Eliminar cuenta</button>
+        <button class="w-full py-2 text-white border-2 rounded-full font-primary border-accent bg-accent" (click)="logout()">Cerrar sesión</button>
+      </div>
+      
+
+    </div>
+
+    <div class="w-full lg:w-2/3 xl:w-3/4">
+
+      <app-user-couchsurfing *ngIf="couchsurfingDisplay"></app-user-couchsurfing>
+
+      <app-user-jobs *ngIf="jobsDisplay"></app-user-jobs>
+      
+      <app-user-events *ngIf="eventsDisplay"></app-user-events>
+
+    </div>
+    
+    
+  </div>
+
+</div>

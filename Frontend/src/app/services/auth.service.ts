@@ -29,19 +29,27 @@ export class AuthService {
   }
 
   getSession() {
-    return JSON.parse(localStorage.getItem('sb-olndhblmfhgdfnajbzya-auth-token') || '{}');
+    if (localStorage.getItem('sb-olndhblmfhgdfnajbzya-auth-token')) {
+      return JSON.parse(localStorage.getItem('sb-olndhblmfhgdfnajbzya-auth-token') || '{}');
+    } else {
+      console.log('no hay usuario');
+    }
   }
 
   public access_token() {
-    const a = this.getSession()['access_token'];
-    console.log(a);
-    return a
-    
-    
+    if (localStorage.getItem('sb-olndhblmfhgdfnajbzya-auth-token')) {
+      return this.getSession()['access_token'];
+    } else {
+      console.log('no hay usuario');
+    }
   }
 
   public idUsuarios(){
-    return this.getSession()['user']['id'];
+    if (localStorage.getItem('sb-olndhblmfhgdfnajbzya-auth-token')) {
+      return this.getSession()['user']['id'];
+    } else {
+      console.log('no hay usuario');
+    }
   }
 
   getEmail() {
@@ -50,11 +58,7 @@ export class AuthService {
 
   async signUp(credentials: Credentials): Promise<any>{
     await this.supabaseClient.auth.signUp(credentials);
-    await this.signIn(credentials);
-    await this.router.navigate(['/profile'])
   }
-
-
 
   async signIn(credentials: Credentials): Promise<void> {
     try {
@@ -64,7 +68,6 @@ export class AuthService {
         throw new Error(error.message); // Lanza excepción en caso de error de autenticación
       }
       this.setUser();
-        console.log('se logo')
       await this.router.navigate(['/profile']);
     } catch (error) {
       console.log('auth error:', error);
@@ -82,19 +85,20 @@ export class AuthService {
   }
  */
 
-  signOut(): Promise<{ error: any | null }>{
+  async signOut(): Promise<any | null>{
     this.userSubject.next(null);
     this.user$ = this.userSubject.asObservable();
-    return this.supabaseClient.auth.signOut()
+    await this.supabaseClient.auth.signOut();
   }
 
   public setUser(): Observable<any> {
-    let user = this.getSession()['user'];
+    let user: any;
+    if (localStorage.getItem('sb-olndhblmfhgdfnajbzya-auth-token')) {
+      user = this.getSession()['user'];
+    }
     this.userSubject.next(user);
     this.user$ = this.userSubject.asObservable();
     return this.userSubject.asObservable()
   }
-
-
 
 }

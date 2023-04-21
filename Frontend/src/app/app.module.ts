@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -67,6 +68,9 @@ import { EventEditComponent } from './components/event-edit/event-edit.component
 import { CouchsurfingCreateComponent } from './components/couchsurfing-create/couchsurfing-create.component';
 import { CouchsurfingDeleteComponent } from './components/couchsurfing-delete/couchsurfing-delete.component';
 import { CouchsurfingUpdateComponent } from './components/couchsurfing-update/couchsurfing-update.component';
+import { UserCouchsurfingComponent } from './pages/profile/user-couchsurfing/user-couchsurfing.component';
+import { UserJobsComponent } from './pages/profile/user-jobs/user-jobs.component';
+import { UserEventsComponent } from './pages/profile/user-events/user-events.component';
 
 
 @NgModule({
@@ -122,8 +126,12 @@ import { CouchsurfingUpdateComponent } from './components/couchsurfing-update/co
     CouchsurfingCreateComponent,
     CouchsurfingDeleteComponent,
     CouchsurfingUpdateComponent,
+    UserCouchsurfingComponent,
+    UserJobsComponent,
+    UserEventsComponent,
   ],
   imports: [
+    LayoutModule,
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,

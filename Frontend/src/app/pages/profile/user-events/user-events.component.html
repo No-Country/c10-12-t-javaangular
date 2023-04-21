@@ -1,0 +1,18 @@
+<div class="p-5 pb-0 pl-0 lg:pb-0 lg:p-5">
+  <button class="px-10 py-2 text-white rounded-full bg-primary" (click)="openDialog()">+ Nuevo evento</button>
+</div>
+
+<ng-container *ngIf="userEvents && userEvents.length > 0; else elseTemplate">
+
+  <div class="grid grid-cols-1 gap-5 px-0 py-5 lg:pr-0 lg:p-5 xl:grid-cols-2">
+    <app-event-card class="col-span" *ngFor="let event of userEvents" [Events]="event"></app-event-card>
+  </div>
+
+</ng-container>
+<ng-template #elseTemplate>
+
+  <p class="py-10 text-xl font-bold text-center md:text-2xl font-primary text-secondary">Cuando publiques un evento se verá aquí</p>
+
+</ng-template>
+
+

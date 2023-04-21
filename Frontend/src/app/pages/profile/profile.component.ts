@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-
-import { faLocationDot, faPhone, faHashtag, faEye, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faMobile, faUserGroup, faBed, faBriefcase, faCalendarDays, faPen } from '@fortawesome/free-solid-svg-icons';
 import { ProfileModalComponent } from 'src/app/components/profile-modal/profile-modal.component';
 import { ProfileService } from 'src/app/services/profile.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
-
 
 @Component({
   selector: 'app-profile',
@@ -18,69 +15,73 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProfileComponent implements OnInit {
 
+  faPen = faPen;
+  faLocation = faLocationDot;
+  faMobile = faMobile;
+  faUserGroup = faUserGroup;
+  faBed = faBed;
+  faBriefcase = faBriefcase;
+  faCalendarDays = faCalendarDays;
+
   titularAlerta: string = '';
-  im:string|undefined;
-  Datosprofile: any;
+  im: string | undefined;
+  profileData: any | undefined = undefined;
 
   formularioPerfil: FormGroup;
-
-  meOffert = [];
-  hidde = true;
-  dateUser = "";
-  faFlech = faEye;
-  faLocation = faLocationDot;
-  faPhone = faPhone;
-  faHashtag = faHashtag;
-
-  email: string | undefined;
-  img64:string|undefined;
-  ngOnInit(): void {
-  
-    this.email = this.auth.getEmail()
-    window.scrollTo({ top: 0 });    
-    this.profileService.getPerfil().subscribe(
-    {
-      next:(data)=>{
-        this.Datosprofile=data
-       console.log(this.Datosprofile)
-      }
-    }
-    );
-
-    this.auth.setUser().subscribe(data => this.datos = data)
-
-  }
-
   datos: any;
 
-  mostrar() {
-    this.hidde = !this.hidde;
-  }
+  img64: string | undefined;
 
-
-
-  faUser = faUser;
+  couchsurfingDisplay: boolean = true;
+  jobsDisplay: boolean = false;
+  eventsDisplay: boolean = false;
 
   constructor(
     private auth: AuthService,
-    private router: Router,
     public dialog: MatDialog,
     private profileService: ProfileService,
-    private fb: FormBuilder,
-    private http: HttpClient
+    private router: Router
   ) {
     this.formularioPerfil = new FormGroup({
       photo: new FormControl('')
     });
   }
 
+  ngOnInit(): void {
+    window.scrollTo({ top: 0 });   
 
+    this.profileService.getPerfil().subscribe({
+      next: (data: any) => {
+        if (data == null) {
+          console.log('data vacia')
+        } else {
+          this.profileData = data[0];
+        }
+      }
+    });
 
+    this.auth.setUser().subscribe(data => {
+      this.datos = data;
+    });
 
-  nombreUsuario() {
-    if (this.auth.access_token()) {
-      console.log("holasusana")
-    }
+  }
+
+  showCouchsurfing() {
+    this.couchsurfingDisplay = true;
+    this.jobsDisplay = false;
+    this.eventsDisplay = false;
+  }
+
+  showJobs() {
+    this.couchsurfingDisplay = false;
+    this.jobsDisplay = true;
+    this.eventsDisplay = false;
+  }
+
+  showEvents() {
+    this.couchsurfingDisplay = false;
+    this.jobsDisplay = false;
+    this.eventsDisplay = true;
   }
 
   // deleteAccount() {
@@ -94,8 +95,6 @@ export class ProfileComponent implements OnInit {
     const dialogRef = this.dialog.open(ProfileModalComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-
-      console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -120,7 +119,11 @@ export class ProfileComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
-  
+
+  async logout() {
+    await this.auth.signOut();
+    this.router.navigate(['/login']);
+  }
 
 }
 

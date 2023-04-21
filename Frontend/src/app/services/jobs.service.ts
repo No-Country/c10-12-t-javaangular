@@ -15,6 +15,7 @@ export class JobsService {
   editOfferId: number | undefined;
 
   offers = new BehaviorSubject<any | null>(null);
+  userJobs = new BehaviorSubject<any | null>(null);
 
   constructor(
     private http: HttpClient,
@@ -54,6 +55,7 @@ export class JobsService {
     this.http.post(url, job, options).subscribe({
       next: (data) => {
         this.getAllOffers();
+        this.getUserJobs();
       },
       error:(error)=>{
         console.log(error)
@@ -71,7 +73,8 @@ export class JobsService {
     const options = { headers: headers };
     this.http.patch(`${url}?id=eq.${id}`, jobOffer, options).subscribe({
       next: () => {
-        this.getAllOffers(); 
+        this.getAllOffers();
+        this.getUserJobs();
       }
     })
   }
@@ -87,6 +90,7 @@ export class JobsService {
     this.http.delete(`${url}?id=eq.${id}`, options).subscribe({
       next: () => {
         this.getAllOffers();
+        this.getUserJobs();
       }
     });
   }
@@ -100,6 +104,28 @@ export class JobsService {
     });
     const options = { headers: headers };
     return this.http.get(`${url}?id=eq.${id}`, options);
+  }
+
+  // recuperar ofertas de trabajo creadas por el usuario
+  getUserJobs() {
+    let idd = this.auth.idUsuarios();
+    const url = `${this.apiUrl}/rest/v1/trabajo`;
+    const token = this.auth.access_token();
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization: `Bearer ${token}`,
+    });
+    const options = { headers: headers };
+    this.http.get(`${url}?user_id=eq.${idd}`, options).subscribe({
+      next: (data) => {
+        this.userJobs.next(data);
+      }
+    });
+  }
+
+  getUserJobsObservable() {
+    this.getUserJobs();
+    return this.userJobs.asObservable();
   }
 
 }

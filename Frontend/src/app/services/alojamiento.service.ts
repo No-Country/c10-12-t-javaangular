@@ -14,6 +14,8 @@ export class AlojamientoService {
 
   public events = new BehaviorSubject<any | null>(null);
 
+  userCouchsurfing = new BehaviorSubject<any | null>({});
+
   // este id se setea cuando el usuario hace abre los dialog de update o delete desde la couchsurfing-card, cuando en el dialog se guardan los cambios o se elimina el post, se usa este valor en updateCouchsurfing() o deleteCouchsurfing() y despues se setea a undefined.
   idForUpdateOrDelete: number | undefined;
 
@@ -55,6 +57,7 @@ export class AlojamientoService {
     .subscribe({
       next: (data) => {
         this.getAllAlojamientos();
+        this.getUserCouchsurfing();
       },
       error:(error)=>{
       }
@@ -84,6 +87,7 @@ export class AlojamientoService {
       next: () => {
         this.idForUpdateOrDelete = undefined;
         this.getAllAlojamientos();
+        this.getUserCouchsurfing();
       }
     });
   }
@@ -99,8 +103,33 @@ export class AlojamientoService {
     this.http.delete(`${url}?id=eq.${this.idForUpdateOrDelete}`, options).subscribe({
       next: () => {
         this.getAllAlojamientos();
+        this.getUserCouchsurfing();
       }
     });
+  }
+
+  // recuperar ofertas de alojamiento creadas por el usuario
+  getUserCouchsurfing() {
+    let idd = this.auth.idUsuarios();
+    const url = `${this.apiUrl}/rest/v1/alojamiento`;
+    const token = this.auth.access_token();
+    const headers = new HttpHeaders({
+      apikey: this.supabaseKey,
+      Authorization: `Bearer ${token}`,
+    });
+    const options = { headers: headers };
+    this.http.get(`${url}?user_id=eq.${idd}`, options).subscribe(
+      {
+        next: (data) => {
+          this.userCouchsurfing.next(data);
+        }
+      }
+    );
+  }
+
+  getUserCouchsurfingObservable() {
+    this.getUserCouchsurfing();
+    return this.userCouchsurfing.asObservable();
   }
 
 }

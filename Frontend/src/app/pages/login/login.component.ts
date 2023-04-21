@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { faPen, faEye, faEyeSlash, faHome, faLaptop, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgottenPasswordComponent } from './components/forgotten-password/forgotten-password.component';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-login',
@@ -33,13 +34,16 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private profileService: ProfileService
   ) {}
 
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
     if (this.auth.access_token()) {
       this.router.navigate(['/profile']);
+    } else {
+      this.profileService.setUserNull();
     }
   }
 

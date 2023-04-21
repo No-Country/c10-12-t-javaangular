@@ -17,7 +17,6 @@ export class RegisterComponent implements OnInit {
   titularAlerta: string = '';
 
   form = this.formBuilder.group({
-    nombre_apellido: ['', Validators.required],
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     agree: [false, [Validators.required]],
@@ -64,14 +63,13 @@ export class RegisterComponent implements OnInit {
       const { email, password }:any = this.form.getRawValue();
       this.auth.signUp({email, password}).then(() => {
         swal.fire('Registro exitoso...', this.titularAlerta, 'success');
-        let id=this.auth.idUsuarios();
-        let user_id={
+        let id = this.auth.idUsuarios();
+        let user_id = {
           "user_id": id
         }
         this.profileService.AutoCreateProfile(user_id);
-        /* console.log(this.auth.access_token); */
-        return this.auth.signIn({email, password}); /* aaca */
       }).then(() => {
+        this.router.navigate(['/profile'])
       }).catch((error) => {
       });
 

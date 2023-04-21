@@ -9,34 +9,48 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./profile-modal.component.css']
 })
 export class ProfileModalComponent {
-img:string|undefined;
+
+  img: string | undefined;
+
+  profileData: any | undefined;
+
   perfill: FormGroup = new FormGroup({});
+
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
-    private auth: AuthService,){
-     this.img=this.profileService.img64;
-     console.log('desde el formulario oninit',this.img);
-    }
+    private auth: AuthService
+  ) {
+    this.img = this.profileService.img64;
+  }
 
-    ngOnInit() {
-      let id_user=this.auth.idUsuarios();
-      
-     
-      this.perfill = this.fb.group(
-        {
-          user_id: [id_user, Validators.required],
-          nombre: ['', Validators.required],
-          apellido: ['', Validators.required],
-          descripcion: ['', Validators.required],
-          ubicacion: ['', Validators.required],
-          nacionalidad: ['', Validators.required],
-          telefono: ['', Validators.required],
-          social: ['', Validators.required],
-          foto:['']
-        }
-      )
-    }
+  ngOnInit() {
+
+    let id_user = this.auth.idUsuarios();
+
+    this.profileService.getPerfil().subscribe({
+      next: (data) => {
+        this.profileData = data[0];
+        console.log(this.profileData.nombre)
+      }
+    });
+
+    this.perfill = this.fb.group(
+      {
+        user_id: [id_user, Validators.required],
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        descripcion: ['', Validators.required],
+        ubicacion: ['', Validators.required],
+        nacionalidad: ['', Validators.required],
+        telefono: ['', Validators.required],
+        social: ['', Validators.required],
+        foto:['']
+      }
+    );
+
+    this.setFormWithProfileData();
+  }
   
 
   // async updateProfilePhoto() {
@@ -50,7 +64,20 @@ img:string|undefined;
   //   }
   // }
 
-  updateProfil() {
+  setFormWithProfileData() {
+    this.perfill.patchValue({
+      nombre: this.profileData.nombre,
+      apellido: this.profileData.apellido,
+      descripcion: this.profileData.descripcion,
+      ubicacion: this.profileData.ubicacion,
+      nacionalidad: this.profileData.nacionalidad,
+      telefono: this.profileData.telefono,
+      social: this.profileData.social,
+      foto: this.profileData.foto
+    });
+  }
+
+  updateProfile() {
     this.profileService.updatePerfil(this.perfill.getRawValue())
   }
 
@@ -58,11 +85,10 @@ img:string|undefined;
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (event:any) => {
-        const im = event.target.result.toString(); 
-        this.perfill.patchValue({
-          foto:im
-        })
-        console.log(im)
+      const im = event.target.result.toString(); 
+      this.perfill.patchValue({
+        foto:im
+      });
     };
     reader.readAsDataURL(file);
   }

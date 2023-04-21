@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { faUser, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { User } from '@supabase/supabase-js';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,22 +18,26 @@ export class NavbarComponent {
   faBars = faBars;
   faXmark = faXmark;
 
-  user: User | null = null;
-  user$: Observable<User | null> = this.auth.user$;
+  user: any | undefined = undefined;
 
   isOptionsMenuOpen = false;
 
   constructor(
-    private auth: AuthService,
-    private router: Router
+    private profileService: ProfileService,
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.auth.setUser();
+    this.profileService.getPerfil().subscribe({
+      next: (data) => {
+        this.user = data[0];
+      }
+    });
   }
 
   async logout() {
-    await this.auth.signOut();
+    await this.authService.signOut();
     this.router.navigate(['/login']);
   }
 
